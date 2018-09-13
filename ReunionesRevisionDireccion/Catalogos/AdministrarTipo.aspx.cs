@@ -1,0 +1,157 @@
+﻿using Entidades;
+using Servicios;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace ReunionesRevisionDireccion.Catalogos
+{
+    public partial class AdministrarTipo : System.Web.UI.Page
+    {
+        #region variables globales
+        TipoServicios tipoServicios = new TipoServicios();
+        #endregion
+
+        #region pageload
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
+            //si no tiene permiso de ver la pagina se redirecciona a login
+            int[] rolesPeromitidos = { 2 };
+            Utilidades.escogerMenu(Page, rolesPeromitidos);
+
+            if (!Page.IsPostBack)
+            {
+                Session["listaTipos"] = null;
+                Session["tipoEditar"] = null;
+                Session["tipoEliminar"] = null;
+                cargarDatosTblTipos();
+
+            }
+        }
+        #endregion
+
+        #region logica
+        /// <summary>
+        /// Priscilla Mena
+        /// 07/09/2018
+        /// Efecto: Metodo para llenar los datos de la tabla con los tipos que se encuentran en la base de datos
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        private void cargarDatosTblTipos()
+        {
+            List<Tipo> listaTipos = new List<Tipo>();
+            listaTipos = tipoServicios.getTipos();
+            rpTipo.DataSource = listaTipos;
+            rpTipo.DataBind();
+
+            Session["listaTipos"] = listaTipos;
+
+        }
+        #endregion
+
+        #region eventos
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 07/09/2018
+        /// Efecto: Metodo que redirecciona a la pagina donde se ingresa un nuevo tipo,
+        /// se activa cuando se presiona el boton de nuevo
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnNuevo_Click(object sender, EventArgs e)
+        {
+            String url = Page.ResolveUrl("~/Catalogos/NuevoTipo.aspx");
+            Response.Redirect(url);
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 07/09/2018
+        /// Efecto: Metodo que redirecciona a la pagina donde se edita un tipo,
+        /// se activa cuando se presiona el boton de nuevo
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnEditar_Click(object sender, EventArgs e)
+        {
+            int idTipo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Tipo> listaTipos = (List<Tipo>)Session["listaTipos"];
+
+            Tipo tipoEditar = new Tipo();
+
+            foreach (Tipo tipo in listaTipos)
+            {
+                if (tipo.idTipo == idTipo)
+                {
+                    tipoEditar = tipo;
+                    break;
+                }
+            }
+
+            Session["tipoEditar"] = tipoEditar;
+
+            String url = Page.ResolveUrl("~/Catalogos/EditarTipo.aspx");
+            Response.Redirect(url);
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 07/09/2018
+        /// Efecto: Metodo que redirecciona a la pagina donde se elimina un tipo,
+        /// se activa cuando se presiona el boton de nuevo
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int idTipo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Tipo> listaTipos = (List<Tipo>)Session["listaTipos"];
+
+            Tipo tipoEliminar = new Tipo();
+
+            foreach (Tipo tipo in listaTipos)
+            {
+                if (tipo.idTipo == idTipo)
+                {
+                    tipoEliminar = tipo;
+                    break;
+                }
+            }
+
+            Session["tipoEliminar"] = tipoEliminar;
+
+            String url = Page.ResolveUrl("~/Catalogos/EliminarTipo.aspx");
+            Response.Redirect(url);
+
+        }
+
+        
+        
+        
+
+
+
+        #endregion
+
+    }
+}
