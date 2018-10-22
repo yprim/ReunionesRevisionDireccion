@@ -13,49 +13,49 @@ namespace ReunionesRevisionDireccion.Catalogos {
     public partial class NuevoTipo {
         
         /// <summary>
-        /// Control lblNuevoPais.
+        /// Control lblNuevoTipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNuevoPais;
+        protected global::System.Web.UI.WebControls.Label lblNuevoTipo;
         
         /// <summary>
-        /// Control lblNombrePais.
+        /// Control lblDescripcionTipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombrePais;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionTipo;
         
         /// <summary>
-        /// Control txtNombrePais.
+        /// Control txtDescripcionTipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombrePais;
+        protected global::System.Web.UI.WebControls.TextBox txtDescripcionTipo;
         
         /// <summary>
-        /// Control divNombrePaisIncorrecto.
+        /// Control divDescripcionTipoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNombrePaisIncorrecto;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDescripcionTipoIncorrecto;
         
         /// <summary>
-        /// Control lblNombrePaisIncorrecto.
+        /// Control lblDescripcionTipoIncorrecto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNombrePaisIncorrecto;
+        protected global::System.Web.UI.WebControls.Label lblDescripcionTipoIncorrecto;
         
         /// <summary>
         /// Control btnGuardar.

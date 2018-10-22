@@ -49,7 +49,7 @@
                         <thead>
                             <tr id="filterrow">
                                 <td></td>
-                                <th>Nombre</th>
+                                <th>Descripcion</th>
                             </tr>
                         </thead>
                         </table>

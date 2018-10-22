@@ -42,8 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionServicios.cs" />
+    <Compile Include="ElementoRevisarServicios.cs" />
+    <Compile Include="EstadoServicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReunionElementoRevisarServicios.cs" />
+    <Compile Include="ReuniónServicios.cs" />
     <Compile Include="TipoServicios.cs" />
+    <Compile Include="UsuarioServicios.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">

@@ -2,13 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="divRedondo">
+   <div class="divRedondo">
         <div class="row">
 
             <%-- titulo accion--%>
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <center>
-                        <asp:Label ID="lblNuevoPais" runat="server" Text="Nuevo País" Font-Size="Large" ForeColor="Black"></asp:Label>
+                        <asp:Label ID="lblNuevoTipo" runat="server" Text="Nuevo Tipo" Font-Size="Large" ForeColor="Black"></asp:Label>
                     </center>
             </div>
             <%-- fin titulo accion --%>
@@ -21,13 +21,13 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblNombrePais" runat="server" Text="Nombre <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblDescripcionTipo" runat="server" Text="Descripción <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtNombrePais" runat="server"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="txtDescripcionTipo" runat="server"></asp:TextBox>
                 </div>
-                <div id="divNombrePaisIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
-                    <asp:Label ID="lblNombrePaisIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                <div id="divDescripcionTipoIncorrecto" runat="server" style="display: none" class="col-md-6 col-xs-6 col-sm-6">
+                    <asp:Label ID="lblDescripcionTipoIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 
@@ -55,22 +55,22 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
-    <script type="text/javascript">
+     <script type="text/javascript">
         /*
         Evalúa de manera inmediata los campos de texto que va ingresando el usuario.
         */
         function validarTexto(txtBox) {
             var id = txtBox.id.substring(12);
 
-            var nombreTipoIncorrecto = document.getElementById('<%= divNombrePaisIncorrecto.ClientID %>');
+            var DescripcionTipoIncorrecto = document.getElementById('<%= divDescripcionTipoIncorrecto.ClientID %>');
 
             if (txtBox.value != "") {
                 txtBox.className = "form-control";
 
-                nombreTipoIncorrecto.style.display = 'none';
+                DescripcionTipoIncorrecto.style.display = 'none';
             } else {
                 txtBox.className = "form-control alert-danger";
-                nombreTipoIncorrecto.style.display = 'block';
+                DescripcionTipoIncorrecto.style.display = 'block';
             }
         }
     </script>

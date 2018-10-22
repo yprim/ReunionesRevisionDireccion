@@ -69,10 +69,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArchivoBaseDatos.txt" />
+    <Content Include="Catalogos\AdministrarElementoRevisar.aspx" />
+    <Content Include="Catalogos\AdministrarEstado.aspx" />
+    <Content Include="Catalogos\AdministrarReunion.aspx" />
     <Content Include="Catalogos\AdministrarTipo.aspx" />
+    <Content Include="Catalogos\AdministrarUsuario.aspx" />
+    <Content Include="Catalogos\EditarElementoRevisar.aspx" />
+    <Content Include="Catalogos\EditarEstado.aspx" />
+    <Content Include="Catalogos\EditarReunion.aspx" />
     <Content Include="Catalogos\EditarTipo.aspx" />
+    <Content Include="Catalogos\EditarUsuario.aspx" />
+    <Content Include="Catalogos\EliminarElementoRevisar.aspx" />
+    <Content Include="Catalogos\EliminarEstado.aspx" />
+    <Content Include="Catalogos\EliminarReunion.aspx" />
     <Content Include="Catalogos\EliminarTipo.aspx" />
+    <Content Include="Catalogos\EliminarUsuario.aspx" />
+    <Content Include="Catalogos\NuevaReunion.aspx" />
+    <Content Include="Catalogos\NuevoElementoRevisar.aspx" />
+    <Content Include="Catalogos\NuevoEstado.aspx" />
     <Content Include="Catalogos\NuevoTipo.aspx" />
+    <Content Include="Catalogos\NuevoUsuario.aspx" />
     <Content Include="Configuracion\Configuracion.aspx" />
     <Content Include="Content\DataTables\datatables.min.css" />
     <Content Include="Content\DataTables\images\details_close.png" />
@@ -124,12 +140,61 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Catalogos\AdministrarElementoRevisar.aspx.cs">
+      <DependentUpon>AdministrarElementoRevisar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarElementoRevisar.aspx.designer.cs">
+      <DependentUpon>AdministrarElementoRevisar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarEstado.aspx.cs">
+      <DependentUpon>AdministrarEstado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarEstado.aspx.designer.cs">
+      <DependentUpon>AdministrarEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarReunion.aspx.cs">
+      <DependentUpon>AdministrarReunion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarReunion.aspx.designer.cs">
+      <DependentUpon>AdministrarReunion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\AdministrarTipo.aspx.cs">
       <DependentUpon>AdministrarTipo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Catalogos\AdministrarTipo.aspx.designer.cs">
       <DependentUpon>AdministrarTipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarUsuario.aspx.cs">
+      <DependentUpon>AdministrarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarUsuario.aspx.designer.cs">
+      <DependentUpon>AdministrarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EditarElementoRevisar.aspx.cs">
+      <DependentUpon>EditarElementoRevisar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EditarElementoRevisar.aspx.designer.cs">
+      <DependentUpon>EditarElementoRevisar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EditarEstado.aspx.cs">
+      <DependentUpon>EditarEstado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EditarEstado.aspx.designer.cs">
+      <DependentUpon>EditarEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EditarReunion.aspx.cs">
+      <DependentUpon>EditarReunion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EditarReunion.aspx.designer.cs">
+      <DependentUpon>EditarReunion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\EditarTipo.aspx.cs">
       <DependentUpon>EditarTipo.aspx</DependentUpon>
@@ -138,6 +203,34 @@
     <Compile Include="Catalogos\EditarTipo.aspx.designer.cs">
       <DependentUpon>EditarTipo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\EditarUsuario.aspx.cs">
+      <DependentUpon>EditarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EditarUsuario.aspx.designer.cs">
+      <DependentUpon>EditarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EliminarElementoRevisar.aspx.cs">
+      <DependentUpon>EliminarElementoRevisar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EliminarElementoRevisar.aspx.designer.cs">
+      <DependentUpon>EliminarElementoRevisar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EliminarEstado.aspx.cs">
+      <DependentUpon>EliminarEstado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EliminarEstado.aspx.designer.cs">
+      <DependentUpon>EliminarEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\EliminarReunion.aspx.cs">
+      <DependentUpon>EliminarReunion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EliminarReunion.aspx.designer.cs">
+      <DependentUpon>EliminarReunion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\EliminarTipo.aspx.cs">
       <DependentUpon>EliminarTipo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -145,12 +238,47 @@
     <Compile Include="Catalogos\EliminarTipo.aspx.designer.cs">
       <DependentUpon>EliminarTipo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\EliminarUsuario.aspx.cs">
+      <DependentUpon>EliminarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EliminarUsuario.aspx.designer.cs">
+      <DependentUpon>EliminarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\NuevaReunion.aspx.cs">
+      <DependentUpon>NuevaReunion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\NuevaReunion.aspx.designer.cs">
+      <DependentUpon>NuevaReunion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\NuevoElementoRevisar.aspx.cs">
+      <DependentUpon>NuevoElementoRevisar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\NuevoElementoRevisar.aspx.designer.cs">
+      <DependentUpon>NuevoElementoRevisar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\NuevoEstado.aspx.cs">
+      <DependentUpon>NuevoEstado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\NuevoEstado.aspx.designer.cs">
+      <DependentUpon>NuevoEstado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\NuevoTipo.aspx.cs">
       <DependentUpon>NuevoTipo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Catalogos\NuevoTipo.aspx.designer.cs">
       <DependentUpon>NuevoTipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\NuevoUsuario.aspx.cs">
+      <DependentUpon>NuevoUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\NuevoUsuario.aspx.designer.cs">
+      <DependentUpon>NuevoUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Configuracion\Configuracion.aspx.cs">
       <DependentUpon>Configuracion.aspx</DependentUpon>

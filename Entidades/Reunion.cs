@@ -16,10 +16,9 @@ namespace Entidades
       public int idReunion { get; set; }
       public int anno { get; set; }
       public String mes { get; set; }
-      public int consecutivo { get; set; }
+      public String consecutivo { get; set; }
       public Tipo tipo { get; set; }
-    
-
+      public int numero { get; set; }
 
     }
 }
