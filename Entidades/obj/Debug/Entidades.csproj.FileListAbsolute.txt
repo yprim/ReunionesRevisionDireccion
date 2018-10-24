@@ -10,3 +10,9 @@ C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.
 C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.dll
 C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.pdb
+\\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Entidades\bin\Debug\Entidades.dll
+\\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Entidades\bin\Debug\Entidades.pdb
+\\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+\\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+\\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.dll
+\\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.pdb

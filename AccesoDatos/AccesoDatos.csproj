@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivoReunionDatos.cs" />
     <Compile Include="ConexionDatos.cs" />
     <Compile Include="ElementoRevisarDatos.cs" />
     <Compile Include="EstadoDatos.cs" />

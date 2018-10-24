@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivoReunionServicios.cs" />
     <Compile Include="ConexionServicios.cs" />
     <Compile Include="ElementoRevisarServicios.cs" />
     <Compile Include="EstadoServicios.cs" />

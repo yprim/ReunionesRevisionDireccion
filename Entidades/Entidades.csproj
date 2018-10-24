@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Archivo.cs" />
+    <Compile Include="ArchivoReunion.cs" />
     <Compile Include="BaseDatos.cs" />
     <Compile Include="ElementoRevisar.cs" />
     <Compile Include="Estado.cs" />
