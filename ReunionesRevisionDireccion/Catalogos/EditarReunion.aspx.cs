@@ -36,7 +36,8 @@ namespace ReunionesRevisionDireccion.Catalogos
                 Session["idElementoDesasociar"] = null;
                 Session["listaArchivosReunionAsociados"] = null;
                 Session["listaArchivosReunionNoAsociados"] = null;
-         
+                Session["archivo"] = null;
+
 
                 llenarDdlTipos();
                 llenarDatos();

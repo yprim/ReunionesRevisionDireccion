@@ -96,6 +96,54 @@
                     <br />
                 </div>
 
+                
+                 <!-- Archivos Reunion -->
+            <div class="col-md-12 col-sm-12 col-xs-12 ">
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <asp:Label ID="lblArchivosAsociados" runat="server" Text="Archivos asociados " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-4">
+                    <asp:Repeater ID="rpArchivos" runat="server">
+                        <HeaderTemplate>
+                            <table id="tblArchivos" class="table table-hover table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre del archivo</th>
+                                      
+                                    </tr>
+                                </thead>
+                        </HeaderTemplate>
+
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:LinkButton ID="btnVerArchivo" runat="server" Text='<%# Eval("nombreArchivo") %>' OnClick="btnVerArchivo_Click" CommandArgument='<%# Eval("idArchivoReunion")+","+Eval("nombreArchivo")+","+Eval("rutaArchivo") %>'></asp:LinkButton>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+
+                        <FooterTemplate>
+                            </table>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                    <asp:TextBox class="form-control" ID="txtArchivos" runat="server" TextMode="MultiLine" ReadOnly="true" Rows="6" Visible="false"></asp:TextBox>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12 col-sm-12">
+                <br />
+            </div>
+
+          
+            <!-- Fin Archivos Reunion -->
+
+                
+
+                <div class="col-xs-12">
+                    <br />
+                    
+                </div>
+
 
                 <%-- fin campos a llenar --%>
 
