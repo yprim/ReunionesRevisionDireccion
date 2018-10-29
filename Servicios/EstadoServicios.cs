@@ -55,7 +55,7 @@ namespace Servicios
         /// Modifica: estado
         /// Devuelve: -
         /// </summary>
-        /// <param name="Estado"></param>
+        /// <param name="estado"></param>
         public void actualizarEstado(Estado estado)
         {
             estadoDatos.actualizarEstado(estado);

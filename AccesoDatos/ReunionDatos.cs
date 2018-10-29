@@ -26,7 +26,7 @@ namespace AccesoDatos
         /// Modifica: -
         /// Devuelve: lista de tipos
         /// </summary>
-        /// <param name="tipo"></param>
+        /// <param name=""></param>
         /// <returns></returns>
         public List<Reunion> getReuniones()
         {
@@ -36,7 +36,7 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionRRD();
 
             SqlCommand sqlCommand = new SqlCommand("select r.idReunion, r.anno, r.mes, r.consecutivo, r.numero, t.descripcionTipo, t.idTipo " +
-                "from Reunion r, Tipo t where r.idTipo = t.idTipo; ; ", sqlConnection);
+                "from Reunion r, Tipo t where r.idTipo = t.idTipo order by r.anno desc, r.numero desc; ", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();

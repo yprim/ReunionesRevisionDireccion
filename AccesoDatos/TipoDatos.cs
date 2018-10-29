@@ -35,7 +35,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionRRD();
 
-            SqlCommand sqlCommand = new SqlCommand("select t.* from  Tipo t;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select t.* from  Tipo t order by descripcionTipo;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -114,7 +114,7 @@ namespace AccesoDatos
         /// <summary>
         /// Priscilla Mena
         /// 12/septiembre/2018
-        /// Efecto: Elimina un tipo de forma logica
+        /// Efecto: Elimina un tipo de  la base de datos
         /// Requiere: Tipo
         /// Modifica: -
         /// Devuelve: -

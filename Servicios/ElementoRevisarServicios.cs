@@ -19,9 +19,6 @@ namespace Servicios
 
         public List<ElementoRevisar> getElementosRevisar()
         {
-
-           
-
             return elementoRevisarDatos.getElementosRevisar();
         }
 
@@ -48,7 +45,7 @@ namespace Servicios
         /// Modifica: elementoRevisar
         /// Devuelve: -
         /// </summary>
-        /// <param name="ElementoRevisar"></param>
+        /// <param name="elementoRevisar"></param>
         public void actualizarElementoRevisar(ElementoRevisar elementoRevisar)
         {
 

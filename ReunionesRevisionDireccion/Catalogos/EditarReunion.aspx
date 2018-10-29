@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditarReunion.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.EditarReunion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditarReunion.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.EditarReunion" MaintainScrollPositionOnPostback="true"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -31,6 +31,19 @@
                 </div>
 
                 <%-- campos a llenar --%>
+               <div class="col-md-12 col-xs-12 col-sm-12">
+                    <div class="col-md-2 col-xs-2 col-sm-2">
+                        <asp:Label ID="lblConsecutivo" runat="server" Text="Consecutivo " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    </div>
+                    <div class="col-md-4 col-xs-4 col-sm-4">
+                       <asp:Label ID="txtConsecutivo" runat="server" ></asp:Label>
+                    </div>
+                </div>
+                 <div class="col-md-12 col-xs-12 col-sm-12">
+                    <br />
+                </div>
+               
+
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-2 col-xs-2 col-sm-2">
                         <asp:Label ID="lblTipo" runat="server" Text="Tipo " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
@@ -48,10 +61,10 @@
 
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblAnno" runat="server" Text="Año " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                        <asp:Label ID="lblAnno" runat="server" Text="Año " Font-Size="Medium"  ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <asp:TextBox ID="txtAnno" class="btn btn-default dropdown-toggle" runat="server" type="number"></asp:TextBox>
+                        <asp:TextBox ID="txtAnno" class="btn btn-default dropdown-toggle" ReadOnly="true" runat="server" type="number"></asp:TextBox>
                     </div>
                 </div>
 
@@ -84,25 +97,6 @@
                     <br />
                 </div>
 
-                <div class="col-md-12 col-xs-12 col-sm-12">
-                    <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblConsecutivo" runat="server" Text="Consecutivo " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                    </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4">
-                       <asp:Label ID="txtConsecutivo" runat="server" ></asp:Label>
-                    </div>
-                </div>
-                 <div class="col-md-12 col-xs-12 col-sm-12">
-                    <br />
-                </div>
-                 <div class="col-md-12 col-xs-12 col-sm-12">
-                    <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblNumero" runat="server" Text="Número " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                    </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4">
-                       <asp:Label ID="txtNumero" runat="server" ></asp:Label>
-                    </div>
-                </div>
 
 
 

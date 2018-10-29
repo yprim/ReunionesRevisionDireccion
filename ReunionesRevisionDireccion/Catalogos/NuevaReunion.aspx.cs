@@ -302,9 +302,8 @@ namespace ReunionesRevisionDireccion.Catalogos
             reunion.numero = numero;
 
 
-            reunionServicios.insertarReunion(reunion);
+           reunion.idReunion = reunionServicios.insertarReunion(reunion);
 
-                reunion = reunionServicios.getReunionPorDatos(reunion);
 
             /*----------------------Asociar elementos a revisar----------------------------------------*/
 

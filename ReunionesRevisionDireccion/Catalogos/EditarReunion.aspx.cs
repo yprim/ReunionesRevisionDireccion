@@ -48,8 +48,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
                 txtAnno.Text = reunionEditar.anno.ToString();
                 txtConsecutivo.Text = reunionEditar.consecutivo.ToString();
-                txtNumero.Text = reunionEditar.numero.ToString();
-
+           
                 int contIndexTipos = 0;
                 foreach (ListItem item in ddlTipos.Items)
                 {
@@ -619,7 +618,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             if (archivosRepetidos.Trim() != "")
             {
                 archivosRepetidos = archivosRepetidos.Remove(archivosRepetidos.Length - 3);
-               // (this.Master as SiteMaster).Mensaje("Los archivos " + archivosRepetidos + " no se pudieron guardar porque ya había archivos con ese nombre", "¡Alerta!");
+                (this.Master as Site).Mensaje("Los archivos " + archivosRepetidos + " no se pudieron guardar porque ya había archivos con ese nombre", "¡Alerta!");
             }
 
             return listaArchivos;
@@ -658,7 +657,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             }
             else
             {
-               // (this.Master as SiteMaster).Mensaje("Si desea agregar un(os) archivos a esta Reunion, primero debe \"Elegir archivos\" y luego darle clic al botón \"Agregar archivos\".", "¡Alerta!");
+                (this.Master as Site).Mensaje("Si desea agregar un(os) archivos a esta Reunion, primero debe \"Elegir archivos\" y luego darle clic al botón \"Agregar archivos\".", "¡Alerta!");
             }
         }
 

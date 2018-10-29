@@ -31,8 +31,6 @@
                                     <th>Tipo</th>
                                     <th>Mes</th>
                                     <th>Año</th>
-                               
-                                    <th>Número por año</th>
                                 </tr>
                             </thead>
                     </HeaderTemplate>
@@ -54,10 +52,7 @@
                             </td>
                              <td>
                                 <%# Eval("anno") %>
-                            </td>
-                             <td>
-                                <%# Eval("numero") %>
-                            </td>
+                            </td>        
                         </tr>
 
                     </ItemTemplate>
@@ -69,8 +64,7 @@
                                 <th>Consecutivo</th>
                                   <th>Tipo</th>
                                   <th>Mes</th>
-                                  <th>Año</th>
-                                  <th>Número por año</th>
+                                  <th>Año</th>    
                             </tr>
                         </thead>
                         </table>
@@ -106,6 +100,7 @@
             "aLengthMenu": [[2, 5, 10, -1], [2, 5, 10, "All"]],
             "colReorder": true,
             "select": false,
+            "bSort": false,
             "stateSave": true,
             "dom": 'Bfrtip',
             "buttons": [

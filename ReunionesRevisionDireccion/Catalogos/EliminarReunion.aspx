@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EliminarReunion.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.EliminarReunion" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EliminarReunion.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.EliminarReunion" MaintainScrollPositionOnPostback="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 
@@ -31,6 +31,17 @@
                 </div>
 
                 <%-- campos a llenar --%>
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <div class="col-md-2 col-xs-2 col-sm-2">
+                        <asp:Label ID="lblConsecutivo" runat="server" Text="Consecutivo " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    </div>
+                    <div class="col-md-4 col-xs-4 col-sm-4">
+                       <asp:Label ID="txtConsecutivo" runat="server" ></asp:Label>
+                    </div>
+                </div>
+                 <div class="col-md-12 col-xs-12 col-sm-12">
+                    <br />
+                </div>
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-2 col-xs-2 col-sm-2">
                         <asp:Label ID="lblTipo" runat="server" Text="Tipo " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
@@ -73,25 +84,8 @@
                     <br />
                 </div>
 
-                <div class="col-md-12 col-xs-12 col-sm-12">
-                    <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblConsecutivo" runat="server" Text="Consecutivo " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                    </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4">
-                       <asp:Label ID="txtConsecutivo" runat="server" ></asp:Label>
-                    </div>
-                </div>
-                 <div class="col-md-12 col-xs-12 col-sm-12">
-                    <br />
-                </div>
-                 <div class="col-md-12 col-xs-12 col-sm-12">
-                    <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblNumero" runat="server" Text="Número " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                    </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4">
-                       <asp:Label ID="txtNumero" runat="server" ></asp:Label>
-                    </div>
-                </div>
+               
+                 
                  <div class="col-md-12 col-xs-12 col-sm-12">
                     <br />
                 </div>

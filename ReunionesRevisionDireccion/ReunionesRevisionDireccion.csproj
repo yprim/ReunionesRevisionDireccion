@@ -71,6 +71,7 @@
     <Content Include="ArchivoBaseDatos.txt" />
     <Content Include="Catalogos\AdministrarElementoRevisar.aspx" />
     <Content Include="Catalogos\AdministrarEstado.aspx" />
+    <Content Include="Catalogos\AdministrarHallazgo.aspx" />
     <Content Include="Catalogos\AdministrarReunion.aspx" />
     <Content Include="Catalogos\AdministrarTipo.aspx" />
     <Content Include="Catalogos\AdministrarUsuario.aspx" />
@@ -153,6 +154,13 @@
     </Compile>
     <Compile Include="Catalogos\AdministrarEstado.aspx.designer.cs">
       <DependentUpon>AdministrarEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarHallazgo.aspx.cs">
+      <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarHallazgo.aspx.designer.cs">
+      <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\AdministrarReunion.aspx.cs">
       <DependentUpon>AdministrarReunion.aspx</DependentUpon>

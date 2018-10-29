@@ -33,7 +33,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionRRD();
 
-            SqlCommand sqlCommand = new SqlCommand("select e.* from  elementoRevisar e;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select e.* from  elementoRevisar e order by descripcionElemento;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();

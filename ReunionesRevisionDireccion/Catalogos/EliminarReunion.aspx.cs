@@ -46,7 +46,6 @@ namespace ReunionesRevisionDireccion.Catalogos
 
                 txtAnno.Text = reunionEliminar.anno.ToString();
                 txtConsecutivo.Text = reunionEliminar.consecutivo.ToString();
-                txtNumero.Text = reunionEliminar.numero.ToString();
                 txtMes.Text = reunionEliminar.mes.ToString();
                 txtTipos.Text = reunionEliminar.tipo.descripcion;
             }

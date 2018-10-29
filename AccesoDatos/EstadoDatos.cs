@@ -33,7 +33,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionRRD();
 
-            SqlCommand sqlCommand = new SqlCommand("select e.* from  estado e;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select e.* from  estado e order by descripcion;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -90,7 +90,7 @@ namespace AccesoDatos
         /// Modifica: estado
         /// Devuelve: -
         /// </summary>
-        /// <param name="Estado"></param>
+        /// <param name="estado"></param>
         public void actualizarEstado(Estado estado)
         {
             SqlConnection sqlConnection = conexion.conexionRRD();

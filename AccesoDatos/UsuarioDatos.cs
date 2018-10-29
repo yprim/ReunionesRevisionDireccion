@@ -35,7 +35,7 @@ namespace AccesoDatos
 
             SqlConnection sqlConnection = conexion.conexionRRD();
 
-            SqlCommand sqlCommand = new SqlCommand("select u.* from  Usuario u;", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("select u.* from  Usuario u order by nombre;", sqlConnection);
 
             SqlDataReader reader;
             sqlConnection.Open();
@@ -64,9 +64,9 @@ namespace AccesoDatos
         /// Modifica: -
         /// Devuelve: id del Usuario insertado
         /// </summary>
-        /// <param name="Usuario"></param>
+        /// <param name="usuario"></param>
         /// <returns></returns>
-        public int insertarUsuario(Usuario Usuario)
+        public int insertarUsuario(Usuario usuario)
         {
             SqlConnection sqlConnection = conexion.conexionRRD();
 
@@ -74,7 +74,7 @@ namespace AccesoDatos
                                                     values(@nombre);
                                                     SELECT SCOPE_IDENTITY();", sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@nombre", Usuario.nombre);
+            sqlCommand.Parameters.AddWithValue("@nombre", usuario.nombre);
 
 
             sqlConnection.Open();
@@ -119,15 +119,15 @@ namespace AccesoDatos
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
-        /// <param name="Usuario"></param>
-        public void eliminarUsuario(Usuario Usuario)
+        /// <param name="usuario"></param>
+        public void eliminarUsuario(Usuario usuario)
         {
             SqlConnection sqlConnection = conexion.conexionRRD();
 
             SqlCommand sqlCommand = new SqlCommand("Delete Usuario " +
                                                "where idUsuario = @idUsuario;", sqlConnection);
 
-            sqlCommand.Parameters.AddWithValue("@idUsuario", Usuario.idUsuario);
+            sqlCommand.Parameters.AddWithValue("@idUsuario", usuario.idUsuario);
 
             sqlConnection.Open();
             sqlCommand.ExecuteReader();
