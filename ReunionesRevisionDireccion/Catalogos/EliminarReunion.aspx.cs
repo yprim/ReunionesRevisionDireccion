@@ -218,6 +218,18 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             foreach (ArchivoReunion archivoAsociado in listaArchivosAsociados)
             {
+                if (System.IO.File.Exists(archivoAsociado.rutaArchivo))
+                {
+                    try
+                    {
+                        System.IO.File.Delete(archivoAsociado.rutaArchivo);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        (this.Master as Site).Mensaje("No se pudo eliminar el archivo", "¡Alerta!");
+                    }
+                }
 
                 archivoReunionServicios.eliminarArchivoReunion(archivoAsociado);
 

@@ -88,78 +88,19 @@
 
 
                  <!-- Archivos Reunion -->
-            <div class="col-md-12 col-sm-12 col-xs-12 ">
-                <div class="col-md-3 col-sm-3 col-xs-3">
-                    <asp:Label ID="lblArchivosAsociados" runat="server" Text="Archivos asociados " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+   
+            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                <div class="col-md-3 col-xs-3 col-sm-3">
+                    <asp:Label ID="lblArchivos" runat="server" Text="Archivos " Font-Size="Medium" ForeColor="Black" Font-Bold="true" CssClass="label"></asp:Label>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <asp:Repeater ID="rpArchivos" runat="server">
-                        <HeaderTemplate>
-                            <table id="tblArchivos" class="table table-hover table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Nombre del archivo</th>
-                                        <th>Eliminar</th>
-                                    </tr>
-                                </thead>
-                        </HeaderTemplate>
-
-                        <ItemTemplate>
-                            <tr>
-                                <td>
-                                    <asp:LinkButton ID="btnVerArchivo" runat="server" Text='<%# Eval("nombreArchivo") %>' OnClick="btnVerArchivo_Click" CommandArgument='<%# Eval("idArchivoReunion")+","+Eval("nombreArchivo")+","+Eval("rutaArchivo") %>'></asp:LinkButton>
-                                </td>
-                                <td>
-                                    <asp:LinkButton ID="btnEliminarArchivo" runat="server" CssClass="btn btn-default" Text="Eliminar" OnClick="btnEliminarArchivo_Click" CommandArgument='<%#Eval("idArchivoReunion") + ";" + Eval("nombreArchivo") + ";" + Eval("rutaArchivo") %>'></asp:LinkButton>
-                                </td>
-                            </tr>
-                        </ItemTemplate>
-
-                        <FooterTemplate>
-                            </table>
-                        </FooterTemplate>
-                    </asp:Repeater>
-                    <asp:TextBox class="form-control" ID="txtArchivos" runat="server" TextMode="MultiLine" ReadOnly="true" Rows="6" Visible="false"></asp:TextBox>
+                <div class="col-md-4 col-xs-4 col-sm-4">
+                    <asp:FileUpload ID="fuArchivos" runat="server" AllowMultiple="true" oninput="validarArchivos(this);" onchange="validarArchivos(this);" />
+                </div>
+                <div class="col-md-5 col-xs-5 col-sm-5" id="divArchivosVacio" runat="server" style="display: none;">
+                    <asp:Label ID="lblArchivosVacio" runat="server" Font-Size="Small" CssClass="label alert-danger" Text="Debe seleccionar al menos un archivo" ForeColor="Red" Visible="false"></asp:Label>
                 </div>
             </div>
-
-            <div class="col-md-12 col-xs-12 col-sm-12">
-                <br />
-            </div>
-
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="col-md-3 col-sm-3 col-xs-3">
-                    <asp:Label ID="lblAdjuntarArchivos" runat="server" Text="Adjuntar archivo(s)" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-4">
-                    <table id="Table1" runat="server" class="table table-striped ">
-                        <tr>
-                            <td>
-                                <asp:FileUpload ID="fuArchivos" AllowMultiple="true" runat="server" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Button ID="btnAgregarArchivos" runat="server" Text="Agregar archivos" OnClick="btnAgregarArchivos_Click" CssClass="btn btn-danger" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="lblArchivo" runat="server" Text=""></asp:Label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="alert-danger">
-                                <asp:Label ID="Label11" runat="server" Text="Se debe de dar clic al boton de 'Agregar archivos' para adjuntar los archivos a la Reunion"></asp:Label>
-                            </td>
-                        </tr>
-                    </table>
-
-                </div>
-                <div id="divArchivosVacio" runat="server" class="col-md-5 col-xs-5 col-sm-5" style="display: none">
-                    <asp:Label ID="lblArchivosVacio" runat="server" Font-Size="Small" class="label alert-danger" Text="Debe adjuntar al menos un archivo" ForeColor="Red"></asp:Label>
-                </div>
-            </div>
+           
             <!-- Fin Archivos Reunion -->
 
                  <div class="col-md-12 col-xs-12 col-sm-12">
@@ -580,6 +521,18 @@
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
             document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
           
+        };
+
+         function validarArchivos(fileUpload) {
+            var id = fileUpload.id.substring(12);
+
+            var divArchivoIncorrecta = document.getElementById('<%= divArchivosVacio.ClientID %>');
+
+            if (fileUpload.files.length > 0) {
+                divArchivoIncorrecta.style.display = "none";
+            } else {
+                divArchivoIncorrecta.style.display = "block";
+            }
         };
 
       

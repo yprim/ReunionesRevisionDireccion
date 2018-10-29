@@ -557,7 +557,7 @@ namespace ReunionesRevisionDireccion.Catalogos
                 }
                 catch (Exception ex)
                 {
-                 //   (this.Master as SiteMaster).Mensaje("No se pudo eliminar el archivo", "¡Alerta!");
+                    (this.Master as Site).Mensaje("No se pudo eliminar el archivo", "¡Alerta!");
                 }
             }
 

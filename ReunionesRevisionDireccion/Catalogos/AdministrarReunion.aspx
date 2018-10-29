@@ -27,10 +27,11 @@
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th>Consecutivo</th>
                                     <th>Tipo</th>
                                     <th>Mes</th>
                                     <th>Año</th>
-                                     <th>Consecutivo</th>
+                               
                                     <th>Número por año</th>
                                 </tr>
                             </thead>
@@ -43,6 +44,9 @@
                                 <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idReunion") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </td>
                             <td>
+                                <%# Eval("consecutivo") %>
+                            </td>
+                            <td>
                                 <%# Eval("tipo.descripcion") %>
                             </td>
                              <td>
@@ -50,9 +54,6 @@
                             </td>
                              <td>
                                 <%# Eval("anno") %>
-                            </td>
-                             <td>
-                                <%# Eval("consecutivo") %>
                             </td>
                              <td>
                                 <%# Eval("numero") %>
@@ -65,9 +66,11 @@
                         <thead>
                             <tr id="filterrow">
                                 <td></td>
+                                <th>Consecutivo</th>
                                   <th>Tipo</th>
-                                    <th>Mes</th>
-                                    <th>Año</th>
+                                  <th>Mes</th>
+                                  <th>Año</th>
+                                  <th>Número por año</th>
                             </tr>
                         </thead>
                         </table>

@@ -11,7 +11,7 @@ namespace ReunionesRevisionDireccion
     {
         public static Dictionary<int, string> roles { get; set; }
         public static List<System.Web.UI.WebControls.HyperLink> aplicaciones { get; set; }
-        public static string path = "\\\\issac\\AppFiles\\CND\\";
+        public static string path = "\\\\issac\\AppFiles\\ReunionesRevisionDireccion\\Pruebas\\";
         public static string logs_path = path + "logs";
 
 
