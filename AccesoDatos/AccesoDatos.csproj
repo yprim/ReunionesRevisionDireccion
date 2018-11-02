@@ -48,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReunionDatos.cs" />
     <Compile Include="ReunionElementoRevisarDatos.cs" />
+    <Compile Include="ReunionUsuarioDatos.cs" />
     <Compile Include="TipoDatos.cs" />
     <Compile Include="UsuarioDatos.cs" />
   </ItemGroup>

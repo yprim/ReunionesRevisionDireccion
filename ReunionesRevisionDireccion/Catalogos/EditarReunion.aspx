@@ -63,8 +63,8 @@
                     <div class="col-md-2 col-xs-2 col-sm-2">
                         <asp:Label ID="lblAnno" runat="server" Text="Año " Font-Size="Medium"  ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
-                    <div class="col-md-4 col-xs-4 col-sm-4">
-                        <asp:TextBox ID="txtAnno" class="btn btn-default dropdown-toggle" ReadOnly="true" runat="server" type="number"></asp:TextBox>
+                    <div class="col-md-2 col-xs-2 col-sm-2" >
+                        <asp:TextBox ID="txtAnno" class="form-control" ReadOnly="true" Style="text-align:center" runat="server"></asp:TextBox>
                     </div>
                 </div>
 
