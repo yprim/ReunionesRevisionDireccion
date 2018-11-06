@@ -226,8 +226,128 @@ namespace ReunionesRevisionDireccion.Catalogos
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModal();", true);
         }
 
+  
 
+        ///////////////// <summary>
+        ///////////////// Priscilla Mena
+        ///////////////// 27/09/2018
+        ///////////////// Efecto:Metodo que se activa cuando se le da click al boton de asociar
+        ///////////////// Requiere: -
+        ///////////////// Modifica: -
+        ///////////////// Devuelve: -
+        ///////////////// </summary>
+        ///////////////// <param></param>
+        ///////////////// <returns></returns>
+        protected void btnAsociarUsuario_Click(object sender, EventArgs e)
+        {
+            Reunion Reunion = new Reunion();
+            ///   preguntar a leo
+            //Reunion.idReunion = Convert.ToInt32(ddlJefeReunion.SelectedValue);
+
+            List<ElementoRevisar> listaElementosNoAsociados = (List<ElementoRevisar>)Session["listaElementosNoAsociados"];
+            List<ElementoRevisar> listaElementosSeleccionados = new List<ElementoRevisar>();
+
+            int idElementoRevisar = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            ElementoRevisar elementoRevisar = new ElementoRevisar();
+
+            foreach (ElementoRevisar elementoRevisarLista in listaElementosNoAsociados)
+            {
+                if (elementoRevisarLista.idElemento == idElementoRevisar)
+                {
+                    elementoRevisar = elementoRevisarLista;
+
+                    break;
+                }
+            }
+
+            listaElementosSeleccionados.Add(elementoRevisar);
+
+            List<ElementoRevisar> listaElementoRevisarAsociados = (List<ElementoRevisar>)Session["listaElementosAsociados"];
+
+            foreach (ElementoRevisar elementoRevisarLista in listaElementosSeleccionados)
+            {
+                listaElementoRevisarAsociados.Add(elementoRevisarLista);
+            }
+
+            List<ElementoRevisar> listaElementoRevisarNoAsociadosTemp = new List<ElementoRevisar>();
+
+            foreach (ElementoRevisar elementoRevisarNoAsociado in listaElementosNoAsociados)
+            {
+                Boolean asociar = true;
+                foreach (ElementoRevisar elementoRevisarLista in listaElementosSeleccionados)
+                {
+                    if (elementoRevisarLista.idElemento == elementoRevisarNoAsociado.idElemento)
+                    {
+                        asociar = false;
+                        break;
+                    }
+                }
+
+                if (asociar)
+                {
+                    listaElementoRevisarNoAsociadosTemp.Add(elementoRevisarNoAsociado);
+                }
+
+            }
+
+            Session["listaElementosNoAsociados"] = listaElementoRevisarNoAsociadosTemp;
+            Session["listaElementosAsociados"] = listaElementoRevisarAsociados;
+
+            llenarDatos();
+
+            /*para que se quede en el tab de ElementoRevisars despues del posback*/
+            liReunion.Attributes["class"] = "";
+            liElementoRevisar.Attributes["class"] = "active";
+
+
+            ViewElementoRevisar.Style.Add("display", "block");
+            ViewReunion.Style.Add("display", "none");
+
+
+            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModal();", true);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnDesasociar_Click(object sender, EventArgs e)
+        {
+            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarElementos();", true);
+
+            int idElementoRevisar = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            Session["idElementoDesasociar"] = idElementoRevisar;
+
+            List<ElementoRevisar> listaElementoRevisarAsociados = (List<ElementoRevisar>)Session["listaElementosAsociados"];
+
+            List<ElementoRevisar> listaElementoRevisarsSeleccionados = new List<ElementoRevisar>();
+
+            foreach (ElementoRevisar elementoRevisar in listaElementoRevisarAsociados)
+            {
+                if (elementoRevisar.idElemento == idElementoRevisar)
+                {
+                    lblDesasocaiarElemento.Text = "Se desasociará el elemento: " + elementoRevisar.descripcionElemento + " <br /> ¿está de acuerdo?";
+                }
+            }
+
+            /*para que se quede en el tab de ElementoRevisar despues del posback*/
+            liReunion.Attributes["class"] = "";
+            liElementoRevisar.Attributes["class"] = "active";
+
+
+            ViewElementoRevisar.Style.Add("display", "block");
+            ViewReunion.Style.Add("display", "none");
+
+        }
+    /// <summary>
+    /// ///
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+        protected void btnDesasociarUsuario_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarElementos();", true);
 

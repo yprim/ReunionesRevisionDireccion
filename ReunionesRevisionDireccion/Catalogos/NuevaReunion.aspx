@@ -9,6 +9,7 @@
     <ul class="nav nav-tabs">
         <li id="liReunion" runat="server" class="active"><a onclick="verViewReunion()">Reunión</a></li>
         <li id="liElementoRevisar" runat="server"><a onclick="verViewElementoRevisar()">Elementos a Revisar</a></li>
+         <li id="liUsuario" runat="server"><a onclick="verViewUsuarios()">Usuarios</a></li>
     </ul>
     <!-- fin tabs -->
 
@@ -342,12 +343,225 @@
         </div>
     </div>
     <!-- Fin Confirmar Eliminar Norma -->
+
+<!--****************************************************************************************** -->
+       <!-- ------------------------ VISTA Usuarios --------------------------- -->
+    <div id="ViewUsuario" runat="server" style="display: none">
+       
+           <div class="divCuadrado">
+            <div class="row">
+
+                <!-- Modal -->
+                <div id="myModalUsuario" class="modal fade" role="alertdialog">
+                    <div class="modal-dialog modal-lg">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Asociar Usuario a Reunión</h4>
+                            </div>
+                            <div class="modal-body">
+                                <%-- cuerpo modal --%>
+
+                                <div class="row">
+
+                                    <%-- Escoger Usuarios --%>
+
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <br />
+                                    </div>
+
+                                    <div class="col-md-10 col-xs-10 col-sm-10 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" style="text-align: center; overflow-y: auto;">
+                                        <asp:Repeater ID="Repeater1" runat="server">
+                                            <HeaderTemplate>
+                                                <table id="tblUsuarioSinAsociar" class="row-border table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Nombre</th>
+                                                           
+                                                        </tr>
+                                                    </thead>
+                                            </HeaderTemplate>
+
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td>
+                                                        <asp:LinkButton ID="btnAsociar" runat="server" ToolTip="Asociar" OnClick="btnAsociarUsuario_Click" CommandArgument='<%# Eval("idUsuario") %>'><span class="glyphicon glyphicon-ok-circle"></span></asp:LinkButton>
+                                                    </td>
+                                                    <td>
+                                                        <%# Eval("nombre") %>
+                                                    </td>
+                                                    
+                                                </tr>
+                                            </ItemTemplate>
+
+                                            <FooterTemplate>
+                                                <thead>
+                                                    <tr id="filterrow">
+                                                        <td></td>
+                                                        <th>Nombre</th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                </table>
+                                            </FooterTemplate>
+                                        </asp:Repeater>
+                                    </div>
+
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <br />
+                                    </div>
+
+                                    <%-- fin Escoger Elementos --%>
+                                </div>
+
+                                <%-- Fin cuerpo modal --%>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                        <!-- Fin Modal content-->
+
+                    </div>
+                </div>
+                <!-- Fin Modal -->
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <br />
+                </div>
+
+                <%-- Mostrar Usuarios Asociados --%>
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <center>
+                        <asp:Label ID="lblUsuariosAsociados" runat="server" Text="Usuarios presentes en la reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
+                    </center>
+                </div>
+                <%-- fin Mostrar Usuarios Asociados --%>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <hr />
+                </div>
+
+                <%-- tabla mostar Usuarios asociados a la reunion --%>
+                <div class="col-md-10 col-xs-10 col-sm-10 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" style="text-align: center; overflow-y: auto;">
+                    <asp:Repeater ID="rpUsuario" runat="server">
+                        <HeaderTemplate>
+                            <table id="tblUsuario" class="row-border table-striped">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nombre</th>
+
+                                    </tr>
+                                </thead>
+                        </HeaderTemplate>
+
+                        <ItemTemplate>
+                            <tr>
+                                <td>
+                                    <asp:LinkButton ID="btnDesasociar" runat="server" ToolTip="Desasociar" OnClick="btnDesasociarUsuario_Click" CommandArgument='<%# Eval("idElemento") %>'><span class="glyphicon glyphicon-remove-circle"></span></asp:LinkButton>
+                                </td>
+                                <td>
+                                    <%# Eval("nombre") %>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+
+                        <FooterTemplate>
+                            <thead>
+                                <tr id="filterrow">
+                                    <td></td>
+                                    <th>Nombre</th>
+
+                                </tr>
+                            </thead>
+                            </table>
+                        </FooterTemplate>
+                    </asp:Repeater>
+                </div>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <br />
+                </div>
+
+                <div class="col-md-3 col-xs-3 col-sm-3 col-md-offset-9 col-xs-offset-9 col-sm-offset-9">
+                    <button id="btnModalUsuario" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalUsuario">Asociar</button>
+                </div>
+                <%-- fin tabla mostar usuarios asociados a la reunion --%>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <hr />
+                </div>
+
+                <%-- boton cancelar --%>
+                <div class="col-md-3 col-xs-3 col-sm-3 col-md-offset-9 col-xs-offset-9 col-sm-offset-9">
+                    <asp:Button ID="Button1" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
+                    <asp:Button ID="Button2" runat="server" Text="Cancelar" CssClass="btn btn-danger" OnClick="btnRegresar_Click" />
+                </div>
+                <%-- fin boton cancelar --%>
+
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <br />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!-- ------------------------ FIN VISTA Usuarios --------------------------- -->
+
+
+     <!-- Modal Confirmar Desasociar Usuarios -->
+    <div id="modalDesasociarUsuarios" class="modal fade" role="alertdialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirmar</h4>
+                </div>
+                <div class="modal-body">
+                    <%-- campos a llenar --%>
+                    <div class="row">
+
+                        <%-- fin campos a llenar --%>
+
+                        <div class="col-md-12 col-xs-12 col-sm-12">
+                            <br />
+                        </div>
+
+                        <div class="col-md-12 col-xs-12 col-sm-12" style="text-align:center">
+                                <asp:Label ID="Label2" runat="server" Text="¿Está seguro o segura que desea desasociar el usuario de la reunión ?" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer" style="text-align:center">
+                    <asp:Button ID="btnDesasociarUsuario" runat="server" Text="Si" CssClass="btn btn-primary" OnClick="btnDesasociarUsuario_Click" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Fin Confirmar Eliminar Norma -->
+
+     <!--****************************************************************************************** -->
     
     <!-- script tabla jquery -->
     <script type="text/javascript">
 
         function activarModalDesasociarElementos() {
             $('#modalDesasociarElementos').modal('show');
+        };
+
+         function activarModalDesasociarUsuarios() {
+            $('#modalDesasociarUsuarios').modal('show');
         };
 
 
@@ -505,21 +719,37 @@
 
         function verViewElementoRevisar() {
             document.getElementById('<%=liReunion.ClientID%>').className = "";
+             document.getElementById('<%=liUsuario.ClientID%>').className = "";
             document.getElementById('<%=liElementoRevisar.ClientID%>').className = "active";
       
 
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'block';
             document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'none';
-         
+            document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'none';
+          
         };
 
         function verViewReunion() {
             document.getElementById('<%=liElementoRevisar.ClientID%>').className = "";
+              document.getElementById('<%=liUsuario.ClientID%>').className = "";
             document.getElementById('<%=liReunion.ClientID%>').className = "active";
         
 
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
             document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
+            document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'none';
+          
+        };
+
+        function verViewUsuarios() {
+            document.getElementById('<%=liReunion.ClientID%>').className = "";
+            document.getElementById('<%=liElementoRevisar.ClientID%>').className = "";
+            document.getElementById('<%=liUsuario.ClientID%>').className = "active";
+      
+
+            document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'block';
+             document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'none';
+             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
           
         };
 

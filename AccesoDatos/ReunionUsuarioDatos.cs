@@ -79,7 +79,7 @@ namespace AccesoDatos
         /// <param name="usuario"></param>
         /// </summary>
         /// <returns></returns>
-        public Boolean UsuarioAsociadoAReunión(Reunion reunion, Usuario usuario)
+        public Boolean usuarioAsociadoAReunión(Reunion reunion, Usuario usuario)
         {
             Boolean existe = false;
 
