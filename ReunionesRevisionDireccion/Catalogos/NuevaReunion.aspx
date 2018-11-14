@@ -709,6 +709,144 @@
             $('#myModal').modal('show');
         };
 
+        ///////////////////////
+
+          /*tabla Usuarios asociados*/
+        $('#tblElemento thead tr#filterrow th').each(function () {
+            var campoBusqueda = $('#tblElemento thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" style="text-align: center" onclick="stopPropagation(event);" placeholder="Buscar ' + campoBusqueda + '" />');
+        });
+
+        // DataTable
+        var table2 = $('#tblUsuario').DataTable({
+            orderCellsTop: true,
+            "iDisplayLength": 10,
+            "aLengthMenu": [[2, 5, 10, -1], [2, 5, 10, "All"]],
+            "colReorder": true,
+            "select": false,
+            "stateSave": true,
+            "dom": 'Bfrtip',
+            "buttons": [
+                'pdf', 'excel', 'copy', 'print'
+            ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "decimal": ",",
+                "thousands": ".",
+                "sSelect": "1 fila seleccionada",
+                "select": {
+                    rows: {
+                        _: "Ha seleccionado %d filas",
+                        0: "Dele click a una fila para seleccionarla",
+                        1: "1 fila seleccionada"
+                    }
+                },
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
+
+        // aplicar filtro
+        $("#tblUsuario thead input").on('keyup change', function () {
+            table
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+        /*fin tabla Usuarios asociados*/
+
+        /*tabla Usuario sin asociar*/
+        $('#tblUsuarioSinAsociar thead tr#filterrow th').each(function () {
+            var campoBusqueda = $('#tblUsuarioSinAsociar thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" style="text-align: center" onclick="stopPropagation(event);" placeholder="Buscar ' + campoBusqueda + '" />');
+        });
+
+        // DataTable
+        var tblUsuarioSinAsociar = $('#tblUsuarioSinAsociar').DataTable({
+            orderCellsTop: true,
+            "iDisplayLength": 10,
+            "aLengthMenu": [[2, 5, 10, -1], [2, 5, 10, "All"]],
+            "colReorder": true,
+            "select": false,
+            "stateSave": true,
+            "dom": 'Bfrtip',
+            "buttons": [
+                'pdf', 'excel', 'copy', 'print'
+            ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "decimal": ",",
+                "thousands": ".",
+                "sSelect": "1 fila seleccionada",
+                "select": {
+                    rows: {
+                        _: "Ha seleccionado %d filas",
+                        0: "Dele click a una fila para seleccionarla",
+                        1: "1 fila seleccionada"
+                    }
+                },
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
+
+        // aplicar filtro
+        $("#tblUsuarioSinAsociar thead input").on('keyup change', function () {
+            tblUsuarioSinAsociar
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+        /*fin tabla Usuarios sin asociados*/
+
+       
+
+        $('#tblUsuario tbody').on('click', 'tr', function () {
+            var prueba = table.row(this).data();
+        });
+
+        function activarModalUsuario() {
+            $('#myModalUsuario').modal('show');
+        };
+
       
     </script>
     <!-- fin script tabla jquery -->
