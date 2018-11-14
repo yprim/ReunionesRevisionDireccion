@@ -135,5 +135,92 @@ namespace AccesoDatos
             sqlConnection.Close();
 
         }
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 10/10/2018
+        /// Efecto: recupera todos los usuarios que no estan asociados a una reunión
+        /// Requiere: reunion
+        /// Modifica: -
+        /// Devuelve: lista de usuarios
+        /// </summary>
+        /// <param name="reunion"></param>
+        public List<Usuario> getUsuariosNoEstanEnReunion(Reunion reunion)
+        {
+            List<Usuario> listausuario = new List<Usuario>();
+            SqlConnection sqlConnection = conexion.conexionRRD();
+
+            SqlCommand sqlCommand = new SqlCommand(@"select U.idUsuario,U.nombre
+                from Usuario U
+                 where  U.idUsuario not in (select UR.idUsuario 
+                 from Usuario_Reunion UR 
+                 where UR.idReunion = @idReunion ) 
+             order by U.nombre;", sqlConnection);
+
+            SqlDataReader reader;
+
+            sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
+
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                Usuario usuario = new Usuario();
+
+                usuario.idUsuario = Convert.ToInt32(reader["idUsuario"].ToString());
+                usuario.nombre = reader["nombre"].ToString();
+                listausuario.Add(usuario);
+            }
+
+            sqlConnection.Close();
+
+            return listausuario;
+
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 10/10/2018
+        /// Efecto: recupera todos los usuarios estan asociados a una reunión en específico
+        /// Requiere: reunion
+        /// Modifica: -
+        /// Devuelve: lista de usuarios
+        /// </summary>
+        /// <param name="reunion"></param>
+        public List<Usuario> getUsuariosEstanEnReunion(Reunion reunion)
+        {
+            List<Usuario> listausuario = new List<Usuario>();
+            SqlConnection sqlConnection = conexion.conexionRRD();
+
+            SqlCommand sqlCommand = new SqlCommand(@"select U.idUsuario,U.nombre
+               from Usuario U,Usuario_Reunion UR 
+                where UR.idReunion = @idReunion  and U.idUsuario = UR.idUsuario
+                 order by U.nombre;", sqlConnection);
+
+            SqlDataReader reader;
+
+            sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
+
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+                Usuario usuario = new Usuario();
+
+                usuario.idUsuario = Convert.ToInt32(reader["idUsuario"].ToString());
+                usuario.nombre = reader["nombre"].ToString();
+                listausuario.Add(usuario);
+            }
+
+            sqlConnection.Close();
+
+            return listausuario;
+
+        }
     }
 }

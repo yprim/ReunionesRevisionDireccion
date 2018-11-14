@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 namespace AccesoDatos
 {
 
+
     /// <summary>
     /// Priscilla Mena
     /// 02/11/2018
@@ -144,7 +145,7 @@ namespace AccesoDatos
             sqlConnection.Close();
 
             return listaUsuarios;
-        } 
+        }
 
     }
 }

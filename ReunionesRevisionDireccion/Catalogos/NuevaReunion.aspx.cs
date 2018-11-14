@@ -38,9 +38,12 @@ namespace ReunionesRevisionDireccion.Catalogos
                 Session["listaElementosNoAsociados"] = null;
                 Session["listaElementosAsociados"] = null;
                 Session["idElementoDesasociar"] = null;
-                Session["listaArchivosReunionAsociados"] =null;
+                Session["listaArchivosReunionAsociados"] = null;
                 Session["listaArchivosReunionNoAsociados"] = null;
                 Session["archivos"] = null;
+                Session["listaUsuariosNoAsociados"] = null;
+                Session["listaUsuariosAsociados"] = null;
+                Session["idUsuarioDesasociar"] = null;
 
                 llenarDdlTipos();
                 llenarDatos();
@@ -88,6 +91,17 @@ namespace ReunionesRevisionDireccion.Catalogos
             ddlTipos.DataBind();
         }
 
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto:Metodo que carga todos los datos que son asignados a la reunion nueva
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public void llenarDatos()
         {
             Reunion reunion = (Reunion)Session["reunionNueva"];
@@ -139,6 +153,47 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             rpElemento.DataSource = listaElementosAsociados;
             rpElemento.DataBind();
+
+            /*
+           * se llena la lista con los usuarios que NO estan asociados a la reunion
+           */
+           
+            List<Usuario> listaUsuariosNoAsociados = new List<Usuario>();
+
+            if (Session["listaUsuariosNoAsociados"] == null)
+            {
+                listaUsuariosNoAsociados = usuarioServicios.getUsuariosNoEstanEnReunion(reunion);
+            }
+            else
+            {
+                listaUsuariosNoAsociados = (List<Usuario>)Session["listaUsuariosNoAsociados"];
+            }
+
+            Session["listaUsuariosNoAsociados"] = listaUsuariosNoAsociados;
+
+            rpUsuarioSinAsociar.DataSource = listaUsuariosNoAsociados;
+            rpUsuarioSinAsociar.DataBind();
+
+            /*
+             * se llena la tabla de usuarios que estan asociados a la reunion escogida
+             */
+
+            List<Usuario> listaUsuariosAsociados = new List<Usuario>();
+
+            if (Session["listaUsuariosAsociados"] == null)
+            {
+
+                listaUsuariosAsociados = usuarioServicios.getUsuariosEstanEnReunion(reunion);
+
+                Session["listaUsuariosAsociados"] = listaUsuariosAsociados;
+            }
+            else
+            {
+                listaUsuariosAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
+            }
+
+            rpUsuario.DataSource = listaUsuariosAsociados;
+            rpUsuario.DataBind();
 
         }
 
@@ -228,58 +283,56 @@ namespace ReunionesRevisionDireccion.Catalogos
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModal();", true);
         }
 
-  
 
-        ///////////////// <summary>
-        ///////////////// Priscilla Mena
-        ///////////////// 27/09/2018
-        ///////////////// Efecto:Metodo que se activa cuando se le da click al boton de asociar
-        ///////////////// Requiere: -
-        ///////////////// Modifica: -
-        ///////////////// Devuelve: -
-        ///////////////// </summary>
-        ///////////////// <param></param>
-        ///////////////// <returns></returns>
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto:Metodo que se activa cuando se le da click al boton de asociar
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnAsociarUsuario_Click(object sender, EventArgs e)
         {
             Reunion Reunion = new Reunion();
-            ///   preguntar a leo
-            //Reunion.idReunion = Convert.ToInt32(ddlJefeReunion.SelectedValue);
+          
+            List<Usuario> listaUsuariosNoAsociados = (List<Usuario>)Session["listaUsuariosNoAsociados"];
+            List<Usuario> listaUsuariosSeleccionados = new List<Usuario>();
 
-            List<ElementoRevisar> listaElementosNoAsociados = (List<ElementoRevisar>)Session["listaElementosNoAsociados"];
-            List<ElementoRevisar> listaElementosSeleccionados = new List<ElementoRevisar>();
+            int idUsuario = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            int idElementoRevisar = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            Usuario Usuario = new Usuario();
 
-            ElementoRevisar elementoRevisar = new ElementoRevisar();
-
-            foreach (ElementoRevisar elementoRevisarLista in listaElementosNoAsociados)
+            foreach (Usuario usuarioLista in listaUsuariosNoAsociados)
             {
-                if (elementoRevisarLista.idElemento == idElementoRevisar)
+                if (usuarioLista.idUsuario == idUsuario)
                 {
-                    elementoRevisar = elementoRevisarLista;
+                    Usuario = usuarioLista;
 
                     break;
                 }
             }
 
-            listaElementosSeleccionados.Add(elementoRevisar);
+            listaUsuariosSeleccionados.Add(Usuario);
 
-            List<ElementoRevisar> listaElementoRevisarAsociados = (List<ElementoRevisar>)Session["listaElementosAsociados"];
+            List<Usuario> listaUsuarioAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
 
-            foreach (ElementoRevisar elementoRevisarLista in listaElementosSeleccionados)
+            foreach (Usuario usuarioLista in listaUsuariosSeleccionados)
             {
-                listaElementoRevisarAsociados.Add(elementoRevisarLista);
+                listaUsuarioAsociados.Add(usuarioLista);
             }
 
-            List<ElementoRevisar> listaElementoRevisarNoAsociadosTemp = new List<ElementoRevisar>();
+            List<Usuario> listaUsuarioNoAsociadosTemp = new List<Usuario>();
 
-            foreach (ElementoRevisar elementoRevisarNoAsociado in listaElementosNoAsociados)
+            foreach (Usuario usuarioNoAsociado in listaUsuariosNoAsociados)
             {
                 Boolean asociar = true;
-                foreach (ElementoRevisar elementoRevisarLista in listaElementosSeleccionados)
+                foreach (Usuario usuarioLista in listaUsuariosSeleccionados)
                 {
-                    if (elementoRevisarLista.idElemento == elementoRevisarNoAsociado.idElemento)
+                    if (usuarioLista.idUsuario == usuarioNoAsociado.idUsuario)
                     {
                         asociar = false;
                         break;
@@ -288,26 +341,26 @@ namespace ReunionesRevisionDireccion.Catalogos
 
                 if (asociar)
                 {
-                    listaElementoRevisarNoAsociadosTemp.Add(elementoRevisarNoAsociado);
+                    listaUsuarioNoAsociadosTemp.Add(usuarioNoAsociado);
                 }
 
             }
 
-            Session["listaElementosNoAsociados"] = listaElementoRevisarNoAsociadosTemp;
-            Session["listaElementosAsociados"] = listaElementoRevisarAsociados;
+            Session["listaUsuariosNoAsociados"] = listaUsuarioNoAsociadosTemp;
+            Session["listaUsuariosAsociados"] = listaUsuarioAsociados;
 
             llenarDatos();
 
-            /*para que se quede en el tab de ElementoRevisars despues del posback*/
+            /*para que se quede en el tab de Usuarios despues del posback*/
             liReunion.Attributes["class"] = "";
-            liElementoRevisar.Attributes["class"] = "active";
+            liUsuario.Attributes["class"] = "active";
 
 
-            ViewElementoRevisar.Style.Add("display", "block");
+            ViewUsuario.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
 
 
-            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModal();", true);
+            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalUsuario();", true);
         }
 
         /// <summary>
@@ -351,30 +404,30 @@ namespace ReunionesRevisionDireccion.Catalogos
     /// <param name="e"></param>
         protected void btnDesasociarUsuario_Click(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarElementos();", true);
+            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarUsuarios();", true);
 
-            int idElementoRevisar = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int idUsuario = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            Session["idElementoDesasociar"] = idElementoRevisar;
+            Session["idUsuarioDesasociar"] = idUsuario;
 
-            List<ElementoRevisar> listaElementoRevisarAsociados = (List<ElementoRevisar>)Session["listaElementosAsociados"];
+            List<Usuario> listaUsuarioAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
 
-            List<ElementoRevisar> listaElementoRevisarsSeleccionados = new List<ElementoRevisar>();
+            List<Usuario> listaUsuariosSeleccionados = new List<Usuario>();
 
-            foreach (ElementoRevisar elementoRevisar in listaElementoRevisarAsociados)
+            foreach (Usuario Usuario in listaUsuarioAsociados)
             {
-                if (elementoRevisar.idElemento == idElementoRevisar)
+                if (Usuario.idUsuario == idUsuario)
                 {
-                    lblDesasocaiarElemento.Text = "Se desasociará el elemento: " + elementoRevisar.descripcionElemento + " <br /> ¿está de acuerdo?";
+                    lblDesasociarUsuario.Text = "Se desasociará el Usuario: " + Usuario.nombre + " <br /> ¿está de acuerdo?";
                 }
             }
 
-            /*para que se quede en el tab de ElementoRevisar despues del posback*/
+            /*para que se quede en el tab de Usuario despues del posback*/
             liReunion.Attributes["class"] = "";
-            liElementoRevisar.Attributes["class"] = "active";
+            liUsuario.Attributes["class"] = "active";
 
 
-            ViewElementoRevisar.Style.Add("display", "block");
+            ViewUsuario.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
 
         }
@@ -450,6 +503,30 @@ namespace ReunionesRevisionDireccion.Catalogos
             }
 
             /*--------------------- Fin-Asociar Elementos----------------------------------------*/
+           
+            /*----------------------Asociar elementos a revisar----------------------------------------*/
+
+            List<Usuario> listaUsuariosAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
+
+            foreach (Usuario Usuario in listaUsuariosAsociados)
+            {
+                if (!reunionUsuarioServicios.usuarioAsociadoAReunión(reunion, Usuario))
+                {
+                    reunionUsuarioServicios.insertarReunionUsuario(reunion, Usuario);
+                }
+            }
+
+            List<Usuario> listaUsuariosNoAsociados = (List<Usuario>)Session["listaUsuariosNoAsociados"];
+
+            foreach (Usuario Usuario in listaUsuariosNoAsociados)
+            {
+                if (reunionUsuarioServicios.usuarioAsociadoAReunión(reunion, Usuario))
+                {
+                    reunionUsuarioServicios.eliminarReunionUsuario(reunion, Usuario);
+                }
+            }
+
+            /*--------------------- Fin-Asociar Usuarios----------------------------------------*/
 
             /*--------------------Inserción de los archivos en el servidor y en la BD--------------------*/
 
@@ -490,7 +567,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         }
         
 
-        protected void btnDesasociarElemento_Click(object sender, EventArgs e)
+        protected void btnDesasociarElementoConfirmar_Click(object sender, EventArgs e)
         {
             int idElementoRevisar = (int)Session["idElementoDesasociar"];
 
@@ -551,8 +628,70 @@ namespace ReunionesRevisionDireccion.Catalogos
         
         }
 
-        
-       
+
+
+        protected void btnDesasociarUsuarioConfirmar_Click(object sender, EventArgs e)
+        {
+            int idUsuario = (int)Session["idUsuarioDesasociar"];
+
+            Usuario Usuario = new Usuario();
+
+            Usuario.idUsuario = idUsuario;
+
+            List<Usuario> listaUsuariosAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
+
+            List<Usuario> listaUsuariosSeleccionados = new List<Usuario>();
+
+            foreach (Usuario Usuarios in listaUsuariosAsociados)
+            {
+                if (Usuarios.idUsuario == Usuario.idUsuario)
+                {
+                    listaUsuariosSeleccionados.Add(Usuarios);
+                }
+            }
+
+            List<Usuario> listaUsuariosNoAsociados = (List<Usuario>)Session["listaUsuariosNoAsociados"];
+            List<Usuario> listaUsuariosAsociadosTemp = new List<Usuario>();
+
+            foreach (Usuario Usuarios in listaUsuariosSeleccionados)
+            {
+                listaUsuariosNoAsociados.Add(Usuarios);
+            }
+
+            foreach (Usuario UsuarioAsociado in listaUsuariosAsociados)
+            {
+                Boolean asociar = true;
+                foreach (Usuario Usuarios in listaUsuariosSeleccionados)
+                {
+                    if (UsuarioAsociado.idUsuario == Usuarios.idUsuario)
+                    {
+                        asociar = false;
+                        break;
+                    }
+                }
+
+                if (asociar)
+                {
+                    listaUsuariosAsociadosTemp.Add(UsuarioAsociado);
+                }
+            }
+
+            Session["listaUsuariosAsociados"] = listaUsuariosAsociadosTemp;
+            Session["listaUsuariosNoAsociados"] = listaUsuariosNoAsociados;
+
+            llenarDatos();
+
+            /*para que se quede en el tab de Usuarios despues del posback*/
+            liReunion.Attributes["class"] = "";
+            liUsuario.Attributes["class"] = "active";
+
+
+            ViewUsuario.Style.Add("display", "block");
+            ViewReunion.Style.Add("display", "none");
+
+        }
+
+
 
         /// <summary>
         /// Priscilla Mena
@@ -565,7 +704,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-      protected void btnRegresar_Click(object sender, EventArgs e)
+        protected void btnRegresar_Click(object sender, EventArgs e)
         {
             String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");
             Response.Redirect(url);

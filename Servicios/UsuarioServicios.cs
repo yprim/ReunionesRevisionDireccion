@@ -72,8 +72,44 @@ namespace Servicios
         public void eliminarUsuario(Usuario usuario)
         {
             usuarioDatos.eliminarUsuario(usuario);
-      
+
 
         }
+
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 10/10/2018
+        /// Efecto: recupera todos los usuarios que no estan asociados a una reunión
+        /// Requiere: reunion
+        /// Modifica: -
+        /// Devuelve: lista de usuarios
+        /// </summary>
+        /// <param name="reunion"></param>
+        public List<Usuario> getUsuariosNoEstanEnReunion(Reunion reunion)
+        {
+
+            return usuarioDatos.getUsuariosNoEstanEnReunion(reunion);
+
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 10/10/2018
+        /// Efecto: recupera todos los usuarios estan asociados a una reunión en específico
+        /// Requiere: reunion
+        /// Modifica: -
+        /// Devuelve: lista de usuarios
+        /// </summary>
+        /// <param name="reunion"></param>
+        public List<Usuario> getUsuariosEstanEnReunion(Reunion reunion)
+        {
+
+            return usuarioDatos.getUsuariosEstanEnReunion(reunion);
+
+        }
+
+
     }
 }

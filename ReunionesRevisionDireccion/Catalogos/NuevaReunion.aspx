@@ -335,7 +335,7 @@
                     </div>
                 </div>
                 <div class="modal-footer" style="text-align:center">
-                    <asp:Button ID="btnDesasociarElemento" runat="server" Text="Si" CssClass="btn btn-primary" OnClick="btnDesasociarElemento_Click" />
+                    <asp:Button ID="btnDesasociarElemento" runat="server" Text="Si" CssClass="btn btn-primary" OnClick="btnDesasociarElementoConfirmar_Click" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                 </div>
             </div>
@@ -373,7 +373,7 @@
                                     </div>
 
                                     <div class="col-md-10 col-xs-10 col-sm-10 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" style="text-align: center; overflow-y: auto;">
-                                        <asp:Repeater ID="Repeater1" runat="server">
+                                        <asp:Repeater ID="rpUsuarioSinAsociar" runat="server">
                                             <HeaderTemplate>
                                                 <table id="tblUsuarioSinAsociar" class="row-border table-striped">
                                                     <thead>
@@ -462,7 +462,7 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <asp:LinkButton ID="btnDesasociar" runat="server" ToolTip="Desasociar" OnClick="btnDesasociarUsuario_Click" CommandArgument='<%# Eval("idElemento") %>'><span class="glyphicon glyphicon-remove-circle"></span></asp:LinkButton>
+                                    <asp:LinkButton ID="btnDesasociar" runat="server" ToolTip="Desasociar" OnClick="btnDesasociarUsuario_Click" CommandArgument='<%# Eval("idUsuario") %>'><span class="glyphicon glyphicon-remove-circle"></span></asp:LinkButton>
                                 </td>
                                 <td>
                                     <%# Eval("nombre") %>
@@ -535,14 +535,14 @@
                         </div>
 
                         <div class="col-md-12 col-xs-12 col-sm-12" style="text-align:center">
-                                <asp:Label ID="Label2" runat="server" Text="¿Está seguro o segura que desea desasociar el usuario de la reunión ?" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                                <asp:Label ID="lblDesasociarUsuario" runat="server" Text="¿Está seguro o segura que desea desasociar el usuario de la reunión ?" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                         </div>
 
 
                     </div>
                 </div>
                 <div class="modal-footer" style="text-align:center">
-                    <asp:Button ID="btnDesasociarUsuario" runat="server" Text="Si" CssClass="btn btn-primary" OnClick="btnDesasociarUsuario_Click" />
+                    <asp:Button ID="btnDesasociarUsuario" runat="server" Text="Si" CssClass="btn btn-primary" OnClick="btnDesasociarUsuarioConfirmar_Click" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                 </div>
             </div>
