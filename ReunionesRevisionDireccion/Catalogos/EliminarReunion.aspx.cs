@@ -18,7 +18,8 @@ namespace ReunionesRevisionDireccion.Catalogos
         ReunionElementoRevisarServicios reunionElementoRevisarServicios = new ReunionElementoRevisarServicios();
         TipoServicios tipoServicios = new TipoServicios();
         ArchivoReunionServicios archivoReunionServicios = new ArchivoReunionServicios();
-
+        UsuarioServicios usuarioServicios = new UsuarioServicios();
+        ReunionUsuarioServicios reunionUsuarioServicios = new ReunionUsuarioServicios();
         #endregion
         #region page load
         protected void Page_Load(object sender, EventArgs e)
@@ -35,11 +36,12 @@ namespace ReunionesRevisionDireccion.Catalogos
                 Session["listaElementosAsociados"] = null;
                 Session["idElementoDesasociar"] = null;
                 Session["listaArchivosReunionAsociados"] = null;
-
-
-                //llenarDdlTipos();
+                Session["listaUsuariosNoAsociados"] = null;
+                Session["listaUsuariosAsociados"] = null;
+                Session["idUsuarioDesasociar"] = null;
                 llenarDatos();
-                //arvhivos
+
+                //archivos
                 List<ArchivoReunion> listaArchivosReunion = archivoReunionServicios.getArchivosReunionPorIdReunion(reunionEliminar);
                 Session["listaArchivosReunionAsociados"] = listaArchivosReunion;
                 cargarArchivosReunion();
@@ -49,17 +51,12 @@ namespace ReunionesRevisionDireccion.Catalogos
                 txtMes.Text = reunionEliminar.mes.ToString();
                 txtTipos.Text = reunionEliminar.tipo.descripcion;
             }
-
-
-
         }
 
         #endregion
-
         #region logica
 
-       
-
+      
         public void llenarDatos()
         {
             Reunion ReunionEliminar = (Reunion)Session["reunionEliminar"];
@@ -91,6 +88,27 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             rpElemento.DataSource = listaElementosAsociados;
             rpElemento.DataBind();
+
+            /*
+            * se llena la tabla de usuarios que estan asociados a la reunion escogida
+            */
+
+            List<Usuario> listaUsuariosAsociados = new List<Usuario>();
+
+            if (Session["listaUsuariosAsociados"] == null)
+            {
+
+                listaUsuariosAsociados = usuarioServicios.getUsuariosEstanEnReunion(ReunionEliminar);
+
+                Session["listaUsuariosAsociados"] = listaUsuariosAsociados;
+            }
+            else
+            {
+                listaUsuariosAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
+            }
+
+            rpUsuario.DataSource = listaUsuariosAsociados;
+            rpUsuario.DataBind();
 
         }
 
@@ -209,6 +227,16 @@ namespace ReunionesRevisionDireccion.Catalogos
                 
                     reunionElementoRevisarServicios.eliminarReunionElemento(reunion, elementoRevisar);
                 
+            }
+            /*----------------------Eliminar los usuarios asociados a esa reunión----------------------------------------*/
+
+            List<Usuario> listaUsuariosAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
+
+            foreach (Usuario usuario in listaUsuariosAsociados)
+            {
+
+                reunionUsuarioServicios.eliminarReunionUsuario(reunion, usuario);
+
             }
 
             /*----------------------Eliminar los archivos asociados a esa reunión----------------------------------------*/
