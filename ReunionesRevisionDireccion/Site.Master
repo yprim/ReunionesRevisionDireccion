@@ -99,7 +99,7 @@
                                         <a href='<%=Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx") %>'>Reuniones</a>
                                     </li>
                                        <li>
-                                        <a href='<%=Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx") %>'>Hallazgos</a>
+                                        <a href='<%=Page.ResolveUrl("~/Catalogos/AdministrarReunionHallazgo.aspx") %>'>Hallazgos</a>
                                     </li>
                                     <li>
                                         <a href='<%=Page.ResolveUrl("~/Ayuda.aspx") %>'>Ayuda</a>

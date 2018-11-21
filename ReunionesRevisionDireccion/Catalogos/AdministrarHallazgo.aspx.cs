@@ -87,7 +87,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        protected void btnReunionHallazgo_Click(object sender, EventArgs e)
+        protected void btnEditar_Click(object sender, EventArgs e)
         {
             int idReunion = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
@@ -112,9 +112,49 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         }
 
-       
+        /// <summary>
+        /// Priscilla Mena
+        /// 26/09/2018
+        /// Efecto: Metodo que redirecciona a la pagina donde se elimina una Reunion,
+        /// se activa cuando se presiona el boton de nuevo
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int idReunion = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Reunion> listaReuniones = (List<Reunion>)Session["listaReunion"];
+
+            Reunion reunionEditar = new Reunion();
+
+            foreach (Reunion reunion in listaReuniones)
+            {
+                if (reunion.idReunion == idReunion)
+                {
+                    reunionEditar = reunion;
+                    break;
+                }
+            }
+
+            Session["ReunionEliminar"] = reunionEditar;
+
+            String url = Page.ResolveUrl("~/Catalogos/EliminarReunion.aspx");
+            Response.Redirect(url);
+        }
+
+
+
+
+
 
 
         #endregion
+
+
+
     }
 }

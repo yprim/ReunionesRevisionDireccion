@@ -24,7 +24,7 @@ namespace AccesoDatos
         /// Efecto: devuelve una lista con todas las reuniones
         /// Requiere: -
         /// Modifica: -
-        /// Devuelve: lista de tipos
+        /// Devuelve: lista de reuniones
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>

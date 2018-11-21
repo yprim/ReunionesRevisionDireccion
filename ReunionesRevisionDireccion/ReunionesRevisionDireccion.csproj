@@ -73,6 +73,7 @@
     <Content Include="Catalogos\AdministrarEstado.aspx" />
     <Content Include="Catalogos\AdministrarHallazgo.aspx" />
     <Content Include="Catalogos\AdministrarReunion.aspx" />
+    <Content Include="Catalogos\AdministrarReunionHallazgo.aspx" />
     <Content Include="Catalogos\AdministrarTipo.aspx" />
     <Content Include="Catalogos\AdministrarUsuario.aspx" />
     <Content Include="Catalogos\EditarElementoRevisar.aspx" />
@@ -88,6 +89,7 @@
     <Content Include="Catalogos\NuevaReunion.aspx" />
     <Content Include="Catalogos\NuevoElementoRevisar.aspx" />
     <Content Include="Catalogos\NuevoEstado.aspx" />
+    <Content Include="Catalogos\NuevoHallazgo.aspx" />
     <Content Include="Catalogos\NuevoTipo.aspx" />
     <Content Include="Catalogos\NuevoUsuario.aspx" />
     <Content Include="Configuracion\Configuracion.aspx" />
@@ -168,6 +170,13 @@
     </Compile>
     <Compile Include="Catalogos\AdministrarReunion.aspx.designer.cs">
       <DependentUpon>AdministrarReunion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarReunionHallazgo.aspx.cs">
+      <DependentUpon>AdministrarReunionHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\AdministrarReunionHallazgo.aspx.designer.cs">
+      <DependentUpon>AdministrarReunionHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\AdministrarTipo.aspx.cs">
       <DependentUpon>AdministrarTipo.aspx</DependentUpon>
@@ -273,6 +282,13 @@
     </Compile>
     <Compile Include="Catalogos\NuevoEstado.aspx.designer.cs">
       <DependentUpon>NuevoEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\NuevoHallazgo.aspx.cs">
+      <DependentUpon>NuevoHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\NuevoHallazgo.aspx.designer.cs">
+      <DependentUpon>NuevoHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\NuevoTipo.aspx.cs">
       <DependentUpon>NuevoTipo.aspx</DependentUpon>

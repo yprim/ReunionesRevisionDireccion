@@ -45,6 +45,7 @@
     <Compile Include="ConexionDatos.cs" />
     <Compile Include="ElementoRevisarDatos.cs" />
     <Compile Include="EstadoDatos.cs" />
+    <Compile Include="HallazgoDatos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReunionDatos.cs" />
     <Compile Include="ReunionElementoRevisarDatos.cs" />
