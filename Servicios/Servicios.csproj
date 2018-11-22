@@ -47,6 +47,7 @@
     <Compile Include="EstadoServicios.cs" />
     <Compile Include="HallazgoServicios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReunionElementoRevisarHallazgoServicios.cs" />
     <Compile Include="ReunionElementoRevisarServicios.cs" />
     <Compile Include="ReunionUsuarioServicios.cs" />
     <Compile Include="ReuniónServicios.cs" />
