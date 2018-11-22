@@ -53,7 +53,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             rpReunion.DataBind();
 
             Session["listaReunion"] = listaReunion;
-
+            Session["ReunionHallazgos"] = null;
         }
         #endregion
 
@@ -64,8 +64,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <summary>
         /// Priscilla Mena
         /// 26/09/2018
-        /// Efecto: Metodo que redirecciona a la pagina donde se edita una Reunion,
-        /// se activa cuando se presiona el boton de nuevo
+        /// Efecto: Metodo que redirecciona a la pagina donde se ven los hallazgos dde esa reunión
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
