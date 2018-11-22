@@ -9,7 +9,7 @@
             <%-- titulo pantalla --%>
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <center>
-            <asp:Label ID="lblAdministrarReunion" runat="server" Text="Administrar Reuniones" Font-Size="Large" ForeColor="Black"></asp:Label>
+            <asp:Label ID="lblAdministrarReunion" runat="server" Text="Hallazgos de Reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
             </div>
             <%-- fin titulo pantalla --%>
@@ -79,7 +79,7 @@
 
             <%-- botones --%>
             <div class="col-md-2 col-sm-2 col-xs-1 col-md-offset-9 col-xs-offset-0 col-sm-offset-8">
-                <asp:Button ID="btnNuevo" runat="server" Text="Nueva Reunión" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
+                <asp:Button ID="btnNuevo" runat="server" Text="Agregar Hallazgo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
             </div>
             <%-- fin botones --%>
         </div>

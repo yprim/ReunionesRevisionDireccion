@@ -26,8 +26,8 @@ namespace ReunionesRevisionDireccion.Catalogos
             if (!Page.IsPostBack)
             {
                 Session["listaReunion"] = null;
-                Session["ReunionEditar"] = null;
-                Session["ReunionEliminar"] = null;
+                Session["ReunionHallazgos"] = null;
+
                 cargarDatosTblReunions();
 
             }
@@ -59,22 +59,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         #region eventos
 
-        /// <summary>
-        /// Priscilla Mena
-        /// 26/09/2018
-        /// Efecto: Metodo que redirecciona a la pagina donde se ingresa una nueva Reunion,
-        /// se activa cuando se presiona el boton de nuevo
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        protected void btnNuevo_Click(object sender, EventArgs e)
-        {
-            String url = Page.ResolveUrl("~/Catalogos/NuevaReunion.aspx");
-            Response.Redirect(url);
-        }
+      
 
         /// <summary>
         /// Priscilla Mena
@@ -93,18 +78,18 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             List<Reunion> listaReuniones = (List<Reunion>)Session["listaReunion"];
 
-            Reunion reunionEditar = new Reunion();
+            Reunion reunionHallazgos = new Reunion();
 
             foreach (Reunion reunion in listaReuniones)
             {
                 if (reunion.idReunion == idReunion)
                 {
-                    reunionEditar = reunion;
+                    reunionHallazgos = reunion;
                     break;
                 }
             }
 
-            Session["ReunionEditar"] = reunionEditar;
+            Session["ReunionHallazgos"] = reunionHallazgos;
 
             String url = Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx");
             Response.Redirect(url);

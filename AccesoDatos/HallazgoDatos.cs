@@ -166,5 +166,61 @@ namespace AccesoDatos
         }
 
 
+        /// <summary>
+        /// Priscilla Mena
+        /// 22/11/2018
+        /// Efecto: recupera todos los hallazgos de la base de datos que estan asociadas a una reunión en específico
+        /// Requiere: Reunion 
+        /// Modifica: -
+        /// Devuelve: lista de Hallazgos
+        /// </summary>
+        /// <param name="reunion"></param>
+        /// <returns></returns>
+        public List<Hallazgo> getHallazgosPorReunion(Reunion reunion)
+        {
+
+            List<Hallazgo> listaHallazgos = new List<Hallazgo>();
+
+            SqlConnection sqlConnection = conexion.conexionRRD();
+
+            SqlCommand sqlCommand = new SqlCommand(@"SELECT h.idHallazgo,u.idUsuario,
+              u.nombre,h.fechaMaximaImplementacion,
+              h.codigoAccion, e.idEstado, e.descripcion, h.observaciones
+              FROM Hallazgo h, Estado e, Usuario u, Reunion_ElementoRevisar_Hallazgo reh
+              WHERE h.idEstado = e.idEstado and h.idUsuario = u.idUsuario and
+              h.idHallazgo = reh.idHallazgo and reh.idReunion = @idReunion", sqlConnection);
+
+            SqlDataReader reader;
+
+            sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Hallazgo hallazgo = new Hallazgo();
+
+                hallazgo.idHallazgo = Convert.ToInt32(reader["idHallazgo"].ToString());
+                hallazgo.fechaMaximaImplementacion = Convert.ToDateTime(reader["fechaMaximaImplementacion"].ToString());
+                hallazgo.codigoAccion = Convert.ToInt32(reader["codigoAccion"].ToString());
+                hallazgo.observaciones = reader["observaciones"].ToString();
+
+                Estado estado = new Estado();
+                estado.idEstado = Convert.ToInt32(reader["idEstado"].ToString());
+                estado.descripcionEstado = reader["descripcionEstado"].ToString();
+
+                Usuario usuario = new Usuario();
+                usuario.idUsuario = Convert.ToInt32(reader["idUsuario"].ToString());
+                usuario.nombre = reader["nombre"].ToString();
+
+                hallazgo.estado = estado;
+                hallazgo.usuario = usuario;
+                listaHallazgos.Add(hallazgo);
+            }
+            sqlConnection.Close();
+            return listaHallazgos;
+        }
+
+
     }
 }

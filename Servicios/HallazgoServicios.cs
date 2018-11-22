@@ -42,7 +42,7 @@ namespace Servicios
         /// <returns></returns>
         public int insertarHallazgo(Hallazgo hallazgo)
         {
-           return hallazgoDatos.insertarHallazgo(hallazgo);
+            return hallazgoDatos.insertarHallazgo(hallazgo);
         }
 
 
@@ -74,6 +74,21 @@ namespace Servicios
         public void eliminarHallazgo(Hallazgo hallazgo)
         {
             hallazgoDatos.eliminarHallazgo(hallazgo);
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 22/11/2018
+        /// Efecto: recupera todos los hallazgos de la base de datos que estan asociadas a una reunión en específico
+        /// Requiere: Reunion 
+        /// Modifica: -
+        /// Devuelve: lista de Hallazgos
+        /// </summary>
+        /// <param name="reunion"></param>
+        /// <returns></returns>
+        public List<Hallazgo> getHallazgosPorReunion(Reunion reunion)
+        {
+            return hallazgoDatos.getHallazgosPorReunion(reunion);
         }
     }
 }
