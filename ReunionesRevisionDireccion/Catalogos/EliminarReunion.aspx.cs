@@ -16,7 +16,6 @@ namespace ReunionesRevisionDireccion.Catalogos
         ReuniónServicios reunionServicios = new ReuniónServicios();
         ElementoRevisarServicios elementoRevisarServicios = new ElementoRevisarServicios();
         ReunionElementoRevisarServicios reunionElementoRevisarServicios = new ReunionElementoRevisarServicios();
-        TipoServicios tipoServicios = new TipoServicios();
         ArchivoReunionServicios archivoReunionServicios = new ArchivoReunionServicios();
         UsuarioServicios usuarioServicios = new UsuarioServicios();
         ReunionUsuarioServicios reunionUsuarioServicios = new ReunionUsuarioServicios();
