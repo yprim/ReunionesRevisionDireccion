@@ -207,7 +207,7 @@ namespace AccesoDatos
 
                 Estado estado = new Estado();
                 estado.idEstado = Convert.ToInt32(reader["idEstado"].ToString());
-                estado.descripcionEstado = reader["descripcionEstado"].ToString();
+                estado.descripcionEstado = reader["descripcion"].ToString();
 
                 Usuario usuario = new Usuario();
                 usuario.idUsuario = Convert.ToInt32(reader["idUsuario"].ToString());

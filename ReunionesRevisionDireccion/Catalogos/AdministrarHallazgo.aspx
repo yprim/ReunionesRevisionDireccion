@@ -9,7 +9,7 @@
             <%-- titulo pantalla --%>
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <center>
-            <asp:Label ID="lblAdministrarReunion" runat="server" Text="Hallazgos de Reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
+            <asp:Label ID="lblAdministrarHallazgo" runat="server" Text="Hallazgos de Reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
             </div>
             <%-- fin titulo pantalla --%>
@@ -21,16 +21,18 @@
             <%-- tabla--%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="text-align: center; overflow-y: auto;">
 
-                <asp:Repeater ID="rpReunion" runat="server" >
+                <asp:Repeater ID="rpHallazgo" runat="server" >
                     <HeaderTemplate>
-                        <table id="tblReunion" class="row-border table-striped">
+                        <table id="tblHallazgo" class="row-border table-striped">
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Consecutivo</th>
-                                    <th>Tipo</th>
-                                    <th>Mes</th>
-                                    <th>Año</th>
+                                    <th>Hallazgo</th>
+                                    <th>Usuario</th>
+                                    <th>Fecha Maxima de Implementacion</th>
+                                    <th>Código Acción</th>
+                                    <th>Estado</th>
+                                    <th>Observaciones</th
                                 </tr>
                             </thead>
                     </HeaderTemplate>
@@ -38,21 +40,27 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idReunion") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
-                                <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idReunion") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idHallazgo") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
+                                <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idHallazgo") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </td>
                             <td>
-                                <%# Eval("consecutivo") %>
+                                <%# Eval("idHallazgo") %>
                             </td>
                             <td>
-                                <%# Eval("tipo.descripcion") %>
+                                <%# Eval("usuario.nombre") %>
                             </td>
                              <td>
-                                <%# Eval("mes") %>
+                                <%# Eval("fechaMaximaImplementacion") %>
                             </td>
                              <td>
-                                <%# Eval("anno") %>
-                            </td>        
+                                <%# Eval("codigoAccion") %>
+                            </td>   
+                               <td>
+                                <%# Eval("estado.descripcionEstado") %>
+                            </td>
+                             <td>
+                                <%# Eval("observaciones") %>
+                            </td> 
                         </tr>
 
                     </ItemTemplate>
@@ -65,6 +73,8 @@
                                   <th>Tipo</th>
                                   <th>Mes</th>
                                   <th>Año</th>    
+                                <th>Mes</th>
+                                  <th>Año</th> 
                             </tr>
                         </thead>
                         </table>
@@ -88,13 +98,13 @@
        <!-- script tabla jquery -->
     <script type="text/javascript">
 
-        $('#tblReunion thead tr#filterrow th').each(function () {
-            var campoBusqueda = $('#tblReunion thead th').eq($(this).index()).text();
+        $('#tblHallazgo thead tr#filterrow th').each(function () {
+            var campoBusqueda = $('#tblHallazgo thead th').eq($(this).index()).text();
             $(this).html('<input type="text" style="text-align: center" onclick="stopPropagation(event);" placeholder="Buscar ' + campoBusqueda + '" />');
         });
 
         // DataTable
-        var table = $('#tblReunion').DataTable({
+        var table = $('#tblHallazgo').DataTable({
             orderCellsTop: true,
             "iDisplayLength": 10,
             "aLengthMenu": [[2, 5, 10, -1], [2, 5, 10, "All"]],
@@ -143,7 +153,7 @@
         });
 
         // aplicar filtro
-        $("#tblReunion thead input").on('keyup change', function () {
+        $("#tblHallazgo thead input").on('keyup change', function () {
             table
                 .column($(this).parent().index() + ':visible')
                 .search(this.value)

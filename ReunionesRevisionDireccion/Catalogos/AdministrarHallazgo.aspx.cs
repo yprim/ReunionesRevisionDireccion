@@ -12,7 +12,7 @@ namespace ReunionesRevisionDireccion.Catalogos
     public partial class AdministrarHallazgo : System.Web.UI.Page
     {
         #region variables globales
-        ReuniónServicios ReunionServicios = new ReuniónServicios();
+        HallazgoServicios hallazgoServicios = new HallazgoServicios();
         #endregion
 
         #region pageload
@@ -25,10 +25,11 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             if (!Page.IsPostBack)
             {
-                Session["listaReunion"] = null;
-                Session["ReunionEditar"] = null;
-                Session["ReunionEliminar"] = null;
-                cargarDatosTblReunions();
+                Reunion reunionHallazgos =(Reunion) Session["ReunionHallazgos"];
+                Session["listaHallazgo"] = null;
+                Session["HallazgoEditar"] = null;
+                Session["HallazgoEliminar"] = null;
+                cargarDatosTblHallazgos();
 
             }
         }
@@ -38,21 +39,22 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <summary>
         /// Priscilla Mena
         /// 26/09/2018
-        /// Efecto: Metodo para llenar los datos de la tabla con las reuniones que se encuentran en la base de datos
+        /// Efecto: Metodo para llenar los datos de la tabla con los Hallazgos que se encuentran en la base de datos
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
         /// <param></param>
         /// <returns></returns>
-        private void cargarDatosTblReunions()
+        private void cargarDatosTblHallazgos()
         {
-            List<Reunion> listaReunion = new List<Reunion>();
-            listaReunion = ReunionServicios.getReuniones();
-            rpReunion.DataSource = listaReunion;
-            rpReunion.DataBind();
+            Reunion reunionHallazgos = (Reunion)Session["ReunionHallazgos"];
+            List<Hallazgo> listaHallazgo = new List<Hallazgo>();
+            listaHallazgo = hallazgoServicios.getHallazgosPorReunion(reunionHallazgos);
+            rpHallazgo.DataSource = listaHallazgo;
+            rpHallazgo.DataBind();
 
-            Session["listaReunion"] = listaReunion;
+            Session["listaHallazgo"] = listaHallazgo;
 
         }
         #endregion
@@ -62,7 +64,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <summary>
         /// Priscilla Mena
         /// 26/09/2018
-        /// Efecto: Metodo que redirecciona a la pagina donde se ingresa una nueva Reunion,
+        /// Efecto: Metodo que redirecciona a la pagina donde se ingresa un nuevo Hallazgo,
         /// se activa cuando se presiona el boton de nuevo
         /// Requiere: -
         /// Modifica: -
@@ -72,14 +74,14 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/NuevaReunion.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/NuevoHallazgo.aspx");
             Response.Redirect(url);
         }
 
         /// <summary>
         /// Priscilla Mena
         /// 26/09/2018
-        /// Efecto: Metodo que redirecciona a la pagina donde se edita una Reunion,
+        /// Efecto: Metodo que redirecciona a la pagina donde se edita una Hallazgo,
         /// se activa cuando se presiona el boton de nuevo
         /// Requiere: -
         /// Modifica: -
@@ -89,24 +91,24 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnEditar_Click(object sender, EventArgs e)
         {
-            int idReunion = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int idHallazgo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Reunion> listaReuniones = (List<Reunion>)Session["listaReunion"];
+            List<Hallazgo> listaHallazgos = (List<Hallazgo>)Session["listaHallazgo"];
 
-            Reunion reunionEditar = new Reunion();
+            Hallazgo hallazgoEditar = new Hallazgo();
 
-            foreach (Reunion reunion in listaReuniones)
+            foreach (Hallazgo hallazgo in listaHallazgos)
             {
-                if (reunion.idReunion == idReunion)
+                if (hallazgo.idHallazgo == idHallazgo)
                 {
-                    reunionEditar = reunion;
+                    hallazgoEditar = hallazgo;
                     break;
                 }
             }
 
-            Session["ReunionEditar"] = reunionEditar;
+            Session["HallazgoEditar"] = hallazgoEditar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EditarReunion.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/EditarHallazgo.aspx");
             Response.Redirect(url);
 
 
@@ -115,7 +117,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <summary>
         /// Priscilla Mena
         /// 26/09/2018
-        /// Efecto: Metodo que redirecciona a la pagina donde se elimina una Reunion,
+        /// Efecto: Metodo que redirecciona a la pagina donde se elimina una Hallazgo,
         /// se activa cuando se presiona el boton de nuevo
         /// Requiere: -
         /// Modifica: -
@@ -125,24 +127,24 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            int idReunion = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+            int idHallazgo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            List<Reunion> listaReuniones = (List<Reunion>)Session["listaReunion"];
+            List<Hallazgo> listaHallazgoes = (List<Hallazgo>)Session["listaHallazgo"];
 
-            Reunion reunionEditar = new Reunion();
+            Hallazgo hallazgoEliminar = new Hallazgo();
 
-            foreach (Reunion reunion in listaReuniones)
+            foreach (Hallazgo Hallazgo in listaHallazgoes)
             {
-                if (reunion.idReunion == idReunion)
+                if (Hallazgo.idHallazgo == idHallazgo)
                 {
-                    reunionEditar = reunion;
+                    hallazgoEliminar = Hallazgo;
                     break;
                 }
             }
 
-            Session["ReunionEliminar"] = reunionEditar;
+            Session["HallazgoEliminar"] = hallazgoEliminar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EliminarReunion.aspx");
+            String url = Page.ResolveUrl("~/Catalogos/EliminarHallazgo.aspx");
             Response.Redirect(url);
         }
 
