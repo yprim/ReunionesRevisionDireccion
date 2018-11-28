@@ -292,42 +292,6 @@ namespace ReunionesRevisionDireccion.Catalogos {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// Control liClientes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liClientes;
-        
-        /// <summary>
-        /// Control btnViewClientes.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnViewClientes;
-        
-        /// <summary>
-        /// Control liNuevoCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl liNuevoCliente;
-        
-        /// <summary>
-        /// Control btnViewNuevoCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnViewNuevoCliente;
-        
-        /// <summary>
         /// Control ViewClientes.
         /// </summary>
         /// <remarks>
@@ -337,12 +301,12 @@ namespace ReunionesRevisionDireccion.Catalogos {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ViewClientes;
         
         /// <summary>
-        /// Control rpCliente.
+        /// Control rpElemento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpCliente;
+        protected global::System.Web.UI.WebControls.Repeater rpElemento;
     }
 }

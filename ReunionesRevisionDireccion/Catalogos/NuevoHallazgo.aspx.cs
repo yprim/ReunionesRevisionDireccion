@@ -44,6 +44,7 @@ namespace ReunionesRevisionDireccion.Catalogos
                 txtConsecutivo.Text = reunionHallazgos.consecutivo.ToString();
                 txtMes.Text = reunionHallazgos.mes.ToString();
                 txtTipos.Text = reunionHallazgos.tipo.descripcion;
+                cargarDatosTblElementos();
             }
 
         }
@@ -60,6 +61,24 @@ namespace ReunionesRevisionDireccion.Catalogos
             }
             reunionHallazgos.idReunion = reunionHallazgos.idReunion;
 
+        }
+
+        /// <summary>
+        /// Leonardo Carrion
+        /// 03/nov/2017
+        /// Efecto: carga los clientes en la tabla de clientes
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        private void cargarDatosTblElementos()
+        {
+            List<ElementoRevisar> listaClientes = new List<ElementoRevisar>();
+            listaClientes = elementoRevisarServicios.getElementosRevisar();
+            rpElemento.DataSource = listaClientes;
+            rpElemento.DataBind();
+
+            Session["listaClientes"] = listaClientes;
         }
 
         private void descargar(string fileName, Byte[] file)
@@ -200,7 +219,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         protected void btnCliente_Click(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalClientes();", true);
+            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalElementos();", true);
 
          
         }
@@ -227,7 +246,9 @@ namespace ReunionesRevisionDireccion.Catalogos
         }
 
 
+        }
+
         #endregion
 
-    }
+    
 }

@@ -255,29 +255,21 @@
         </div>
     </div>
     <!-- ------------------------ FIN VISTA Reunión --------------------------- -->
-
-     <!-- Modal Clientes-->
-    <div id="modalClientes" class="modal fade" role="alertdialog">
+   
+    
+    <!-- Modal Elemento a revisar-->
+    <div id="modalElementos" class="modal fade" role="alertdialog">
         <div class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Seleccionar cliente</h4>
+                    <h4 class="modal-title">Seleccionar elemento a revisar</h4>
                 </div>
                 <div class="modal-body">
 
-                    <!-- tabs -->
-                    <ul class="nav nav-tabs">
-                        <li id="liClientes" runat="server" role="presentation" class="active">
-                            <asp:LinkButton ID="btnViewClientes" runat="server" Text="Clientes" ></asp:LinkButton>
-                        </li>
-                        <li id="liNuevoCliente" runat="server" role="presentation">
-                            <asp:LinkButton ID="btnViewNuevoCliente" runat="server" Text="Nuevo cliente" ></asp:LinkButton>
-                        </li>
-                    </ul>
-                    <!-- fin tabs -->
+                   
 
                     <div class="tab-content">
                         <!-- ------------------------ VISTA Clientes --------------------------- -->
@@ -294,20 +286,15 @@
 
                                     <%-- tabla--%>
                                     <div class="col-md-12 col-xs-12" style="overflow-y: auto">
-                                        <asp:Repeater ID="rpCliente" runat="server">
+                                        <asp:Repeater ID="rpElemento" runat="server">
                                             <HeaderTemplate>
                                                 <table id="tblCliente" class="row-border table-striped">
                                                     <thead>
                                                         <tr>
                                                             <th></th>
-                                                            <th>Nombre</th>
-                                                            <th>Correo electrónico</th>
-                                                            <th>Teléfono</th>
-                                                            <th>Tipo</th>
-                                                            <th>País</th>
-                                                            <th>Cédula jurídica</th>
-                                                            <th>Cédula física</th>
-                                                            <th>Dirección</th>
+                                                            <th>Elemento</th>
+                                                            <th>Decripcion</th>
+                                                            
                                                         </tr>
                                                     </thead>
                                             </HeaderTemplate>
@@ -315,32 +302,15 @@
                                             <ItemTemplate>
                                                 <tr>
                                                     <td>
-                                                        <asp:LinkButton ID="btnSeleccionarCliente" runat="server" ToolTip="Seleccionar" CommandArgument='<%# Eval("idCliente") %>' OnClick="btnSeleccionarCliente_Click"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
+                                                        <asp:LinkButton ID="btnSeleccionarCliente" runat="server" ToolTip="Seleccionar" CommandArgument='<%# Eval("idElemento") %>' OnClick="btnSeleccionarCliente_Click"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
                                                     </td>
                                                     <td>
-                                                        <%# Eval("nombreCliente") %>
+                                                        <%# Eval("idElemento") %>
                                                     </td>
                                                     <td>
-                                                        <%# Eval("correo") %>
+                                                        <%# Eval("descripcionElemento") %>
                                                     </td>
-                                                    <td>
-                                                        <%# Eval("telefono") %>
-                                                    </td>
-                                                    <td>
-                                                        <%# Eval("tipoCliente.descTipoCliente") %>
-                                                    </td>
-                                                    <td>
-                                                        <%# Eval("pais.nombrePais") %>
-                                                    </td>
-                                                    <td>
-                                                        <%# Eval("cedulaJuridicaCliente") %>
-                                                    </td>
-                                                    <td>
-                                                        <%# Eval("cedulaFisica") %>
-                                                    </td>
-                                                    <td>
-                                                        <%# Eval("direccion") %>
-                                                    </td>
+                                                   
                                                 </tr>
 
                                             </ItemTemplate>
@@ -349,14 +319,9 @@
                                                 <thead>
                                                     <tr id="filterrow">
                                                         <td></td>
-                                                        <th>Nombre</th>
-                                                        <th>Correo electrónico</th>
-                                                        <th>Teléfono</th>
-                                                        <th>Tipo</th>
-                                                        <th>País</th>
-                                                        <th>Cédula jurídica</th>
-                                                        <th>Cédula física</th>
-                                                        <th>Dirección</th>
+                                                        <th>Elemento</th>
+                                                        <th>Descripcion</th>
+                                                       
                                                     </tr>
                                                 </thead>
                                                 </table>
@@ -368,116 +333,21 @@
                         </div>
                         <!-- ------------------------ FIN VISTA Clientes --------------------------- -->
 
-                      </div>
+                        
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                </div>
+               
             </div>
 
         </div>
     </div>
     <!-- Fin Modal Clientes-->
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
-      <script src="../Scripts/moment.js"></script>
-    <script src="../Scripts/transition.js"></script>
-    <script src="../Scripts/collapse.js"></script>
-    <script src="../Scripts/bootstrap-datetimepicker.js"></script>
-    <script src="../Scripts/bootstrap-datetimepicker.min.js"></script>
+     <script type="text/javascript">
 
-    <!-- script -->
-    <script type="text/javascript">
-
-        function activarModalEliminarEnsayoModal() {
-            $('#modalEliminarEnsayoModal').modal('show');
+          function activarModalElementos() {
+            $('#modalElementos').modal('show');
         };
+         </script>
 
-        function activarModalClientes() {
-            $('#modalClientes').modal('show');
-        };
-
-        function activarModalEliminarAsignarTrabajoModal() {
-            $('#modalAsignarTrabajo').modal('show');
-            $('#modalEliminarAsignarTrabajoModal').modal('show');
-        };
-
-        function activarModalEliminarAsignarTrabajoModal2() {
-            $('#modalEliminarAsignarTrabajoModal2').modal('show');
-        };
-
-        function activarModalEliminarLocalidadTransporte() {
-            $('#modalEliminarLocalidadTransporte').modal('show');
-        };
-
-        function activarModalEliminarTrasladosInternos() {
-            $('#modalEliminarTrasladosInternos').modal('show');
-        };
-
-        function activarModalEliminarGastoExtra() {
-            $('#modalEliminarGastoExtra').modal('show');
-        };
-
-        $(function () {
-            // Fechas
-            $('#divFecha').datetimepicker({
-                format: 'DD/MM/YYYY',
-                locale: moment.locale('es')
-            });
-        });
-
-        function validarFecha(txtFecha) {
-            patron = /^\d{2}\/\d{2}\/\d{4}$/;
-
-            var id = txtFecha.id.substring(12);
-
-            if (txtFecha.value != "" && patron.test(txtFecha.value)) {
-                txtFecha.className = "From-Date form-control";
-            } else {
-                txtFecha.className = "From-Date form-control alert-danger";
-            }
-        };
-
-        function activarModalClientes() {
-            $('#modalClientes').modal('show');
-        };
-
-        function activarModalContactos() {
-            $('#modalContactos').modal('show');
-        };
-
-        function activarModalLaboratorios() {
-            $('#modalLaboratorios').modal('show');
-        };
-
-        function activarModalEnsayos() {
-            $('#modalEnsayos').modal('show');
-        };
-
-        function activarModalHospedajes() {
-            $('#modalHospedajes').modal('show');
-        };
-
-        function activarModalHospedajesInternos() {
-            $('#modalHospedajesInternos').modal('show');
-        };
-
-        function activarModalTransportes() {
-            $('#modalTransportes').modal('show');
-        };
-
-        function activarModalTransportesInternos() {
-            $('#modalTransportesInternos').modal('show');
-        };
-
-        function activarModalMuestras() {
-            $('#modalMuestras').modal('show');
-        };
-
-        function activarModalAsignarTrabajo() {
-            $('#modalAsignarTrabajo').modal('show');
-        };
-
-   </script>
 </asp:Content>
 
