@@ -33,7 +33,10 @@ namespace ReunionesRevisionDireccion.Catalogos
             {
                 Reunion reunionHallazgos = (Reunion)Session["ReunionHallazgos"];
                 Session["listaArchivosReunionAsociados"] = null;
-
+                Session["listaElementos"] = null;
+                Session["listaUsuarios"] = null;
+                Session["elementoSeleccionado"] = null;
+                Session["usuarioSeleccionado"] = null;
 
                 //archivos
                 List<ArchivoReunion> listaArchivosReunion = archivoReunionServicios.getArchivosReunionPorIdReunion(reunionHallazgos);
@@ -45,6 +48,7 @@ namespace ReunionesRevisionDireccion.Catalogos
                 txtMes.Text = reunionHallazgos.mes.ToString();
                 txtTipos.Text = reunionHallazgos.tipo.descripcion;
                 cargarDatosTblElementos();
+                cargarDatosTblUsuarios();
             }
 
         }
@@ -73,12 +77,22 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// </summary>
         private void cargarDatosTblElementos()
         {
-            List<ElementoRevisar> listaClientes = new List<ElementoRevisar>();
-            listaClientes = elementoRevisarServicios.getElementosRevisar();
-            rpElemento.DataSource = listaClientes;
+            List<ElementoRevisar> listaElementos = new List<ElementoRevisar>();
+            listaElementos = elementoRevisarServicios.getElementosRevisar();
+            rpElemento.DataSource = listaElementos;
             rpElemento.DataBind();
 
-            Session["listaClientes"] = listaClientes;
+            Session["listaElementos"] = listaElementos;
+        }
+
+        private void cargarDatosTblUsuarios()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            listaUsuarios = usuarioServicios.getUsuarios();
+            rpUsuario.DataSource = listaUsuarios;
+            rpUsuario.DataBind();
+
+            Session["listaUsuarios"] = listaUsuarios;
         }
 
         private void descargar(string fileName, Byte[] file)
@@ -217,16 +231,26 @@ namespace ReunionesRevisionDireccion.Catalogos
             Response.Redirect(url);
         }
 
-        protected void btnCliente_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:Metodo que se activa cuando se le da click al enlace de elemntos a revisar
+        /// Carga un modal con los elementos a revisar
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnElemento_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalElementos();", true);
 
          
         }
-        protected void btnContacto_Click(object sender, EventArgs e)
+        protected void btnUsuario_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx");
-            Response.Redirect(url);
+            ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalUsuarios();", true);
         }
 
 
@@ -240,13 +264,66 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected void btnSeleccionarCliente_Click(object sender, EventArgs e)
+        protected void btnSeleccionarElemento_Click(object sender, EventArgs e)
         {
-            
+
+            int idElementoRevisar = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<ElementoRevisar> listaElementos = (List<ElementoRevisar>)Session["listaElementos"];
+
+            ElementoRevisar elementoSeleccionar = new ElementoRevisar();
+
+            foreach (ElementoRevisar elemento in listaElementos)
+            {
+                if (elemento.idElemento == idElementoRevisar)
+                {
+                    elementoSeleccionar = elemento;
+                    break;
+                }
+            }
+
+            txtElementoSeleccionado.Text = elementoSeleccionar.descripcionElemento;
+        
+            Session["elementoSeleccionado"] = elementoSeleccionar;
+         
+
         }
 
 
+        /// <summary>
+        /// Leonardo Carrion
+        /// 06/nov/2017
+        /// Efecto: se encarga de llenar el textbox con el nombre del cliente seleccionado y llenar la tabla de contactos
+        /// Requiere: clic en el boton de "✓"
+        /// Modifica: la lista de contactos
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnSeleccionarUsuario_Click(object sender, EventArgs e)
+        {
+            int idUsuario = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Usuario> listaUsuarios = (List<Usuario>)Session["listaUsuarios"];
+
+            Usuario UsuarioSeleccionar = new Usuario();
+
+            foreach (Usuario Usuario in listaUsuarios)
+            {
+                if (Usuario.idUsuario == idUsuario)
+                {
+                    UsuarioSeleccionar = Usuario;
+                    break;
+                }
+            }
+
+            txtUsuarioSeleccionado.Text = UsuarioSeleccionar.nombre;
+            Session["usuarioSeleccionado"] = UsuarioSeleccionar;
         }
+
+        
+
+    }
 
         #endregion
 

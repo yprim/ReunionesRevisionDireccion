@@ -154,7 +154,7 @@
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-                        <asp:LinkButton ID="btnElemento" runat="server" Text="Seleccionar elemento" OnClick="btnCliente_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="btnElemento" runat="server" Text="Seleccionar elemento" OnClick="btnElemento_Click"></asp:LinkButton>
                     </div>
                 </div>
 
@@ -176,7 +176,7 @@
 
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2">
-                        <asp:LinkButton ID="btnUsuario" runat="server" Text="Seleccionar usuario" OnClick="btnContacto_Click"></asp:LinkButton>
+                        <asp:LinkButton ID="btnUsuario" runat="server" Text="Seleccionar usuario" OnClick="btnUsuario_Click"></asp:LinkButton>
                     </div>
                 </div>
 
@@ -272,7 +272,7 @@
                    
 
                     <div class="tab-content">
-                        <!-- ------------------------ VISTA Clientes --------------------------- -->
+                       
                         <div id="ViewClientes" runat="server" style="display: block">
 
                             <%-- campos a llenar --%>
@@ -288,7 +288,7 @@
                                     <div class="col-md-12 col-xs-12" style="overflow-y: auto">
                                         <asp:Repeater ID="rpElemento" runat="server">
                                             <HeaderTemplate>
-                                                <table id="tblCliente" class="row-border table-striped">
+                                                <table id="tblElemento" class="row-border table-striped">
                                                     <thead>
                                                         <tr>
                                                             <th></th>
@@ -302,7 +302,7 @@
                                             <ItemTemplate>
                                                 <tr>
                                                     <td>
-                                                        <asp:LinkButton ID="btnSeleccionarCliente" runat="server" ToolTip="Seleccionar" CommandArgument='<%# Eval("idElemento") %>' OnClick="btnSeleccionarCliente_Click"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
+                                                        <asp:LinkButton ID="btnSeleccionarCliente" runat="server" ToolTip="Seleccionar" CommandArgument='<%# Eval("idElemento") %>' OnClick="btnSeleccionarElemento_Click"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
                                                     </td>
                                                     <td>
                                                         <%# Eval("idElemento") %>
@@ -331,9 +331,7 @@
                                     <%-- fin tabla--%>
                                 </div>
                         </div>
-                        <!-- ------------------------ FIN VISTA Clientes --------------------------- -->
-
-                        
+                     
                     </div>
                 </div>
                
@@ -341,12 +339,246 @@
 
         </div>
     </div>
-    <!-- Fin Modal Clientes-->
+    <!-- Fin Modal  Elemento a Revisar-->
+
+    <!-- Modal Elemento a revisar-->
+    <div id="modalUsuarios" class="modal fade" role="alertdialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Seleccionar usuario responsable</h4>
+                </div>
+                <div class="modal-body">
+
+                   
+
+                    <div class="tab-content">
+                      
+                        <div id="Div1" runat="server" style="display: block">
+
+                            <%-- campos a llenar --%>
+                                <div class="row">
+
+                                    <%-- fin campos a llenar --%>
+
+                                    <div class="col-md-12 col-xs-12 col-sm-12">
+                                        <br />
+                                    </div>
+
+                                    <%-- tabla--%>
+                                    <div class="col-md-12 col-xs-12" style="overflow-y: auto">
+                                        <asp:Repeater ID="rpUsuario" runat="server">
+                                            <HeaderTemplate>
+                                                <table id="tblUsuario" class="row-border table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Usuario</th>
+                                                            <th>Nombre</th>
+                                                            
+                                                        </tr>
+                                                    </thead>
+                                            </HeaderTemplate>
+
+                                            <ItemTemplate>
+                                                <tr>
+                                                    <td>
+                                                        <asp:LinkButton ID="btnSeleccionarCliente" runat="server" ToolTip="Seleccionar" CommandArgument='<%# Eval("idUsuario") %>' OnClick="btnSeleccionarUsuario_Click"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
+                                                    </td>
+                                                    <td>
+                                                        <%# Eval("idUsuario") %>
+                                                    </td>
+                                                    <td>
+                                                        <%# Eval("nombre") %>
+                                                    </td>
+                                                   
+                                                </tr>
+
+                                            </ItemTemplate>
+
+                                            <FooterTemplate>
+                                                <thead>
+                                                    <tr id="filterrow">
+                                                        <td></td>
+                                                        <th>Usuario</th>
+                                                        <th>Nombre</th>
+                                                       
+                                                    </tr>
+                                                </thead>
+                                                </table>
+                                            </FooterTemplate>
+                                        </asp:Repeater>
+                                    </div>
+                                    <%-- fin tabla--%>
+                                </div>
+                        </div>
+
+                    </div>
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+    <!-- Fin Modal Usuarios-->
      <script type="text/javascript">
 
           function activarModalElementos() {
             $('#modalElementos').modal('show');
+         };
+
+          function activarModalUsuarios() {
+            $('#modalUsuarios').modal('show');
+         };
+
+            $(function () {
+            // Fechas
+            $('#divFecha').datetimepicker({
+                format: 'DD/MM/YYYY',
+                locale: moment.locale('es')
+            });
+        });
+
+        function validarFecha(txtFecha) {
+            patron = /^\d{2}\/\d{2}\/\d{4}$/;
+
+            var id = txtFecha.id.substring(12);
+
+            if (txtFecha.value != "" && patron.test(txtFecha.value)) {
+                txtFecha.className = "From-Date form-control";
+            } else {
+                txtFecha.className = "From-Date form-control alert-danger";
+            }
         };
+
+            /****************************** TABLA Elementos a revisar ***********************************/
+        $('#tblElemento thead tr#filterrow th').each(function () {
+            var campoBusqueda = $('#tblElemento thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" style="text-align: center" onclick="stopPropagation(event);" placeholder="Buscar ' + campoBusqueda + '" />');
+        });
+
+        // DataTable
+        var tblElemento = $('#tblElemento').DataTable({
+            orderCellsTop: true,
+            "iDisplayLength": 10,
+            "aLengthMenu": [[2, 5, 10, -1], [2, 5, 10, "All"]],
+            "colReorder": true,
+            "select": false,
+            "stateSave": true,
+            "dom": 'Bfrtip',
+            "buttons": [
+                'pdf', 'excel', 'copy', 'print'
+            ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "decimal": ",",
+                "thousands": ".",
+                "sSelect": "1 fila seleccionada",
+                "select": {
+                    rows: {
+                        _: "Ha seleccionado %d filas",
+                        0: "Dele click a una fila para seleccionarla",
+                        1: "1 fila seleccionada"
+                    }
+                },
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
+
+        // aplicar filtro
+        $("#tblElemento thead input").on('keyup change', function () {
+            tblElemento
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+        /****************************** FIN TABLA Elementos ***********************************/
+
+           /****************************** TABLA Usuario ***********************************/
+        $('#tblUsuario thead tr#filterrow th').each(function () {
+            var campoBusqueda = $('#tblUsuario thead th').eq($(this).index()).text();
+            $(this).html('<input type="text" style="text-align: center" onclick="stopPropagation(event);" placeholder="Buscar ' + campoBusqueda + '" />');
+        });
+
+        // DataTable
+        var tblUsuario = $('#tblUsuario').DataTable({
+            orderCellsTop: true,
+            "iDisplayLength": 10,
+            "aLengthMenu": [[2, 5, 10, -1], [2, 5, 10, "All"]],
+            "colReorder": true,
+            "select": false,
+            "stateSave": true,
+            "dom": 'Bfrtip',
+            "buttons": [
+                'pdf', 'excel', 'copy', 'print'
+            ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "decimal": ",",
+                "thousands": ".",
+                "sSelect": "1 fila seleccionada",
+                "select": {
+                    rows: {
+                        _: "Ha seleccionado %d filas",
+                        0: "Dele click a una fila para seleccionarla",
+                        1: "1 fila seleccionada"
+                    }
+                },
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+        });
+
+        // aplicar filtro
+        $("#tblUsuario thead input").on('keyup change', function () {
+            tblUsuario
+                .column($(this).parent().index() + ':visible')
+                .search(this.value)
+                .draw();
+        });
+        /****************************** FIN TABLA Usuarios ***********************************/
          </script>
 
 </asp:Content>
