@@ -72,7 +72,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/NuevaReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/NuevaReunion.aspx");
             Response.Redirect(url);
         }
 
@@ -106,7 +106,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             Session["ReunionEditar"] = reunionEditar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EditarReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/EditarReunion.aspx");
             Response.Redirect(url);
 
            
@@ -142,7 +142,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             Session["ReunionEliminar"] = reunionEditar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EliminarReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/EliminarReunion.aspx");
             Response.Redirect(url);
         }
 

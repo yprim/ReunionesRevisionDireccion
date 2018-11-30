@@ -17,6 +17,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         ElementoRevisarServicios elementoRevisarServicios = new ElementoRevisarServicios();
         ReunionElementoRevisarServicios reunionElementoRevisarServicios = new ReunionElementoRevisarServicios();
         ReunionElementoRevisarHallazgoServicios reunionElementoRevisarHallazgoServicios = new ReunionElementoRevisarHallazgoServicios();
+        HallazgoServicios hallazgoServicios = new HallazgoServicios();
         ArchivoReunionServicios archivoReunionServicios = new ArchivoReunionServicios();
         UsuarioServicios usuarioServicios = new UsuarioServicios();
         ReunionUsuarioServicios reunionUsuarioServicios = new ReunionUsuarioServicios();
@@ -263,11 +264,17 @@ namespace ReunionesRevisionDireccion.Catalogos
             }
 
 
-
+            List<Hallazgo> listaHallazgos = hallazgoServicios.getHallazgosPorReunion(reunion);
             reunionElementoRevisarHallazgoServicios.eliminarReunionElementoHallazgo(reunion);
+
+            foreach (Hallazgo hallazgo in listaHallazgos)
+            {
+                hallazgoServicios.eliminarHallazgo(hallazgo);
+            }
+
             reunionServicios.eliminarReunion(reunion);
 
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx");
             Response.Redirect(url);
 
         }
@@ -285,7 +292,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx");
             Response.Redirect(url);
         }
 
@@ -306,7 +313,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx");
             Response.Redirect(url);
         }
 

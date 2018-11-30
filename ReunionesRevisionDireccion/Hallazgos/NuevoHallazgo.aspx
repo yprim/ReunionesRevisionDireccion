@@ -218,28 +218,30 @@
                 </div>
 
                    <div class="col-md-12 col-xs-12 col-sm-12">
-                    <div class="col-md-3 col-xs-3 col-sm-3">
-                        <asp:Label ID="lblFecha" runat="server" Text="Fecha máxima para implementación <span style='color:red'>*</span>" Font-Size="Medium" ForeColor="Black" Font-Bold="true" CssClass="label"></asp:Label>
-                    </div>
-                    <div class="col-md-3 col-xs-4 col-sm-4 input-group date" id="divFecha">
-                        <span class="input-group-addon">
-                            <span class="fa fa-calendar"></span>
-                        </span>
-                        <asp:TextBox CssClass="form-control" ID="txtFecha" runat="server" onInput="validarFecha(this)" onChange="validarFecha(this)" onFocus="validarFecha(this)" placeholder="dd/mm/yyyy"></asp:TextBox>
-                    </div>
+                <div class="col-md-2 col-xs-2 col-sm-2">
+                    <asp:Label ID="lblFecha" runat="server" Text="Fecha máxima de implementación<span style='color:red'>*</span>" Font-Size="Medium" ForeColor="Black" Font-Bold="true" CssClass="label"></asp:Label>
                 </div>
+                <div class="col-md-4 col-xs-4 col-sm-4 input-group date" id="divFecha">
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                    <asp:TextBox CssClass="form-control" ID="txtFecha" runat="server" onInput="validarFecha(this)" onChange="validarFecha(this)" onFocus="validarFecha(this)" placeholder="dd/mm/yyyy"></asp:TextBox>
+                </div>
+                <div class="col-md-5 col-xs-5 col-sm-5" id="divFechaIncorrecta" runat="server" style="display: none;">
+                </div>
+            </div>
 
                  <div class="col-md-12 col-xs-12 col-sm-12">
                     <br />
                 </div>
 
-                  <div class="col-md-12 col-xs-12 col-sm-12">
+                <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-2 col-xs-2 col-sm-2">
                         <asp:Label ID="lblCodigoAccion" runat="server" Text="Codigo de Acción " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
 
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <asp:TextBox class="form-control" ID="txtCodigoAccion" runat="server" ReadOnly="true"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtCodigoAccion" runat="server"></asp:TextBox>
                     </div>
                 </div>
 
@@ -305,7 +307,6 @@
                                                     <thead>
                                                         <tr>
                                                             <th></th>
-                                                            <th>Elemento</th>
                                                             <th>Decripcion</th>
                                                             
                                                         </tr>
@@ -316,9 +317,6 @@
                                                 <tr>
                                                     <td>
                                                         <asp:LinkButton ID="btnSeleccionarCliente" runat="server" ToolTip="Seleccionar" CommandArgument='<%# Eval("idElemento") %>' OnClick="btnSeleccionarElemento_Click"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
-                                                    </td>
-                                                    <td>
-                                                        <%# Eval("idElemento") %>
                                                     </td>
                                                     <td>
                                                         <%# Eval("descripcionElemento") %>
@@ -332,7 +330,6 @@
                                                 <thead>
                                                     <tr id="filterrow">
                                                         <td></td>
-                                                        <th>Elemento</th>
                                                         <th>Descripcion</th>
                                                        
                                                     </tr>
@@ -389,7 +386,6 @@
                                                     <thead>
                                                         <tr>
                                                             <th></th>
-                                                            <th>Usuario</th>
                                                             <th>Nombre</th>
                                                             
                                                         </tr>
@@ -400,9 +396,6 @@
                                                 <tr>
                                                     <td>
                                                         <asp:LinkButton ID="btnSeleccionarCliente" runat="server" ToolTip="Seleccionar" CommandArgument='<%# Eval("idUsuario") %>' OnClick="btnSeleccionarUsuario_Click"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
-                                                    </td>
-                                                    <td>
-                                                        <%# Eval("idUsuario") %>
                                                     </td>
                                                     <td>
                                                         <%# Eval("nombre") %>
@@ -416,7 +409,6 @@
                                                 <thead>
                                                     <tr id="filterrow">
                                                         <td></td>
-                                                        <th>Usuario</th>
                                                         <th>Nombre</th>
                                                        
                                                     </tr>
@@ -436,6 +428,15 @@
 
         </div>
     </div>
+
+    
+    <script src="../Scripts/moment.js"></script>
+    <script src="../Scripts/transition.js"></script>
+    <script src="../Scripts/collapse.js"></script>
+    <script src="../Scripts/bootstrap-datetimepicker.js"></script>
+    <script src="../Scripts/bootstrap-datetimepicker.min.js"></script>
+    
+
     <!-- Fin Modal Usuarios-->
      <script type="text/javascript">
 
@@ -447,25 +448,6 @@
             $('#modalUsuarios').modal('show');
          };
 
-            $(function () {
-            // Fechas
-            $('#divFecha').datetimepicker({
-                format: 'DD/MM/YYYY',
-                locale: moment.locale('es')
-            });
-        });
-
-        function validarFecha(txtFecha) {
-            patron = /^\d{2}\/\d{2}\/\d{4}$/;
-
-            var id = txtFecha.id.substring(12);
-
-            if (txtFecha.value != "" && patron.test(txtFecha.value)) {
-                txtFecha.className = "From-Date form-control";
-            } else {
-                txtFecha.className = "From-Date form-control alert-danger";
-            }
-        };
 
             /****************************** TABLA Elementos a revisar ***********************************/
         $('#tblElemento thead tr#filterrow th').each(function () {
@@ -596,3 +578,35 @@
 
 </asp:Content>
 
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
+    <script type="text/javascript">
+
+        $(function () {
+            // Fechas
+            $('#divFecha').datetimepicker({
+                format: 'DD/MM/YYYY',
+                locale: moment.locale('es')
+            });
+        });
+
+        function validarFecha(txtFecha) {
+            patron = /^\d{2}\/\d{2}\/\d{4}$/;
+
+            var id = txtFecha.id.substring(12);
+            var fechaIncorrecta;
+
+            fechaIncorrecta = document.getElementById('<%= divFechaIncorrecta.ClientID %>');
+
+            if (txtFecha.value != "" && patron.test(txtFecha.value)) {
+                txtFecha.className = "From-Date form-control";
+                fechaIncorrecta.style.display = 'none';
+            } else {
+                txtFecha.className = "From-Date form-control alert-danger";
+                fechaIncorrecta.style.display = 'block';
+            }
+        };
+
+
+    </script>
+</asp:Content>

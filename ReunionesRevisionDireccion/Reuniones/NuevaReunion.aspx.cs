@@ -10,18 +10,19 @@ using System.Web.UI.WebControls;
 
 namespace ReunionesRevisionDireccion.Catalogos
 {
-    public partial class EditarReunion : System.Web.UI.Page
+    public partial class NuevaReunion : System.Web.UI.Page
     {
         #region variables globales
         ReuniónServicios reunionServicios = new ReuniónServicios();
         ElementoRevisarServicios elementoRevisarServicios = new ElementoRevisarServicios();
         ReunionElementoRevisarServicios reunionElementoRevisarServicios = new ReunionElementoRevisarServicios();
-        TipoServicios tipoServicios = new TipoServicios();
-        ArchivoReunionServicios archivoReunionServicios = new ArchivoReunionServicios();
-        UsuarioServicios usuarioServicios = new UsuarioServicios();
         ReunionUsuarioServicios reunionUsuarioServicios = new ReunionUsuarioServicios();
+        TipoServicios tipoServicios = new TipoServicios();
+        UsuarioServicios usuarioServicios = new UsuarioServicios();
+        ArchivoReunionServicios archivoReunionServicios = new ArchivoReunionServicios();
 
         #endregion
+
         #region page load
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,68 +33,39 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             if (!IsPostBack)
             {
-                Reunion reunionEditar = (Reunion)Session["ReunionEditar"];
+
+                Session["reunionNueva"] = null;
                 Session["listaElementosNoAsociados"] = null;
                 Session["listaElementosAsociados"] = null;
                 Session["idElementoDesasociar"] = null;
                 Session["listaArchivosReunionAsociados"] = null;
                 Session["listaArchivosReunionNoAsociados"] = null;
-                Session["archivo"] = null;
+                Session["archivos"] = null;
                 Session["listaUsuariosNoAsociados"] = null;
                 Session["listaUsuariosAsociados"] = null;
                 Session["idUsuarioDesasociar"] = null;
 
-
                 llenarDdlTipos();
                 llenarDatos();
-                //arvhivos
-                List<ArchivoReunion> listaArchivosReunion = archivoReunionServicios.getArchivosReunionPorIdReunion(reunionEditar);
-                Session["listaArchivosReunionAsociados"] = listaArchivosReunion;
-                cargarArchivosReunion();
 
-                txtAnno.Text = reunionEditar.anno.ToString();
-                txtConsecutivo.Text = reunionEditar.consecutivo.ToString();
-           
-                int contIndexTipos = 0;
-                foreach (ListItem item in ddlTipos.Items)
-                {
-                    if (Convert.ToInt32(item.Value) == reunionEditar.tipo.idTipo)
-                    {
-                        ddlTipos.SelectedIndex = contIndexTipos;
-                        break;
-                    }
-                    contIndexTipos++;
-                }
-
-                int contIndexMeses= 0;
-                foreach (ListItem item in ddlMeses.Items)
-                {
-                    if (item.Text == reunionEditar.mes)
-                    {
-                        ddlMeses.SelectedIndex = contIndexMeses;
-                        break;
-                    }
-                    contIndexMeses++;
-                }
 
             }
             else
             {
-
-                if (fuArchivos.HasFile)
+                if (fuArchivos.HasFiles)
                 {
-                    Session["archivo"] = fuArchivos;
-                    lblArchivo.Text = fuArchivos.PostedFile.FileName;
+                    Session["archivos"] = fuArchivos;
+                    lblArchivos.Text = fuArchivos.PostedFile.FileName;
                 }
 
-                if (Session["archivo"] != null)
+                if (Session["archivos"] != null)
                 {
-                    fuArchivos = (FileUpload)Session["archivoOriginal"];
-                    lblArchivo.Text = "Archivo(s) Seleccionado(s)";
+                    fuArchivos = (FileUpload)Session["archivos"];
+                    lblArchivos.Text = fuArchivos.PostedFiles.Count + " Archivo(s) Seleccionado(s)";
                 }
+
             }
-
-          
+           
         }
 
         #endregion
@@ -117,17 +89,29 @@ namespace ReunionesRevisionDireccion.Catalogos
             ddlTipos.DataTextField = "descripcion";
             ddlTipos.DataValueField = "idTipo";
             ddlTipos.DataBind();
-      
         }
 
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto:Metodo que carga todos los datos que son asignados a la reunion nueva
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public void llenarDatos()
         {
-            Reunion reunionEditar = (Reunion)Session["ReunionEditar"];
-            if (reunionEditar == null)
+            Reunion reunion = (Reunion)Session["reunionNueva"];
+            if (reunion == null)
             {
-                reunionEditar = new Reunion();
+                reunion = new Reunion();
             }
-            reunionEditar.idReunion = reunionEditar.idReunion;
+            reunion.idReunion = reunion.idReunion;
+
+            txtAnno.Text = Convert.ToString(DateTime.Now.Year);
 
             /*
              * se llena la lista con los elementos a revisar que NO estan asociados a la reunion
@@ -137,7 +121,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             if (Session["listaElementosNoAsociados"] == null)
             {
-                listaElementosNoAsociados = elementoRevisarServicios.getElementosNoEstanEnReunion(reunionEditar);
+                listaElementosNoAsociados = elementoRevisarServicios.getElementosNoEstanEnReunion(reunion);
             }
             else
             {
@@ -158,7 +142,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             if (Session["listaElementosAsociados"] == null)
             {
 
-                listaElementosAsociados = elementoRevisarServicios.getElementosEstanEnReunion(reunionEditar);
+                listaElementosAsociados = elementoRevisarServicios.getElementosEstanEnReunion(reunion);
 
                 Session["listaElementosAsociados"] = listaElementosAsociados;
             }
@@ -171,14 +155,14 @@ namespace ReunionesRevisionDireccion.Catalogos
             rpElemento.DataBind();
 
             /*
-        * se llena la lista con los usuarios que NO estan asociados a la reunion
-        */
-
+           * se llena la lista con los usuarios que NO estan asociados a la reunion
+           */
+           
             List<Usuario> listaUsuariosNoAsociados = new List<Usuario>();
 
             if (Session["listaUsuariosNoAsociados"] == null)
             {
-                listaUsuariosNoAsociados = usuarioServicios.getUsuariosNoEstanEnReunion(reunionEditar);
+                listaUsuariosNoAsociados = usuarioServicios.getUsuariosNoEstanEnReunion(reunion);
             }
             else
             {
@@ -199,7 +183,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             if (Session["listaUsuariosAsociados"] == null)
             {
 
-                listaUsuariosAsociados = usuarioServicios.getUsuariosEstanEnReunion(reunionEditar);
+                listaUsuariosAsociados = usuarioServicios.getUsuariosEstanEnReunion(reunion);
 
                 Session["listaUsuariosAsociados"] = listaUsuariosAsociados;
             }
@@ -213,64 +197,12 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         }
 
-        /// <summary>
-        /// Priscilla Mena
-        /// 24/10/2018
-        /// Efecto:descarga el archivo para que el usuario lo pueda ver
-        /// redireccion a la pantalla de Administracion de Reunions
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        private void descargar(string fileName, Byte[] file)
-        {
-            Response.Buffer = true;
-            Response.Charset = "";
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
 
-            Response.AddHeader("content-disposition", "attachment;filename=" + fileName);
-            Response.BinaryWrite(file);
-            Response.Flush();
-            Response.End();
-
-        }
-
-        /// <summary>
-        /// Priscilla Mena
-        /// 24/10/2018
-        /// Efecto:Crea una tabla donde se muestran los archivos asociados a una Reunion
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        public void cargarArchivosReunion()
-        {
-            Reunion Reunion = (Reunion)Session["ReunionEditar"];
-
-            List<ArchivoReunion> listaArchivosReunion = (List<ArchivoReunion>)Session["listaArchivosReunionAsociados"];
-
-            if (listaArchivosReunion.Count == 0)
-            {
-                txtArchivos.Text = "No hay archivos asociados a esta Reunion";
-                txtArchivos.Visible = true;
-                rpArchivos.Visible = false;
-            }
-            else
-            {
-                txtArchivos.Visible = false;
-                rpArchivos.Visible = true;
-            }
-
-            rpArchivos.DataSource = listaArchivosReunion;
-            rpArchivos.DataBind();
-        }
         #endregion
 
         #region eventos
+
+
         /// <summary>
         /// Priscilla Mena
         /// 27/09/2018
@@ -283,7 +215,10 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnAsociar_Click(object sender, EventArgs e)
         {
-           
+            Reunion Reunion = new Reunion();
+            ///   preguntar a leo
+            //Reunion.idReunion = Convert.ToInt32(ddlJefeReunion.SelectedValue);
+
             List<ElementoRevisar> listaElementosNoAsociados = (List<ElementoRevisar>)Session["listaElementosNoAsociados"];
             List<ElementoRevisar> listaElementosSeleccionados = new List<ElementoRevisar>();
 
@@ -339,14 +274,15 @@ namespace ReunionesRevisionDireccion.Catalogos
             /*para que se quede en el tab de ElementoRevisars despues del posback*/
             liReunion.Attributes["class"] = "";
             liElementoRevisar.Attributes["class"] = "active";
-
+          
 
             ViewElementoRevisar.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
-
+          
 
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModal();", true);
         }
+
 
 
         /// <summary>
@@ -361,25 +297,26 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnAsociarUsuario_Click(object sender, EventArgs e)
         {
-
+            Reunion Reunion = new Reunion();
+          
             List<Usuario> listaUsuariosNoAsociados = (List<Usuario>)Session["listaUsuariosNoAsociados"];
             List<Usuario> listaUsuariosSeleccionados = new List<Usuario>();
 
             int idUsuario = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
-            Usuario usuario = new Usuario();
+            Usuario Usuario = new Usuario();
 
             foreach (Usuario usuarioLista in listaUsuariosNoAsociados)
             {
                 if (usuarioLista.idUsuario == idUsuario)
                 {
-                    usuario = usuarioLista;
+                    Usuario = usuarioLista;
 
                     break;
                 }
             }
 
-            listaUsuariosSeleccionados.Add(usuario);
+            listaUsuariosSeleccionados.Add(Usuario);
 
             List<Usuario> listaUsuarioAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
 
@@ -421,12 +358,17 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             ViewUsuario.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewElementoRevisar.Style.Add("display", "none");
 
 
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalUsuario();", true);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnDesasociar_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarElementos();", true);
@@ -454,10 +396,14 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             ViewElementoRevisar.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewUsuario.Style.Add("display", "none");
 
         }
-
-
+    /// <summary>
+    /// ///
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
         protected void btnDesasociarUsuario_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarUsuarios();", true);
@@ -474,7 +420,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             {
                 if (Usuario.idUsuario == idUsuario)
                 {
-                    lblDesasocaiarUsuario.Text = "Se desasociará el Usuario: " + Usuario.nombre + " <br /> ¿está de acuerdo?";
+                    lblDesasociarUsuario.Text = "Se desasociará el Usuario: " + Usuario.nombre + " <br /> ¿está de acuerdo?";
                 }
             }
 
@@ -484,6 +430,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
 
             ViewUsuario.Style.Add("display", "block");
+            ViewElementoRevisar.Style.Add("display", "none");
             ViewReunion.Style.Add("display", "none");
 
         }
@@ -502,20 +449,39 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+           
+                Tipo tipo = new Tipo();
 
-            Tipo tipo = new Tipo();
+                tipo.idTipo = Convert.ToInt32(ddlTipos.SelectedValue);
+                tipo.descripcion = ddlTipos.SelectedItem.Text;
 
-            tipo.idTipo = Convert.ToInt32(ddlTipos.SelectedValue);
-            tipo.descripcion = ddlTipos.SelectedItem.Text;
+            
 
-            Reunion reunion = (Reunion)Session["ReunionEditar"];
-            reunion.mes = ddlMeses.SelectedItem.Text;
-            reunion.anno = Convert.ToInt32(txtAnno.Text);
-            reunion.tipo = tipo;
+            Reunion reunion = new Reunion();
+                reunion.mes = ddlMeses.SelectedItem.Text;
+                reunion.anno = Convert.ToInt32(txtAnno.Text) ;
+                reunion.tipo = tipo;
 
-            reunionServicios.actualizarReunion(reunion);
+                int ano = Convert.ToInt32(reunion.anno.ToString().Substring(2, 2));
+                int numero = reunionServicios.getUltimoNumeroPorAnno(reunion.anno);
 
-            reunion = reunionServicios.getReunionPorDatos(reunion);
+                numero++;
+
+                String numeroCodigo = "";
+
+                if (numero >= 1 && numero <= 9)
+                    numeroCodigo += "000" + numero;
+                else if (numero >= 10 && numero <= 99)
+                    numeroCodigo += "00" + numero;
+                else if (numero >= 100 && numero <= 999)
+                    numeroCodigo += "0" + numero;
+
+                reunion.consecutivo = numeroCodigo + "-" + ano;
+            reunion.numero = numero;
+
+
+           reunion.idReunion = reunionServicios.insertarReunion(reunion);
+
 
             /*----------------------Asociar elementos a revisar----------------------------------------*/
 
@@ -540,8 +506,8 @@ namespace ReunionesRevisionDireccion.Catalogos
             }
 
             /*--------------------- Fin-Asociar Elementos----------------------------------------*/
-
-            /*----------------------Asociar Usuarios----------------------------------------*/
+           
+            /*----------------------Asociar elementos a revisar----------------------------------------*/
 
             List<Usuario> listaUsuariosAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
 
@@ -565,10 +531,25 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             /*--------------------- Fin-Asociar Usuarios----------------------------------------*/
 
+            /*--------------------Inserción de los archivos en el servidor y en la BD--------------------*/
 
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");
-            Response.Redirect(url);
 
+            if (fuArchivos.HasFiles)
+            {
+                List<ArchivoReunion> listaArchivos = guardarArchivos(reunion, fuArchivos);
+
+                foreach (ArchivoReunion archivo in listaArchivos)
+                {
+                   
+                    archivoReunionServicios.insertarArchivoReunion(archivo);
+                }
+            }
+
+            /*--------------------Inserción de los archivos en el servidor y en la BD--------------------*/
+
+            String url = Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx");
+                Response.Redirect(url);
+            
         }
 
         /// <summary>
@@ -584,12 +565,12 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx");
             Response.Redirect(url);
         }
+        
 
-
-        protected void btnConfirmarDesasociarElemento_Click(object sender, EventArgs e)
+        protected void btnDesasociarElementoConfirmar_Click(object sender, EventArgs e)
         {
             int idElementoRevisar = (int)Session["idElementoDesasociar"];
 
@@ -643,32 +624,33 @@ namespace ReunionesRevisionDireccion.Catalogos
             /*para que se quede en el tab de ElementoRevisars despues del posback*/
             liReunion.Attributes["class"] = "";
             liElementoRevisar.Attributes["class"] = "active";
-
+         
 
             ViewElementoRevisar.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewUsuario.Style.Add("display", "none");
 
         }
 
 
 
-        protected void btnConfirmarDesasociarUsuario_Click(object sender, EventArgs e)
+        protected void btnDesasociarUsuarioConfirmar_Click(object sender, EventArgs e)
         {
             int idUsuario = (int)Session["idUsuarioDesasociar"];
 
-            Usuario usuario = new Usuario();
+            Usuario Usuario = new Usuario();
 
-            usuario.idUsuario = idUsuario;
+            Usuario.idUsuario = idUsuario;
 
             List<Usuario> listaUsuariosAsociados = (List<Usuario>)Session["listaUsuariosAsociados"];
 
             List<Usuario> listaUsuariosSeleccionados = new List<Usuario>();
 
-            foreach (Usuario usuarios in listaUsuariosAsociados)
+            foreach (Usuario Usuarios in listaUsuariosAsociados)
             {
-                if (usuarios.idUsuario == usuario.idUsuario)
+                if (Usuarios.idUsuario == Usuario.idUsuario)
                 {
-                    listaUsuariosSeleccionados.Add(usuarios);
+                    listaUsuariosSeleccionados.Add(Usuarios);
                 }
             }
 
@@ -680,12 +662,12 @@ namespace ReunionesRevisionDireccion.Catalogos
                 listaUsuariosNoAsociados.Add(Usuarios);
             }
 
-            foreach (Usuario usuarioAsociado in listaUsuariosAsociados)
+            foreach (Usuario UsuarioAsociado in listaUsuariosAsociados)
             {
                 Boolean asociar = true;
                 foreach (Usuario Usuarios in listaUsuariosSeleccionados)
                 {
-                    if (usuarioAsociado.idUsuario == Usuarios.idUsuario)
+                    if (UsuarioAsociado.idUsuario == Usuarios.idUsuario)
                     {
                         asociar = false;
                         break;
@@ -694,7 +676,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
                 if (asociar)
                 {
-                    listaUsuariosAsociadosTemp.Add(usuarioAsociado);
+                    listaUsuariosAsociadosTemp.Add(UsuarioAsociado);
                 }
             }
 
@@ -710,9 +692,8 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             ViewUsuario.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
-
+            ViewElementoRevisar.Style.Add("display", "none");
         }
-
 
 
 
@@ -729,90 +710,14 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");
+            String url = Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx");
             Response.Redirect(url);
         }
 
-        /// <summary>
-        /// Priscilla Mena
-        /// 24/10/2018
-        /// Efecto:descarga el archivo para que el usuario lo pueda ver
-        /// Requiere: clic en el enlace al archivo
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        protected void btnVerArchivo_Click(object sender, EventArgs e)
-        {
-            String[] infoArchivo = (((LinkButton)(sender)).CommandArgument).ToString().Split(',');
-            String nombreArchivo = infoArchivo[1];
-            String rutaArchivo = infoArchivo[2];
-
-            FileStream fileStream = new FileStream(rutaArchivo, FileMode.Open, FileAccess.Read);
-            BinaryReader binaryReader = new BinaryReader(fileStream);
-            Byte[] blobValue = binaryReader.ReadBytes(Convert.ToInt32(fileStream.Length));
-
-            fileStream.Close();
-            binaryReader.Close();
-
-            descargar(nombreArchivo, blobValue);
-        }
 
 
+    
 
-        /// <summary>
-        /// Priscilla Mena
-        /// 24/10/2018
-        /// Efecto:elimina el archivo seleccionado de la reunion a editar
-        /// Requiere: -
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        protected void btnEliminarArchivo_Click(object sender, EventArgs e)
-        {
-            String[] arg = new String[2];
-
-            // Como estamos pasando dos argumentos a través de CommandArgument, entonces tenemos que separarlos por el ";" que agregamos en medio de ellos
-            arg = (((LinkButton)(sender)).CommandArgument).ToString().Split(';');
-
-            int idArchivo = Convert.ToInt32(arg[0]);
-            String nombreArchivoEliminar = arg[1];
-            String ruta = arg[2];
-
-            ArchivoReunion archivoReunion = new ArchivoReunion();
-            archivoReunion.idArchivoReunion = idArchivo;
-            archivoReunion.nombreArchivo = nombreArchivoEliminar;
-            archivoReunion.rutaArchivo = ruta;
-
-            if (System.IO.File.Exists(@ruta))
-            {
-                try
-                {
-                    System.IO.File.Delete(@ruta);
-
-                }
-                catch (Exception ex)
-                {
-                    (this.Master as Site).Mensaje("No se pudo eliminar el archivo", "¡Alerta!");
-                }
-            }
-
-            archivoReunionServicios.eliminarArchivoReunion(archivoReunion);
-
-            Reunion Reunion = (Reunion)Session["ReunionEditar"];
-            List<ArchivoReunion> listaArchivosReunion = archivoReunionServicios.getArchivosReunionPorIdReunion(Reunion);
-
-            //Session["listaArchivosReunionAsociados"] = listaArchivosReunion.Count > 0 ? listaArchivosReunion : null;
-            Session["listaArchivosReunionAsociados"] = listaArchivosReunion;
-
-
-            cargarArchivosReunion();
-        }
-
-      
         /// <summary>
         /// Priscilla Mena
         /// 24/10/2018
@@ -864,44 +769,8 @@ namespace ReunionesRevisionDireccion.Catalogos
             return listaArchivos;
         }
 
-        /// <summary>
-        /// Priscilla Mena
-        /// 24/10/2018
-        /// Efecto:agregar archivos a la reunion a editar
-        /// Requiere: 
-        /// Modifica: -
-        /// Devuelve: -
-        /// </summary>
-        /// <param></param>
-        /// <returns></returns>
-        protected void btnAgregarArchivos_Click(object sender, EventArgs e)
-        {
-            fuArchivos = (FileUpload)Session["archivo"];
-            if (fuArchivos != null && fuArchivos.HasFiles)
-            {
-                Reunion reunion = (Reunion)Session["ReunionEditar"];
-                // Inserción de los archivos en el servidor y en la BD
-                List<ArchivoReunion> listaArchivos = guardarArchivos(reunion, fuArchivos);
-
-                foreach (ArchivoReunion archivo in listaArchivos)
-                {
-                  
-                    archivoReunionServicios.insertarArchivoReunion(archivo);
-                }
-
-                List<ArchivoReunion> listaArchivosReunion = archivoReunionServicios.getArchivosReunionPorIdReunion(reunion);
-
-                Session["listaArchivosReunionAsociados"] = listaArchivosReunion;
-
-                cargarArchivosReunion();
-            }
-            else
-            {
-                (this.Master as Site).Mensaje("Si desea agregar un(os) archivos a esta Reunion, primero debe \"Elegir archivos\" y luego darle clic al botón \"Agregar archivos\".", "¡Alerta!");
-            }
-        }
+     
 
         #endregion
-
     }
-}
+} 

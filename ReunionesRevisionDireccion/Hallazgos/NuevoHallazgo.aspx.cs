@@ -224,26 +224,8 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             Hallazgo hallazgo = new Hallazgo();
 
-            //***** preguntar esto del codigo accion
-            int ano = Convert.ToInt32(reunion.anno.ToString().Substring(2, 2));
-            int numero = reunionServicios.getUltimoNumeroPorAnno(reunion.anno);
-
-            numero++;
-
-            String numeroCodigo = "";
-
-            if (numero >= 1 && numero <= 9)
-                numeroCodigo += "000" + numero;
-            else if (numero >= 10 && numero <= 99)
-                numeroCodigo += "00" + numero;
-            else if (numero >= 100 && numero <= 999)
-                numeroCodigo += "0" + numero;
-
-            reunion.consecutivo = numeroCodigo + "-" + ano;
-
-
-            hallazgo.codigoAccion = numero;
-            //**********************************************
+            hallazgo.codigoAccion = txtCodigoAccion.Text;
+       
             hallazgo.estado = estado;
             hallazgo.fechaMaximaImplementacion = fecha;
             hallazgo.usuario = usuario;

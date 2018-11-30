@@ -15,7 +15,7 @@ namespace Entidades
     {
         public int idHallazgo { get; set; }
         public DateTime fechaMaximaImplementacion { get; set; }
-        public int codigoAccion { get; set;}
+        public String codigoAccion { get; set;}
         public String observaciones { get; set; }
         public Estado estado { get; set; }
         public Usuario usuario { get; set; }

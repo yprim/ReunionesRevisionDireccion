@@ -48,7 +48,7 @@ namespace AccesoDatos
 
                 hallazgo.idHallazgo = Convert.ToInt32(reader["idHallazgo"].ToString());
                 hallazgo.fechaMaximaImplementacion = Convert.ToDateTime(reader["fechaMaximaImplementacion"].ToString());
-                hallazgo.codigoAccion = Convert.ToInt32(reader["codigoAccion"].ToString());
+                hallazgo.codigoAccion = reader["codigoAccion"].ToString();
                 hallazgo.observaciones = reader["observaciones"].ToString();
 
                 Estado estado = new Estado();
@@ -202,7 +202,7 @@ namespace AccesoDatos
 
                 hallazgo.idHallazgo = Convert.ToInt32(reader["idHallazgo"].ToString());
                 hallazgo.fechaMaximaImplementacion = Convert.ToDateTime(reader["fechaMaximaImplementacion"].ToString());
-                hallazgo.codigoAccion = Convert.ToInt32(reader["codigoAccion"].ToString());
+                hallazgo.codigoAccion = reader["codigoAccion"].ToString();
                 hallazgo.observaciones = reader["observaciones"].ToString();
 
                 Estado estado = new Estado();
@@ -219,6 +219,35 @@ namespace AccesoDatos
             }
             sqlConnection.Close();
             return listaHallazgos;
+        }
+
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 21/11/2018
+        /// Efecto: elimina una Hallazgo en la base de datos
+        /// Requiere: Hallazgo 
+        /// Modifica: Hallazgoes
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="reunion"></param>
+        /// <returns></returns>
+        public void eliminarHallazgo(Reunion reunion)
+        {
+            SqlConnection sqlConnection = conexion.conexionRRD();
+
+            SqlCommand sqlCommand = new SqlCommand("Delete Hallazgo " +
+                                                    "where idHallazgo = @idHallazgo;", sqlConnection);
+
+            sqlCommand.Parameters.AddWithValue("@idHallazgo", reunion.idReunion);
+            sqlCommand.Parameters.AddWithValue("@activo", false);
+
+            sqlConnection.Open();
+            sqlCommand.ExecuteReader();
+            sqlConnection.Close();
+
+
         }
 
 

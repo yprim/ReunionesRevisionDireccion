@@ -71,25 +71,25 @@
     <Content Include="ArchivoBaseDatos.txt" />
     <Content Include="Catalogos\AdministrarElementoRevisar.aspx" />
     <Content Include="Catalogos\AdministrarEstado.aspx" />
-    <Content Include="Catalogos\AdministrarHallazgo.aspx" />
-    <Content Include="Catalogos\AdministrarReunion.aspx" />
-    <Content Include="Catalogos\AdministrarReunionHallazgo.aspx" />
+    <Content Include="Hallazgos\AdministrarHallazgo.aspx" />
+    <Content Include="Reuniones\AdministrarReunion.aspx" />
+    <Content Include="Hallazgos\AdministrarReunionHallazgo.aspx" />
     <Content Include="Catalogos\AdministrarTipo.aspx" />
     <Content Include="Catalogos\AdministrarUsuario.aspx" />
     <Content Include="Catalogos\EditarElementoRevisar.aspx" />
     <Content Include="Catalogos\EditarEstado.aspx" />
-    <Content Include="Catalogos\EditarReunion.aspx" />
+    <Content Include="Reuniones\EditarReunion.aspx" />
     <Content Include="Catalogos\EditarTipo.aspx" />
     <Content Include="Catalogos\EditarUsuario.aspx" />
     <Content Include="Catalogos\EliminarElementoRevisar.aspx" />
     <Content Include="Catalogos\EliminarEstado.aspx" />
-    <Content Include="Catalogos\EliminarReunion.aspx" />
+    <Content Include="Reuniones\EliminarReunion.aspx" />
     <Content Include="Catalogos\EliminarTipo.aspx" />
     <Content Include="Catalogos\EliminarUsuario.aspx" />
-    <Content Include="Catalogos\NuevaReunion.aspx" />
+    <Content Include="Reuniones\NuevaReunion.aspx" />
     <Content Include="Catalogos\NuevoElementoRevisar.aspx" />
     <Content Include="Catalogos\NuevoEstado.aspx" />
-    <Content Include="Catalogos\NuevoHallazgo.aspx" />
+    <Content Include="Hallazgos\NuevoHallazgo.aspx" />
     <Content Include="Catalogos\NuevoTipo.aspx" />
     <Content Include="Catalogos\NuevoUsuario.aspx" />
     <Content Include="Configuracion\Configuracion.aspx" />
@@ -157,25 +157,25 @@
     <Compile Include="Catalogos\AdministrarEstado.aspx.designer.cs">
       <DependentUpon>AdministrarEstado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\AdministrarHallazgo.aspx.cs">
+    <Compile Include="Hallazgos\AdministrarHallazgo.aspx.cs">
       <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\AdministrarHallazgo.aspx.designer.cs">
+    <Compile Include="Hallazgos\AdministrarHallazgo.aspx.designer.cs">
       <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\AdministrarReunion.aspx.cs">
+    <Compile Include="Reuniones\AdministrarReunion.aspx.cs">
       <DependentUpon>AdministrarReunion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\AdministrarReunion.aspx.designer.cs">
+    <Compile Include="Reuniones\AdministrarReunion.aspx.designer.cs">
       <DependentUpon>AdministrarReunion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\AdministrarReunionHallazgo.aspx.cs">
+    <Compile Include="Hallazgos\AdministrarReunionHallazgo.aspx.cs">
       <DependentUpon>AdministrarReunionHallazgo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\AdministrarReunionHallazgo.aspx.designer.cs">
+    <Compile Include="Hallazgos\AdministrarReunionHallazgo.aspx.designer.cs">
       <DependentUpon>AdministrarReunionHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\AdministrarTipo.aspx.cs">
@@ -206,11 +206,11 @@
     <Compile Include="Catalogos\EditarEstado.aspx.designer.cs">
       <DependentUpon>EditarEstado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\EditarReunion.aspx.cs">
+    <Compile Include="Reuniones\EditarReunion.aspx.cs">
       <DependentUpon>EditarReunion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\EditarReunion.aspx.designer.cs">
+    <Compile Include="Reuniones\EditarReunion.aspx.designer.cs">
       <DependentUpon>EditarReunion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\EditarTipo.aspx.cs">
@@ -241,11 +241,11 @@
     <Compile Include="Catalogos\EliminarEstado.aspx.designer.cs">
       <DependentUpon>EliminarEstado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\EliminarReunion.aspx.cs">
+    <Compile Include="Reuniones\EliminarReunion.aspx.cs">
       <DependentUpon>EliminarReunion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\EliminarReunion.aspx.designer.cs">
+    <Compile Include="Reuniones\EliminarReunion.aspx.designer.cs">
       <DependentUpon>EliminarReunion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\EliminarTipo.aspx.cs">
@@ -262,11 +262,11 @@
     <Compile Include="Catalogos\EliminarUsuario.aspx.designer.cs">
       <DependentUpon>EliminarUsuario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\NuevaReunion.aspx.cs">
+    <Compile Include="Reuniones\NuevaReunion.aspx.cs">
       <DependentUpon>NuevaReunion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\NuevaReunion.aspx.designer.cs">
+    <Compile Include="Reuniones\NuevaReunion.aspx.designer.cs">
       <DependentUpon>NuevaReunion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\NuevoElementoRevisar.aspx.cs">
@@ -283,11 +283,11 @@
     <Compile Include="Catalogos\NuevoEstado.aspx.designer.cs">
       <DependentUpon>NuevoEstado.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Catalogos\NuevoHallazgo.aspx.cs">
+    <Compile Include="Hallazgos\NuevoHallazgo.aspx.cs">
       <DependentUpon>NuevoHallazgo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalogos\NuevoHallazgo.aspx.designer.cs">
+    <Compile Include="Hallazgos\NuevoHallazgo.aspx.designer.cs">
       <DependentUpon>NuevoHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\NuevoTipo.aspx.cs">
@@ -375,8 +375,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="packages.config" />
-    <Content Include="Scripts\bootstrap3-dialog-master.zip" />
     <Content Include="Site.Master" />
+    <Content Include="Scripts\bootstrap3-dialog-master.zip" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

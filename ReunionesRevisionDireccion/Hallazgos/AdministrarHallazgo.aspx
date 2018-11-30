@@ -27,7 +27,6 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Hallazgo</th>
                                     <th>Usuario</th>
                                     <th>Fecha Maxima de Implementacion</th>
                                     <th>Código Acción</th>
@@ -42,9 +41,6 @@
                             <td>
                                 <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idHallazgo") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                                 <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idHallazgo") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
-                            </td>
-                            <td>
-                                <%# Eval("idHallazgo") %>
                             </td>
                             <td>
                                 <%# Eval("usuario.nombre") %>
