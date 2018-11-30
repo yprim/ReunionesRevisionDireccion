@@ -238,6 +238,24 @@ namespace ReunionesRevisionDireccion.Catalogos {
         protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
         
         /// <summary>
+        /// Control lblEstado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEstado;
+        
+        /// <summary>
+        /// Control ddlEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstados;
+        
+        /// <summary>
         /// Control lblFecha.
         /// </summary>
         /// <remarks>

@@ -18,7 +18,10 @@ namespace ReunionesRevisionDireccion.Catalogos
         ReunionElementoRevisarServicios reunionElementoRevisarServicios = new ReunionElementoRevisarServicios();
         ArchivoReunionServicios archivoReunionServicios = new ArchivoReunionServicios();
         UsuarioServicios usuarioServicios = new UsuarioServicios();
+        EstadoServicios estadoServicios = new EstadoServicios();
         ReunionUsuarioServicios reunionUsuarioServicios = new ReunionUsuarioServicios();
+        HallazgoServicios hallazgoServicios = new HallazgoServicios();
+        ReunionElementoRevisarHallazgoServicios reunionElementoRevisarHallazgoServicios = new ReunionElementoRevisarHallazgoServicios();
         #endregion
 
         #region pageload
@@ -49,6 +52,7 @@ namespace ReunionesRevisionDireccion.Catalogos
                 txtTipos.Text = reunionHallazgos.tipo.descripcion;
                 cargarDatosTblElementos();
                 cargarDatosTblUsuarios();
+                llenarDdlEstados();
             }
 
         }
@@ -56,25 +60,19 @@ namespace ReunionesRevisionDireccion.Catalogos
         #endregion
 
         #region logica
-        public void llenarDatos()
-        {
-            Reunion reunionHallazgos = (Reunion)Session["ReunionHallazgos"];
-            if (reunionHallazgos == null)
-            {
-                reunionHallazgos = new Reunion();
-            }
-            reunionHallazgos.idReunion = reunionHallazgos.idReunion;
 
-        }
+        
 
         /// <summary>
-        /// Leonardo Carrion
-        /// 03/nov/2017
-        /// Efecto: carga los clientes en la tabla de clientes
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:Sirve para cargar los elementos  que van a estar en la tabla del modal
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
         /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         private void cargarDatosTblElementos()
         {
             List<ElementoRevisar> listaElementos = new List<ElementoRevisar>();
@@ -85,6 +83,17 @@ namespace ReunionesRevisionDireccion.Catalogos
             Session["listaElementos"] = listaElementos;
         }
 
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:Sirve para cargar los usuarios que van a estar en el modal
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         private void cargarDatosTblUsuarios()
         {
             List<Usuario> listaUsuarios = new List<Usuario>();
@@ -93,6 +102,25 @@ namespace ReunionesRevisionDireccion.Catalogos
             rpUsuario.DataBind();
 
             Session["listaUsuarios"] = listaUsuarios;
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:Metodo que carga todos los estados en el DropDownList
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        public void llenarDdlEstados()
+        {
+            List<Estado> listaTipoes = estadoServicios.getEstados();
+            ddlEstados.DataSource = listaTipoes;
+            ddlEstados.DataTextField = "descripcionEstado";
+            ddlEstados.DataValueField = "idEstado";
+            ddlEstados.DataBind();
         }
 
         private void descargar(string fileName, Byte[] file)
@@ -185,8 +213,47 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
+            Usuario usuario = (Usuario)Session["usuarioSeleccionado"];
+            ElementoRevisar elemento = (ElementoRevisar)Session["elementoSeleccionado"];
+            Reunion reunion = (Reunion)Session["ReunionHallazgos"];
+            Estado estado = new Estado();
+            estado.idEstado = Convert.ToInt32(ddlEstados.SelectedValue);
+            estado.descripcionEstado = ddlEstados.SelectedItem.Text;
+
+            DateTime fecha = Convert.ToDateTime(txtFecha.Text);
+
+            Hallazgo hallazgo = new Hallazgo();
+
+            //***** preguntar esto del codigo accion
+            int ano = Convert.ToInt32(reunion.anno.ToString().Substring(2, 2));
+            int numero = reunionServicios.getUltimoNumeroPorAnno(reunion.anno);
+
+            numero++;
+
+            String numeroCodigo = "";
+
+            if (numero >= 1 && numero <= 9)
+                numeroCodigo += "000" + numero;
+            else if (numero >= 10 && numero <= 99)
+                numeroCodigo += "00" + numero;
+            else if (numero >= 100 && numero <= 999)
+                numeroCodigo += "0" + numero;
+
+            reunion.consecutivo = numeroCodigo + "-" + ano;
 
 
+            hallazgo.codigoAccion = numero;
+            //**********************************************
+            hallazgo.estado = estado;
+            hallazgo.fechaMaximaImplementacion = fecha;
+            hallazgo.usuario = usuario;
+            hallazgo.observaciones = txtObservaciones.Text;
+
+           int codigoHallazgo= hallazgoServicios.insertarHallazgo(hallazgo);
+
+            hallazgo.idHallazgo = codigoHallazgo;
+
+            reunionElementoRevisarHallazgoServicios.insertarReunionElementoHallazgo(reunion, elemento, hallazgo);
 
             String url = Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx");
             Response.Redirect(url);
@@ -248,22 +315,36 @@ namespace ReunionesRevisionDireccion.Catalogos
 
          
         }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:Metodo que se activa cuando se le da click al enlace de usuarios responsables
+        /// Carga un modal con los usuarios
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnUsuario_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalUsuarios();", true);
         }
 
 
+     
         /// <summary>
-        /// Leonardo Carrion
-        /// 06/nov/2017
-        /// Efecto: se encarga de llenar el textbox con el nombre del cliente seleccionado y llenar la tabla de contactos
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:se encarga de llenar el textbox con el nombre del elemento seleccionado
+        /// además guarda ese elemento en memoria
         /// Requiere: clic en el boton de "✓"
-        /// Modifica: la lista de contactos
+        /// Modifica: -
         /// Devuelve: -
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnSeleccionarElemento_Click(object sender, EventArgs e)
         {
 
@@ -291,15 +372,16 @@ namespace ReunionesRevisionDireccion.Catalogos
 
 
         /// <summary>
-        /// Leonardo Carrion
-        /// 06/nov/2017
-        /// Efecto: se encarga de llenar el textbox con el nombre del cliente seleccionado y llenar la tabla de contactos
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:se encarga de llenar el textbox con el nombre del usuario seleccionado
+        /// además guarda ese usuario en memoria
         /// Requiere: clic en el boton de "✓"
-        /// Modifica: la lista de contactos
+        /// Modifica: -
         /// Devuelve: -
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnSeleccionarUsuario_Click(object sender, EventArgs e)
         {
             int idUsuario = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());

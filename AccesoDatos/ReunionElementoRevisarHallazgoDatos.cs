@@ -58,7 +58,7 @@ namespace AccesoDatos
         {
             SqlConnection sqlConnection = conexion.conexionRRD();
 
-            SqlCommand sqlCommand = new SqlCommand("DELETE Reunion_ElementoRevisar WHERE idReunion = @idReunion and idElemento = @idElemento and idHallazgo = @idHallazgo", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand("DELETE Reunion_ElementoRevisar_Hallazgo WHERE idReunion = @idReunion and idElemento = @idElemento and idHallazgo = @idHallazgo", sqlConnection);
             sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
             sqlCommand.Parameters.AddWithValue("@idElemento", elementoRevisar.idElemento);
             sqlCommand.Parameters.AddWithValue("@idHallazgo", hallazgo.idHallazgo);
@@ -66,6 +66,30 @@ namespace AccesoDatos
             sqlCommand.ExecuteReader();
 
             sqlConnection.Close();
+
+        }
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 22/11/2018
+        /// Efecto: método que elimina  todas las relaciones que contengan esa reunión
+        /// Requiere: Reunión
+        /// Modifica: -
+        /// Devuelve: -
+        /// <param name="reunion"></param>
+        /// </summary>
+        /// <returns></returns>
+        public void eliminarReunionElementoHallazgo(Reunion reunion)
+        {
+            SqlConnection sqlConnection = conexion.conexionRRD();
+
+            SqlCommand sqlCommand = new SqlCommand("DELETE Reunion_ElementoRevisar_Hallazgo WHERE idReunion = @idReunion", sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
+            sqlConnection.Open();
+            sqlCommand.ExecuteReader();
+            sqlConnection.Close();
+
 
         }
     }

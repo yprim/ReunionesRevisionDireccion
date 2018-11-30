@@ -16,6 +16,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         ReuniónServicios reunionServicios = new ReuniónServicios();
         ElementoRevisarServicios elementoRevisarServicios = new ElementoRevisarServicios();
         ReunionElementoRevisarServicios reunionElementoRevisarServicios = new ReunionElementoRevisarServicios();
+        ReunionElementoRevisarHallazgoServicios reunionElementoRevisarHallazgoServicios = new ReunionElementoRevisarHallazgoServicios();
         ArchivoReunionServicios archivoReunionServicios = new ArchivoReunionServicios();
         UsuarioServicios usuarioServicios = new UsuarioServicios();
         ReunionUsuarioServicios reunionUsuarioServicios = new ReunionUsuarioServicios();
@@ -260,6 +261,10 @@ namespace ReunionesRevisionDireccion.Catalogos
                 archivoReunionServicios.eliminarArchivoReunion(archivoAsociado);
 
             }
+
+
+
+            reunionElementoRevisarHallazgoServicios.eliminarReunionElementoHallazgo(reunion);
             reunionServicios.eliminarReunion(reunion);
 
             String url = Page.ResolveUrl("~/Catalogos/AdministrarReunion.aspx");

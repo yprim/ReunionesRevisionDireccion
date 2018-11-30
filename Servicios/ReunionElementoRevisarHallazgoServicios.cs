@@ -45,5 +45,23 @@ namespace Servicios
         {
             reunionElementoRevisarHallazgoDatos.eliminarReunionElementoHallazgo(reunion, elementoRevisar, hallazgo);
         }
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 22/11/2018
+        /// Efecto: método que elimina  todas las relaciones que contengan esa reunión
+        /// Requiere: Reunión
+        /// Modifica: -
+        /// Devuelve: -
+        /// <param name="reunion"></param>
+        /// </summary>
+        /// <returns></returns>
+        public void eliminarReunionElementoHallazgo(Reunion reunion)
+        {
+            reunionElementoRevisarHallazgoDatos.eliminarReunionElementoHallazgo(reunion);
+
+
+        }
     }
 }

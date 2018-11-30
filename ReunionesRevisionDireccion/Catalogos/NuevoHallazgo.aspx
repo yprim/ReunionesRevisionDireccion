@@ -203,6 +203,19 @@
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <br />
                 </div>
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <div class="col-md-2 col-xs-2 col-sm-2">
+                        <asp:Label ID="lblEstado" runat="server" Text="Estado" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    </div>
+
+                    <div class="col-md-4 col-xs-4 col-sm-4">
+                        <asp:DropDownList ID="ddlEstados" class="btn btn-default dropdown-toggle" runat="server"></asp:DropDownList>
+                    </div>
+                </div>
+
+                 <div class="col-md-12 col-xs-12 col-sm-12">
+                    <br />
+                </div>
 
                    <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-3 col-xs-3 col-sm-3">
