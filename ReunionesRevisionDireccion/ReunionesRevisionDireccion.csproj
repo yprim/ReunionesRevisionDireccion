@@ -72,6 +72,7 @@
     <Content Include="Catalogos\AdministrarElementoRevisar.aspx" />
     <Content Include="Catalogos\AdministrarEstado.aspx" />
     <Content Include="Hallazgos\AdministrarHallazgo.aspx" />
+    <Content Include="Hallazgos\EliminarHallazgo.aspx" />
     <Content Include="Reuniones\AdministrarReunion.aspx" />
     <Content Include="Hallazgos\AdministrarReunionHallazgo.aspx" />
     <Content Include="Catalogos\AdministrarTipo.aspx" />
@@ -163,6 +164,13 @@
     </Compile>
     <Compile Include="Hallazgos\AdministrarHallazgo.aspx.designer.cs">
       <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hallazgos\EliminarHallazgo.aspx.cs">
+      <DependentUpon>EliminarHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hallazgos\EliminarHallazgo.aspx.designer.cs">
+      <DependentUpon>EliminarHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reuniones\AdministrarReunion.aspx.cs">
       <DependentUpon>AdministrarReunion.aspx</DependentUpon>

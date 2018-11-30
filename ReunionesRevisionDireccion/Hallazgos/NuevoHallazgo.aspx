@@ -148,7 +148,7 @@
                         <asp:TextBox ID="txtElementoSeleccionado" runat="server" Text="" Rows="3" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                     <div id="divElementoIncorrecto" runat="server" style="display: none" class="col-md-5 col-xs-5 col-sm-5">
-                        <asp:Label ID="lblElementoIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lblElementoIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Debe seleccionar un elemento" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@
                         <asp:TextBox ID="txtUsuarioSeleccionado" runat="server" Text="" Rows="3" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                     </div>
                     <div id="divUsuarioIncorrecto" runat="server" style="display: none" class="col-md-5 col-xs-5 col-sm-5">
-                        <asp:Label ID="lblUsuarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lblUsuarioIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Debe seleccionar un responsable" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
 
@@ -192,6 +192,10 @@
                     <div class="col-md-4 col-xs-4 col-sm-4">
                         <asp:TextBox class="form-control" ID="txtObservaciones" TextMode="MultiLine" runat="server"></asp:TextBox>
                     </div>
+                    <div id="divObservacionesIncorrecto" runat="server" style="display: none" class="col-md-5 col-xs-5 col-sm-5">
+                        <asp:Label ID="lblObservacionesIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
+                    </div>
+
                 </div>
 
                 <div class="col-md-12 col-xs-12 col-sm-12">
@@ -228,6 +232,7 @@
                     <asp:TextBox CssClass="form-control" ID="txtFecha" runat="server" onInput="validarFecha(this)" onChange="validarFecha(this)" onFocus="validarFecha(this)" placeholder="dd/mm/yyyy"></asp:TextBox>
                 </div>
                 <div class="col-md-5 col-xs-5 col-sm-5" id="divFechaIncorrecta" runat="server" style="display: none;">
+                 <asp:Label ID="lblFechaIncorrecta" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                 </div>
             </div>
 

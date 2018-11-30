@@ -74,7 +74,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/NuevoHallazgo.aspx");
+            String url = Page.ResolveUrl("~/Hallazgos/NuevoHallazgo.aspx");
             Response.Redirect(url);
         }
 
@@ -108,7 +108,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             Session["HallazgoEditar"] = hallazgoEditar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EditarHallazgo.aspx");
+            String url = Page.ResolveUrl("~/Hallazgos/EditarHallazgo.aspx");
             Response.Redirect(url);
 
 
@@ -144,7 +144,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             Session["HallazgoEliminar"] = hallazgoEliminar;
 
-            String url = Page.ResolveUrl("~/Catalogos/EliminarHallazgo.aspx");
+            String url = Page.ResolveUrl("~/Hallazgos/EliminarHallazgo.aspx");
             Response.Redirect(url);
         }
 

@@ -90,7 +90,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             Session["ReunionHallazgos"] = reunionHallazgos;
 
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx");
+            String url = Page.ResolveUrl("~/Hallazgos/AdministrarHallazgo.aspx");
             Response.Redirect(url);
 
 

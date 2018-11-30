@@ -237,7 +237,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             reunionElementoRevisarHallazgoServicios.insertarReunionElementoHallazgo(reunion, elemento, hallazgo);
 
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx");
+            String url = Page.ResolveUrl("~/Hallazgos/AdministrarHallazgo.aspx");
             Response.Redirect(url);
 
         }
@@ -255,7 +255,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx");
+            String url = Page.ResolveUrl("~/Hallazgos/AdministrarHallazgo.aspx");
             Response.Redirect(url);
         }
 
@@ -276,7 +276,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnRegresar_Click(object sender, EventArgs e)
         {
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarHallazgo.aspx");
+            String url = Page.ResolveUrl("~/Hallazgos/AdministrarHallazgo.aspx");
             Response.Redirect(url);
         }
 

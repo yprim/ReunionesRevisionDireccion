@@ -238,6 +238,24 @@ namespace ReunionesRevisionDireccion.Catalogos {
         protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
         
         /// <summary>
+        /// Control divObservacionesIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divObservacionesIncorrecto;
+        
+        /// <summary>
+        /// Control lblObservacionesIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblObservacionesIncorrecto;
+        
+        /// <summary>
         /// Control lblEstado.
         /// </summary>
         /// <remarks>
@@ -281,6 +299,15 @@ namespace ReunionesRevisionDireccion.Catalogos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFechaIncorrecta;
+        
+        /// <summary>
+        /// Control lblFechaIncorrecta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaIncorrecta;
         
         /// <summary>
         /// Control lblCodigoAccion.
