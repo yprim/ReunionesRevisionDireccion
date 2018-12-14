@@ -1,14 +1,3 @@
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Servicios.dll
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Servicios.pdb
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\AccesoDatos.dll
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Entidades.dll
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\AccesoDatos.pdb
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Entidades.pdb
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.csproj.CopyComplete
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.dll
-C:\Users\pmena\Desktop\Proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.pdb
 C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Servicios\bin\Debug\Servicios.dll
 C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Servicios\bin\Debug\Servicios.pdb
 C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Servicios\bin\Debug\AccesoDatos.dll
@@ -31,3 +20,14 @@ C:\Users\pmena\Desktop\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.
 \\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.csproj.CopyComplete
 \\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.dll
 \\pascal\Publico\Priscilla Mena Monge\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.pdb
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Servicios.dll
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Servicios.pdb
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\AccesoDatos.dll
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Entidades.dll
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\AccesoDatos.pdb
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\bin\Debug\Entidades.pdb
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.csprojAssemblyReference.cache
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.csproj.CoreCompileInputs.cache
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.csproj.CopyComplete
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.dll
+C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Servicios\obj\Debug\Servicios.pdb

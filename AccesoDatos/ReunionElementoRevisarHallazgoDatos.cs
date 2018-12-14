@@ -131,17 +131,30 @@ namespace AccesoDatos
         /// <param name="hallazgo"></param>
         /// </summary>
         /// <returns></returns>
-        public ElementoRevisar getElementoHallazgo(Hallazgo hallazgo)
+        public ElementoRevisar getElementoHallazgo(Reunion reunion,Hallazgo hallazgo)
         {
             ElementoRevisar elemento = new ElementoRevisar();
             SqlConnection sqlConnection = conexion.conexionRRD();
 
-            SqlCommand sqlCommand = new SqlCommand(@"SELECT e.idElemento, e.descripcionElemento 
-                                                    FROM ElementoRevisar e, Reunion_ElementoRevisar_Hallazgo reh
-                                                    WHERE  e.idElemento = reh.idElemento  AND reh.idHallazgo =@idHallazgo ", sqlConnection);
+            SqlCommand sqlCommand = new SqlCommand(@"select e.idElemento, e.descripcionElemento 
+FROM ElementoRevisar e, Reunion_ElementoRevisar_Hallazgo reh
+where reh.idReunion = @idReunion and reh.idHallazgo = @idHallazgo and 
+e.idElemento = reh.idElemento; ", sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
             sqlCommand.Parameters.AddWithValue("@idHallazgo", hallazgo.idHallazgo);
+            SqlDataReader reader;
             sqlConnection.Open();
-            sqlCommand.ExecuteReader();
+            reader = sqlCommand.ExecuteReader();
+
+            if (reader.Read())
+            {
+
+                elemento.idElemento = Convert.ToInt32(reader["idElemento"].ToString());
+                elemento.descripcionElemento = reader["descripcionElemento"].ToString();
+
+            }
+
+
             sqlConnection.Close();
             return elemento;
 

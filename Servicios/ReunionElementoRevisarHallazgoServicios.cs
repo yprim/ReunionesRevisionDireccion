@@ -74,10 +74,10 @@ namespace Servicios
         /// <param name="hallazgo"></param>
         /// </summary>
         /// <returns></returns>
-        public ElementoRevisar getElementoHallazgo(Hallazgo hallazgo)
+        public ElementoRevisar getElementoHallazgo(Reunion reunion, Hallazgo hallazgo)
         {
             
-            return reunionElementoRevisarHallazgoDatos.getElementoHallazgo(hallazgo);
+            return reunionElementoRevisarHallazgoDatos.getElementoHallazgo(reunion, hallazgo);
 
 
 

@@ -55,7 +55,7 @@ namespace ReunionesRevisionDireccion.Hallazgos
                 // fin datos de la reunion
 
                 // datos del hallazgo
-                ElementoRevisar elementoHallazgo = reunionElementoRevisarHallazgoServicios.getElementoHallazgo(hallazgoEditar);
+                ElementoRevisar elementoHallazgo = reunionElementoRevisarHallazgoServicios.getElementoHallazgo(reunionHallazgos,hallazgoEditar);
                 txtElementoSeleccionado.Text = elementoHallazgo.descripcionElemento;
                 txtUsuarioSeleccionado.Text = hallazgoEditar.usuario.nombre;
                 txtObservaciones.Text = hallazgoEditar.observaciones;
