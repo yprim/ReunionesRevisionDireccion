@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace ReunionesRevisionDireccion.Hallazgos
 {
-    public partial class EliminarHallazgo : System.Web.UI.Page
+    public partial class EditarHallazgo : System.Web.UI.Page
     {
         #region variables globales
         ReuniónServicios reunionServicios = new ReuniónServicios();
@@ -40,7 +40,7 @@ namespace ReunionesRevisionDireccion.Hallazgos
                 Session["listaUsuarios"] = null;
                 Session["usuarioSeleccionado"] = null;
 
-                Hallazgo hallazgoEliminar = (Hallazgo)Session["HallazgoEliminar"];
+                Hallazgo hallazgoEditar = (Hallazgo)Session["HallazgoEditar"];
 
                 //archivos
                 List<ArchivoReunion> listaArchivosReunion = archivoReunionServicios.getArchivosReunionPorIdReunion(reunionHallazgos);
@@ -55,28 +55,75 @@ namespace ReunionesRevisionDireccion.Hallazgos
                 // fin datos de la reunion
 
                 // datos del hallazgo
-                ElementoRevisar elementoHallazgo = reunionElementoRevisarHallazgoServicios.getElementoHallazgo(hallazgoEliminar);
+                ElementoRevisar elementoHallazgo = reunionElementoRevisarHallazgoServicios.getElementoHallazgo(hallazgoEditar);
                 txtElementoSeleccionado.Text = elementoHallazgo.descripcionElemento;
-                txtUsuarioSeleccionado.Text = hallazgoEliminar.usuario.nombre;
-                txtObservaciones.Text = hallazgoEliminar.observaciones;
-                txtEstados.Text = hallazgoEliminar.estado.descripcionEstado;
-          
-                txtFecha.Text = hallazgoEliminar.fechaMaximaImplementacion.ToString();
-                txtCodigoAccion.Text = hallazgoEliminar.codigoAccion;
-                //cargarDatosTblUsuarios();
-                //llenarDdlEstados();
+                txtUsuarioSeleccionado.Text = hallazgoEditar.usuario.nombre;
+                txtObservaciones.Text = hallazgoEditar.observaciones;
 
+                int contIndexEstados = 0;
+                foreach (ListItem item in ddlEstados.Items)
+                {
+                    if (Convert.ToInt32(item.Value) == hallazgoEditar.estado.idEstado)
+                    {
+                        ddlEstados.SelectedIndex = contIndexEstados;
+                        break;
+                    }
+                    contIndexEstados++;
+                }
+
+                txtFecha.Text = hallazgoEditar.fechaMaximaImplementacion.ToString();
+                txtCodigoAccion.Text = hallazgoEditar.codigoAccion;
+                cargarDatosTblUsuarios();
+                llenarDdlEstados();
             }
 
-
-
         }
+
         #endregion
 
         #region logica
 
 
 
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:Sirve para cargar los usuarios que van a estar en el modal
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        private void cargarDatosTblUsuarios()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            listaUsuarios = usuarioServicios.getUsuarios();
+            rpUsuario.DataSource = listaUsuarios;
+            rpUsuario.DataBind();
+
+            Session["listaUsuarios"] = listaUsuarios;
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:Metodo que carga todos los estados en el DropDownList
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        public void llenarDdlEstados()
+        {
+            List<Estado> listaTipoes = estadoServicios.getEstados();
+            ddlEstados.DataSource = listaTipoes;
+            ddlEstados.DataTextField = "descripcionEstado";
+            ddlEstados.DataValueField = "idEstado";
+            ddlEstados.DataBind();
+        }
 
         private void descargar(string fileName, Byte[] file)
         {
@@ -168,15 +215,29 @@ namespace ReunionesRevisionDireccion.Hallazgos
         /// <returns></returns>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Hallazgo hallazgoEliminar = (Hallazgo)Session["HallazgoEliminar"];
+            Hallazgo hallazgoEditar = (Hallazgo)Session["HallazgoEditar"];
 
-            //elimina las asociaciones
-            reunionElementoRevisarHallazgoServicios.eliminarReunionElementoHallazgo(hallazgoEliminar);
+            Usuario usuario = (Usuario)Session["usuarioSeleccionado"];
+            Reunion reunion = (Reunion)Session["ReunionHallazgos"];
+            Estado estado = new Estado();
+            estado.idEstado = Convert.ToInt32(ddlEstados.SelectedValue);
+            estado.descripcionEstado = ddlEstados.SelectedItem.Text;
 
-            //elimina el hallazgo
-            hallazgoServicios.eliminarHallazgo(hallazgoEliminar);
+            DateTime fecha = Convert.ToDateTime(txtFecha.Text);
 
+            hallazgoEditar.codigoAccion = txtCodigoAccion.Text;
+            hallazgoEditar.estado = estado;
+            hallazgoEditar.fechaMaximaImplementacion = fecha;
+            if(usuario != null)
+            {
+                hallazgoEditar.usuario = usuario;
+            }
+            
+            hallazgoEditar.observaciones = txtObservaciones.Text;
 
+             hallazgoServicios.actualizarHallazgo(hallazgoEditar);
+
+           
 
             String url = Page.ResolveUrl("~/Hallazgos/AdministrarHallazgo.aspx");
             Response.Redirect(url);
@@ -257,8 +318,74 @@ namespace ReunionesRevisionDireccion.Hallazgos
 
 
 
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:se encarga de llenar el textbox con el nombre del elemento seleccionado
+        /// además guarda ese elemento en memoria
+        /// Requiere: clic en el boton de "✓"
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnSeleccionarElemento_Click(object sender, EventArgs e)
+        {
 
-      
+            int idElementoRevisar = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<ElementoRevisar> listaElementos = (List<ElementoRevisar>)Session["listaElementos"];
+
+            ElementoRevisar elementoSeleccionar = new ElementoRevisar();
+
+            foreach (ElementoRevisar elemento in listaElementos)
+            {
+                if (elemento.idElemento == idElementoRevisar)
+                {
+                    elementoSeleccionar = elemento;
+                    break;
+                }
+            }
+
+            txtElementoSeleccionado.Text = elementoSeleccionar.descripcionElemento;
+
+            Session["elementoSeleccionado"] = elementoSeleccionar;
+
+
+        }
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 29/11/2018
+        /// Efecto:se encarga de llenar el textbox con el nombre del usuario seleccionado
+        /// además guarda ese usuario en memoria
+        /// Requiere: clic en el boton de "✓"
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnSeleccionarUsuario_Click(object sender, EventArgs e)
+        {
+            int idUsuario = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Usuario> listaUsuarios = (List<Usuario>)Session["listaUsuarios"];
+
+            Usuario UsuarioSeleccionar = new Usuario();
+
+            foreach (Usuario Usuario in listaUsuarios)
+            {
+                if (Usuario.idUsuario == idUsuario)
+                {
+                    UsuarioSeleccionar = Usuario;
+                    break;
+                }
+            }
+
+            txtUsuarioSeleccionado.Text = UsuarioSeleccionar.nombre;
+            Session["usuarioSeleccionado"] = UsuarioSeleccionar;
+        }
 
         #endregion
     }

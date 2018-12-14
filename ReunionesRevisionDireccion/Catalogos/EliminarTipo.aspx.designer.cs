@@ -10,7 +10,7 @@
 namespace ReunionesRevisionDireccion.Catalogos {
     
     
-    public partial class EliminarTipo {
+    public partial class EliminarTipo1 {
         
         /// <summary>
         /// Control lblEliminarTipo.

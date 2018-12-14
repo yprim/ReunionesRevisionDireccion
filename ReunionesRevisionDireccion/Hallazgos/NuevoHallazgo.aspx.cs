@@ -46,10 +46,12 @@ namespace ReunionesRevisionDireccion.Catalogos
                 Session["listaArchivosReunionAsociados"] = listaArchivosReunion;
                 cargarArchivosReunion();
 
+                 // datos de la reunion 
                 txtAnno.Text = reunionHallazgos.anno.ToString();
                 txtConsecutivo.Text = reunionHallazgos.consecutivo.ToString();
                 txtMes.Text = reunionHallazgos.mes.ToString();
                 txtTipos.Text = reunionHallazgos.tipo.descripcion;
+                // fin datos de la reunion
                 cargarDatosTblElementos();
                 cargarDatosTblUsuarios();
                 llenarDdlEstados();
@@ -385,11 +387,11 @@ namespace ReunionesRevisionDireccion.Catalogos
             Session["usuarioSeleccionado"] = UsuarioSeleccionar;
         }
 
-        
+        #endregion
 
     }
 
-        #endregion
 
-    
+
+
 }

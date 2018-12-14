@@ -42,6 +42,9 @@ namespace AccesoDatos
             sqlConnection.Close();
         }
 
+
+
+
         /// <summary>
         /// Priscilla Mena
         /// 22/11/2018
@@ -61,6 +64,31 @@ namespace AccesoDatos
             SqlCommand sqlCommand = new SqlCommand("DELETE Reunion_ElementoRevisar_Hallazgo WHERE idReunion = @idReunion and idElemento = @idElemento and idHallazgo = @idHallazgo", sqlConnection);
             sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
             sqlCommand.Parameters.AddWithValue("@idElemento", elementoRevisar.idElemento);
+            sqlCommand.Parameters.AddWithValue("@idHallazgo", hallazgo.idHallazgo);
+            sqlConnection.Open();
+            sqlCommand.ExecuteReader();
+
+            sqlConnection.Close();
+
+        }
+
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 14/12/2018
+        /// Efecto: método que elimina todas las asociaciones que poseen ese hallazgo
+        /// Requiere: Reunión, ElementoRevisar, Hallazgo
+        /// Modifica: inserta en la base de datos un registro de Reunion_ElementoRevisar_Hallazgo
+        /// Devuelve: -
+        /// <param name="hallazgo"></param>
+        /// </summary>
+        /// <returns></returns>
+        public void eliminarReunionElementoHallazgo( Hallazgo hallazgo)
+        {
+            SqlConnection sqlConnection = conexion.conexionRRD();
+
+            SqlCommand sqlCommand = new SqlCommand("DELETE Reunion_ElementoRevisar_Hallazgo WHERE idHallazgo = @idHallazgo", sqlConnection);
             sqlCommand.Parameters.AddWithValue("@idHallazgo", hallazgo.idHallazgo);
             sqlConnection.Open();
             sqlCommand.ExecuteReader();
@@ -93,6 +121,37 @@ namespace AccesoDatos
 
         }
 
-       
+        /// <summary>
+        /// Priscilla Mena
+        /// 14/12/2018
+        /// Efecto: recupera el elemento a revisar asociado a ese hallazgo
+        /// Requiere: Hallazgo
+        /// Modifica: -
+        /// Devuelve: ElemenetoRevisar
+        /// <param name="hallazgo"></param>
+        /// </summary>
+        /// <returns></returns>
+        public ElementoRevisar getElementoHallazgo(Hallazgo hallazgo)
+        {
+            ElementoRevisar elemento = new ElementoRevisar();
+            SqlConnection sqlConnection = conexion.conexionRRD();
+
+            SqlCommand sqlCommand = new SqlCommand(@"SELECT e.idElemento, e.descripcionElemento 
+                                                    FROM ElementoRevisar e, Reunion_ElementoRevisar_Hallazgo reh
+                                                    WHERE  e.idElemento = reh.idElemento  AND reh.idHallazgo =@idHallazgo ", sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@idHallazgo", hallazgo.idHallazgo);
+            sqlConnection.Open();
+            sqlCommand.ExecuteReader();
+            sqlConnection.Close();
+            return elemento;
+
+
+
+
+
+        }
+
+
+
     }
 }

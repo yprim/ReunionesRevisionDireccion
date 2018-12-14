@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace ReunionesRevisionDireccion.Catalogos
 {
-    public partial class EliminarTipo : System.Web.UI.Page
+    public partial class EliminarTipo1 : System.Web.UI.Page
     {
 
         #region variables globales
@@ -23,7 +23,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             {
                 Tipo tipo = (Tipo)Session["tipoEliminar"];
                 txtDescripcionTipo.Text = tipo.descripcion;
-                
+
             }
 
         }
@@ -31,7 +31,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         #region eventos
 
-       
+
         /// <summary>
         /// Priscilla Mena
         /// 07/09/2018

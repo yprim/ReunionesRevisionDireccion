@@ -130,6 +130,8 @@ namespace AccesoDatos
             sqlCommand.Parameters.AddWithValue("@codigoAccion", hallazgo.codigoAccion);
             sqlCommand.Parameters.AddWithValue("@idEstado", hallazgo.estado.idEstado);
             sqlCommand.Parameters.AddWithValue("@observaciones", hallazgo.observaciones);
+            sqlCommand.Parameters.AddWithValue("@idHallazgo", hallazgo.idHallazgo);
+
 
             sqlConnection.Open();
             sqlCommand.ExecuteReader();

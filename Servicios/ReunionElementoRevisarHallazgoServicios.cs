@@ -63,5 +63,46 @@ namespace Servicios
 
 
         }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 14/12/2018
+        /// Efecto: recupera el elemento a revisar asociado a ese hallazgo
+        /// Requiere: Hallazgo
+        /// Modifica: -
+        /// Devuelve: ElemenetoRevisar
+        /// <param name="hallazgo"></param>
+        /// </summary>
+        /// <returns></returns>
+        public ElementoRevisar getElementoHallazgo(Hallazgo hallazgo)
+        {
+            
+            return reunionElementoRevisarHallazgoDatos.getElementoHallazgo(hallazgo);
+
+
+
+
+
+        }
+
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 14/12/2018
+        /// Efecto: método que elimina todas las asociaciones que poseen ese hallazgo
+        /// Requiere: Reunión, ElementoRevisar, Hallazgo
+        /// Modifica: inserta en la base de datos un registro de Reunion_ElementoRevisar_Hallazgo
+        /// Devuelve: -
+        /// <param name="hallazgo"></param>
+        /// </summary>
+        /// <returns></returns>
+        public void eliminarReunionElementoHallazgo(Hallazgo hallazgo)
+        {
+
+            reunionElementoRevisarHallazgoDatos.eliminarReunionElementoHallazgo(hallazgo);
+        }
+
+
+
     }
 }

@@ -10,7 +10,7 @@
 namespace ReunionesRevisionDireccion.Hallazgos {
     
     
-    public partial class EliminarHallazgo {
+    public partial class EditarHallazgo {
         
         /// <summary>
         /// Control ViewReunion.
@@ -22,13 +22,13 @@ namespace ReunionesRevisionDireccion.Hallazgos {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl ViewReunion;
         
         /// <summary>
-        /// Control lblEliminarHallazgo.
+        /// Control lblNuevoHallazgo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEliminarHallazgo;
+        protected global::System.Web.UI.WebControls.Label lblNuevoHallazgo;
         
         /// <summary>
         /// Control lblConsecutivo.
@@ -163,7 +163,34 @@ namespace ReunionesRevisionDireccion.Hallazgos {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtUsuarioSeleccionado;
+        protected global::System.Web.UI.WebControls.TextBox txtUsuarioSeleccionado;
+        
+        /// <summary>
+        /// Control divUsuarioIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divUsuarioIncorrecto;
+        
+        /// <summary>
+        /// Control lblUsuarioIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUsuarioIncorrecto;
+        
+        /// <summary>
+        /// Control btnUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnUsuario;
         
         /// <summary>
         /// Control lblHallazgo.
@@ -181,7 +208,25 @@ namespace ReunionesRevisionDireccion.Hallazgos {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtObservaciones;
+        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
+        
+        /// <summary>
+        /// Control divObservacionesIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divObservacionesIncorrecto;
+        
+        /// <summary>
+        /// Control lblObservacionesIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblObservacionesIncorrecto;
         
         /// <summary>
         /// Control lblEstado.
@@ -193,13 +238,13 @@ namespace ReunionesRevisionDireccion.Hallazgos {
         protected global::System.Web.UI.WebControls.Label lblEstado;
         
         /// <summary>
-        /// Control txtEstados.
+        /// Control ddlEstados.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtEstados;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEstados;
         
         /// <summary>
         /// Control lblFecha.
@@ -217,7 +262,25 @@ namespace ReunionesRevisionDireccion.Hallazgos {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtFecha;
+        protected global::System.Web.UI.WebControls.TextBox txtFecha;
+        
+        /// <summary>
+        /// Control divFechaIncorrecta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFechaIncorrecta;
+        
+        /// <summary>
+        /// Control lblFechaIncorrecta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaIncorrecta;
         
         /// <summary>
         /// Control lblCodigoAccion.
@@ -235,7 +298,7 @@ namespace ReunionesRevisionDireccion.Hallazgos {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtCodigoAccion;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigoAccion;
         
         /// <summary>
         /// Control Button1.
@@ -254,5 +317,23 @@ namespace ReunionesRevisionDireccion.Hallazgos {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+        
+        /// <summary>
+        /// Control Div1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        
+        /// <summary>
+        /// Control rpUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rpUsuario;
     }
 }

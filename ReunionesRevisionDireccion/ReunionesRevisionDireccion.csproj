@@ -71,7 +71,9 @@
     <Content Include="ArchivoBaseDatos.txt" />
     <Content Include="Catalogos\AdministrarElementoRevisar.aspx" />
     <Content Include="Catalogos\AdministrarEstado.aspx" />
+    <Content Include="Catalogos\EliminarTipo.aspx" />
     <Content Include="Hallazgos\AdministrarHallazgo.aspx" />
+    <Content Include="Hallazgos\EditarHallazgo.aspx" />
     <Content Include="Hallazgos\EliminarHallazgo.aspx" />
     <Content Include="Reuniones\AdministrarReunion.aspx" />
     <Content Include="Hallazgos\AdministrarReunionHallazgo.aspx" />
@@ -85,7 +87,6 @@
     <Content Include="Catalogos\EliminarElementoRevisar.aspx" />
     <Content Include="Catalogos\EliminarEstado.aspx" />
     <Content Include="Reuniones\EliminarReunion.aspx" />
-    <Content Include="Catalogos\EliminarTipo.aspx" />
     <Content Include="Catalogos\EliminarUsuario.aspx" />
     <Content Include="Reuniones\NuevaReunion.aspx" />
     <Content Include="Catalogos\NuevoElementoRevisar.aspx" />
@@ -158,12 +159,26 @@
     <Compile Include="Catalogos\AdministrarEstado.aspx.designer.cs">
       <DependentUpon>AdministrarEstado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Catalogos\EliminarTipo.aspx.cs">
+      <DependentUpon>EliminarTipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\EliminarTipo.aspx.designer.cs">
+      <DependentUpon>EliminarTipo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Hallazgos\AdministrarHallazgo.aspx.cs">
       <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Hallazgos\AdministrarHallazgo.aspx.designer.cs">
       <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hallazgos\EditarHallazgo.aspx.cs">
+      <DependentUpon>EditarHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hallazgos\EditarHallazgo.aspx.designer.cs">
+      <DependentUpon>EditarHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hallazgos\EliminarHallazgo.aspx.cs">
       <DependentUpon>EliminarHallazgo.aspx</DependentUpon>
@@ -255,13 +270,6 @@
     </Compile>
     <Compile Include="Reuniones\EliminarReunion.aspx.designer.cs">
       <DependentUpon>EliminarReunion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Catalogos\EliminarTipo.aspx.cs">
-      <DependentUpon>EliminarTipo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Catalogos\EliminarTipo.aspx.designer.cs">
-      <DependentUpon>EliminarTipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Catalogos\EliminarUsuario.aspx.cs">
       <DependentUpon>EliminarUsuario.aspx</DependentUpon>
