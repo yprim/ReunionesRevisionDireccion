@@ -186,7 +186,7 @@
 
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblHallazgo" runat="server" Text="Hallazgo " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                        <asp:Label ID="lblHallazgo" runat="server" Text="Hallazgo <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
 
                     <div class="col-md-4 col-xs-4 col-sm-4">
@@ -209,7 +209,7 @@
                 </div>
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblEstado" runat="server" Text="Estado" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                        <asp:Label ID="lblEstado" runat="server" Text="Estado <span style='color:red'>*</span>" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
 
                     <div class="col-md-4 col-xs-4 col-sm-4">
@@ -242,11 +242,14 @@
 
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <div class="col-md-2 col-xs-2 col-sm-2">
-                        <asp:Label ID="lblCodigoAccion" runat="server" Text="Codigo de Acción " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                        <asp:Label ID="lblCodigoAccion" runat="server" Text="Codigo de Acción <span style='color:red'>*</span> " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
 
                     <div class="col-md-4 col-xs-4 col-sm-4">
                         <asp:TextBox class="form-control" ID="txtCodigoAccion"  TextMode="MultiLine" runat="server"></asp:TextBox>
+                    </div>
+                      <div id="divCodigoAccionIncorrecto" runat="server" style="display: none" class="col-md-5 col-xs-5 col-sm-5">
+                        <asp:Label ID="lblCodigoAccionIncorrecto" runat="server" Font-Size="Small" class="label alert-danger" Text="Espacio Obligatorio" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
 
@@ -611,6 +614,63 @@
                 fechaIncorrecta.style.display = 'block';
             }
         };
+
+
+        function validarTexto(txtBox) {
+            var id = txtBox.id.substring(12);
+
+            if (id == "txtElementoSeleccionado") {
+                var elementoIncorrecto = document.getElementById('<%= divElementoIncorrecto.ClientID %>');
+                if (txtBox.value != "") {
+                    txtBox.className = "form-control";
+
+                    elementoIncorrecto.style.display = 'none';
+                } else {
+                    txtBox.className = "form-control alert-danger";
+                    elementoIncorrecto.style.display = 'block';
+                }
+            } else {
+                if (id == "txtUsuarioSeleccionado") {
+                    var usuarioIncorrecto = document.getElementById('<%= divUsuarioIncorrecto.ClientID %>');
+                    if (txtBox.value != "") {
+                        txtBox.className = "form-control";
+
+                        usuarioIncorrecto.style.display = 'none';
+                    } else {
+                        txtBox.className = "form-control alert-danger";
+                        usuarioIncorrecto.style.display = 'block';
+                    }
+                } else {
+                    if (id == "txtObservaciones") {
+                        var observacionesIncorrecto = document.getElementById('<%= divObservacionesIncorrecto.ClientID %>');
+                        if (txtBox.value != "") {
+                            txtBox.className = "form-control";
+
+                            observacionesIncorrecto.style.display = 'none';
+                        } else {
+                            txtBox.className = "form-control alert-danger";
+                            observacionesIncorrecto.style.display = 'block';
+                        }
+
+                    } else {
+                        if (id == "txtCodigoAccion") {
+                            var codigoAccionIncorrecto = document.getElementById('<%= divCodigoAccionIncorrecto.ClientID %>');
+                            if (txtBox.value != "") {
+                                txtBox.className = "form-control";
+
+                                codigoAccionIncorrecto.style.display = 'none';
+                            } else {
+                                txtBox.className = "form-control alert-danger";
+                                codigoAccionIncorrecto.style.display = 'block';
+                            }
+
+                        }
+
+
+                    }
+                }
+            }
+        }
 
 
     </script>

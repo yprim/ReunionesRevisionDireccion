@@ -328,6 +328,24 @@ namespace ReunionesRevisionDireccion.Catalogos {
         protected global::System.Web.UI.WebControls.TextBox txtCodigoAccion;
         
         /// <summary>
+        /// Control divCodigoAccionIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCodigoAccionIncorrecto;
+        
+        /// <summary>
+        /// Control lblCodigoAccionIncorrecto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigoAccionIncorrecto;
+        
+        /// <summary>
         /// Control Button1.
         /// </summary>
         /// <remarks>

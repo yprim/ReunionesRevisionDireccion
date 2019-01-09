@@ -15,3 +15,9 @@ C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Entidades\bin\Debug
 C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
 C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.dll
 C:\Users\pmena\Desktop\proyecto 1\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.pdb
+C:\Users\pmena\Documents\ReunionesRevisionDireccion\Entidades\bin\Debug\Entidades.dll
+C:\Users\pmena\Documents\ReunionesRevisionDireccion\Entidades\bin\Debug\Entidades.pdb
+C:\Users\pmena\Documents\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
+C:\Users\pmena\Documents\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\pmena\Documents\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.dll
+C:\Users\pmena\Documents\ReunionesRevisionDireccion\Entidades\obj\Debug\Entidades.pdb

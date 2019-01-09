@@ -55,6 +55,11 @@ namespace ReunionesRevisionDireccion.Catalogos
                 cargarDatosTblElementos();
                 cargarDatosTblUsuarios();
                 llenarDdlEstados();
+
+                txtElementoSeleccionado.Attributes.Add("oninput", "validarTexto(this)");
+                txtUsuarioSeleccionado.Attributes.Add("oninput", "validarTexto(this)");
+                txtObservaciones.Attributes.Add("oninput", "validarTexto(this)");
+                txtCodigoAccion.Attributes.Add("oninput", "validarTexto(this)");
             }
 
         }
@@ -199,7 +204,100 @@ namespace ReunionesRevisionDireccion.Catalogos
             descargar(nombreArchivo, blobValue);
         }
 
+       
+        /// <summary>
+        /// Priscilla Mena
+        /// 09/01/2019
+        /// Efecto: Metodo que valida los campos que debe ingresar el usuario
+        /// Requiere:-
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        public Boolean validarCampos()
+        {
+            Boolean validados = true;
 
+            divElementoIncorrecto.Style.Add("display", "none");
+            divUsuarioIncorrecto.Style.Add("display", "none");
+            divObservacionesIncorrecto.Style.Add("display", "none");
+            divCodigoAccionIncorrecto.Style.Add("display", "none");
+            divFechaIncorrecta.Style.Add("display", "none");
+
+            txtElementoSeleccionado.CssClass = "form-control";
+            txtUsuarioSeleccionado.CssClass = "form-control";
+            txtFecha.CssClass = "form-control";
+            txtObservaciones.CssClass = "form-control";
+            txtCodigoAccion.CssClass = "form-control";
+
+            #region validacion elemento a revisar
+
+            String elementoArevisar = txtElementoSeleccionado.Text;
+
+            if (elementoArevisar.Trim() == "")
+            {
+                txtElementoSeleccionado.CssClass = "form-control alert-danger";
+                divElementoIncorrecto.Style.Add("display", "block");
+
+                validados = false;
+            }
+            #endregion
+
+            #region validacion usuarios
+
+            String usuario = txtUsuarioSeleccionado.Text;
+
+            if (usuario.Trim() == "")
+            {
+                txtUsuarioSeleccionado.CssClass = "form-control alert-danger";
+                divUsuarioIncorrecto.Style.Add("display", "block");
+
+                validados = false;
+            }
+            #endregion
+
+            #region observaciones
+
+            String observaciones = txtObservaciones.Text;
+
+            if (observaciones.Trim() == "")
+            {
+                txtObservaciones.CssClass = "form-control alert-danger";
+                divObservacionesIncorrecto.Style.Add("display", "block");
+
+                validados = false;
+            }
+            #endregion
+
+            #region validacion fecha
+
+            String fecha = txtFecha.Text;
+
+            if (fecha.Trim() == "")
+            {
+                txtFecha.CssClass = "form-control alert-danger";
+                divFechaIncorrecta.Style.Add("display", "block");
+
+                validados = false;
+            }
+            #endregion
+
+            #region validacion codigo accion
+
+            String codigo = txtCodigoAccion.Text;
+
+            if (codigo.Trim() == "")
+            {
+                txtCodigoAccion.CssClass = "form-control alert-danger";
+                divCodigoAccionIncorrecto.Style.Add("display", "block");
+
+                validados = false;
+            }
+            #endregion
+
+            return validados;
+        }
 
         /// <summary>
         /// Priscilla Mena
@@ -215,33 +313,35 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <returns></returns>
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Usuario usuario = (Usuario)Session["usuarioSeleccionado"];
-            ElementoRevisar elemento = (ElementoRevisar)Session["elementoSeleccionado"];
-            Reunion reunion = (Reunion)Session["ReunionHallazgos"];
-            Estado estado = new Estado();
-            estado.idEstado = Convert.ToInt32(ddlEstados.SelectedValue);
-            estado.descripcionEstado = ddlEstados.SelectedItem.Text;
+            if (validarCampos())
+            {
+                Usuario usuario = (Usuario)Session["usuarioSeleccionado"];
+                ElementoRevisar elemento = (ElementoRevisar)Session["elementoSeleccionado"];
+                Reunion reunion = (Reunion)Session["ReunionHallazgos"];
+                Estado estado = new Estado();
+                estado.idEstado = Convert.ToInt32(ddlEstados.SelectedValue);
+                estado.descripcionEstado = ddlEstados.SelectedItem.Text;
 
-            DateTime fecha = Convert.ToDateTime(txtFecha.Text);
+                DateTime fecha = Convert.ToDateTime(txtFecha.Text);
 
-            Hallazgo hallazgo = new Hallazgo();
+                Hallazgo hallazgo = new Hallazgo();
 
-            hallazgo.codigoAccion = txtCodigoAccion.Text;
-       
-            hallazgo.estado = estado;
-            hallazgo.fechaMaximaImplementacion = fecha;
-            hallazgo.usuario = usuario;
-            hallazgo.observaciones = txtObservaciones.Text;
+                hallazgo.codigoAccion = txtCodigoAccion.Text;
 
-           int codigoHallazgo= hallazgoServicios.insertarHallazgo(hallazgo);
+                hallazgo.estado = estado;
+                hallazgo.fechaMaximaImplementacion = fecha;
+                hallazgo.usuario = usuario;
+                hallazgo.observaciones = txtObservaciones.Text;
 
-            hallazgo.idHallazgo = codigoHallazgo;
+                int codigoHallazgo = hallazgoServicios.insertarHallazgo(hallazgo);
 
-            reunionElementoRevisarHallazgoServicios.insertarReunionElementoHallazgo(reunion, elemento, hallazgo);
+                hallazgo.idHallazgo = codigoHallazgo;
 
-            String url = Page.ResolveUrl("~/Hallazgos/AdministrarHallazgo.aspx");
-            Response.Redirect(url);
+                reunionElementoRevisarHallazgoServicios.insertarReunionElementoHallazgo(reunion, elemento, hallazgo);
 
+                String url = Page.ResolveUrl("~/Hallazgos/AdministrarHallazgo.aspx");
+                Response.Redirect(url);
+            }
         }
 
         /// <summary>
