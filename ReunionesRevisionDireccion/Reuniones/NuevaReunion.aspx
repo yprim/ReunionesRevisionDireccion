@@ -9,7 +9,7 @@
     <ul class="nav nav-tabs">
         <li id="liReunion" runat="server" class="active"><a onclick="verViewReunion()">Reunión</a></li>
         <li id="liElementoRevisar" runat="server"><a onclick="verViewElementoRevisar()">Elementos a Revisar</a></li>
-         <li id="liUsuario" runat="server"><a onclick="verViewUsuarios()">Usuarios</a></li>
+         <li id="liUsuario" runat="server"><a onclick="verViewUsuarios()">Participantes</a></li>
     </ul>
     <!-- fin tabs -->
 
@@ -359,7 +359,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Asociar Usuario a Reunión</h4>
+                                <h4 class="modal-title">Agregar participantes a reunión</h4>
                             </div>
                             <div class="modal-body">
                                 <%-- cuerpo modal --%>
@@ -436,7 +436,7 @@
                 <%-- Mostrar Usuarios Asociados --%>
                 <div class="col-md-12 col-xs-12 col-sm-12">
                     <center>
-                        <asp:Label ID="lblUsuariosAsociados" runat="server" Text="Usuarios presentes en la reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
+                        <asp:Label ID="lblUsuariosAsociados" runat="server" Text="Participantes en la reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
                     </center>
                 </div>
                 <%-- fin Mostrar Usuarios Asociados --%>

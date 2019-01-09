@@ -89,8 +89,14 @@
                             <%------------------------------MENU DE ADMINISTRADOR--------------------------%>
                             <div id="MenuAdministrador" runat="server">
                                 <ul class="nav navbar-nav">
+                                     <li>
+                                        <a href='<%=Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx") %>'>Reuniones</a>
+                                    </li>
+                                       <li>
+                                        <a href='<%=Page.ResolveUrl("~/Hallazgos/AdministrarReunionHallazgo.aspx") %>'>Hallazgos</a>
+                                    </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catálogos<span class="caret"></span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Editables<span class="caret"></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/AdministrarTipo.aspx") %>'>Tipo</a></li>
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/AdministrarEstado.aspx") %>'>Estado</a></li>
@@ -98,12 +104,7 @@
                                             <li><a href='<%=Page.ResolveUrl("~/Catalogos/AdministrarUsuario.aspx") %>'>Usuario</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href='<%=Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx") %>'>Reuniones</a>
-                                    </li>
-                                       <li>
-                                        <a href='<%=Page.ResolveUrl("~/Hallazgos/AdministrarReunionHallazgo.aspx") %>'>Hallazgos</a>
-                                    </li>
+                                   
                                     <li>
                                         <a href='<%=Page.ResolveUrl("~/Ayuda.aspx") %>'>Ayuda</a>
                                     </li>
