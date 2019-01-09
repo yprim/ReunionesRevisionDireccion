@@ -26,7 +26,7 @@
                         <table id="tblHallazgo" class="row-border table-striped">
                             <thead>
                                 <tr>
-                                    <th></th>
+                              <th></th>
                                     <th>Usuario</th>
                                     <th>Fecha Maxima de Implementacion</th>
                                     <th>Código Acción</th>
@@ -64,13 +64,12 @@
                     <FooterTemplate>
                         <thead>
                             <tr id="filterrow">
-                                <td></td>
-                                <th>Consecutivo</th>
-                                  <th>Tipo</th>
-                                  <th>Mes</th>
-                                  <th>Año</th>    
-                                <th>Mes</th>
-                                  <th>Año</th> 
+                                    <th></th>
+                                    <th>Usuario</th>
+                                    <th>Fecha Maxima de Implementacion</th>
+                                    <th>Código Acción</th>
+                                    <th>Estado</th>
+                                    <th>Observaciones</th
                             </tr>
                         </thead>
                         </table>
