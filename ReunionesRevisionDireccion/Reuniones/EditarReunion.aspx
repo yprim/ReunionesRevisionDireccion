@@ -78,7 +78,7 @@
                         <asp:Label ID="lblmes" runat="server" Text="Mes " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <asp:DropDownList ID="ddlMeses" class="btn btn-default dropdown-toggle" runat="server" Width="150px" AutoPostBack="true">
+                        <asp:DropDownList ID="ddlMeses" class="btn btn-default dropdown-toggle" runat="server" Width="150px">
                             <asp:ListItem Text="Enero" Value="1" />
                             <asp:ListItem Text="Febrero" Value="2" />
                             <asp:ListItem Text="Marzo" Value="3" />
@@ -957,9 +957,8 @@
               document.getElementById('<%=liUsuario.ClientID%>').className = "";
             document.getElementById('<%=liReunion.ClientID%>').className = "active";
         
-
+             document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
-            document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
             document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'none';
           
         };

@@ -66,7 +66,7 @@
                         <asp:Label ID="lblmes" runat="server" Text="Mes " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <asp:DropDownList ID="ddlMeses" class="btn btn-default dropdown-toggle" runat="server" Width="150px" AutoPostBack="true">
+                        <asp:DropDownList ID="ddlMeses" class="btn btn-default dropdown-toggle" runat="server" Width="150px" >
                             <asp:ListItem Text="Enero" Value="1" />
                             <asp:ListItem Text="Febrero" Value="2" />
                             <asp:ListItem Text="Marzo" Value="3" />
@@ -91,7 +91,7 @@
                  <!-- Archivos Reunion -->
    
             <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                <div class="col-md-3 col-xs-3 col-sm-3">
+                <div class="col-md-2 col-xs-2 col-sm-2">
                     <asp:Label ID="lblArchivos" runat="server" Text="Archivos " Font-Size="Medium" ForeColor="Black" Font-Bold="true" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
@@ -856,9 +856,10 @@
     <script type="text/javascript">
 
         function verViewElementoRevisar() {
+            document.getElementById('<%=liElementoRevisar.ClientID%>').className = "active";
             document.getElementById('<%=liReunion.ClientID%>').className = "";
              document.getElementById('<%=liUsuario.ClientID%>').className = "";
-            document.getElementById('<%=liElementoRevisar.ClientID%>').className = "active";
+            
       
 
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'block';
@@ -868,21 +869,22 @@
         };
 
         function verViewReunion() {
+            document.getElementById('<%=liReunion.ClientID%>').className = "active";
             document.getElementById('<%=liElementoRevisar.ClientID%>').className = "";
               document.getElementById('<%=liUsuario.ClientID%>').className = "";
-            document.getElementById('<%=liReunion.ClientID%>').className = "active";
+  
         
-
+              document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
-            document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
             document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'none';
           
         };
 
         function verViewUsuarios() {
+             document.getElementById('<%=liUsuario.ClientID%>').className = "active";
             document.getElementById('<%=liReunion.ClientID%>').className = "";
             document.getElementById('<%=liElementoRevisar.ClientID%>').className = "";
-            document.getElementById('<%=liUsuario.ClientID%>').className = "active";
+           
       
 
             document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'block';

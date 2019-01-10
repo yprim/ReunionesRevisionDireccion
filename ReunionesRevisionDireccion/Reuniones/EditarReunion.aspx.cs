@@ -54,6 +54,8 @@ namespace ReunionesRevisionDireccion.Catalogos
                 txtAnno.Text = reunionEditar.anno.ToString();
                 txtConsecutivo.Text = reunionEditar.consecutivo.ToString();
            
+
+                //  para dejar los dropdownlist en la seleccion que estaban 
                 int contIndexTipos = 0;
                 foreach (ListItem item in ddlTipos.Items)
                 {
@@ -120,6 +122,16 @@ namespace ReunionesRevisionDireccion.Catalogos
       
         }
 
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto:Metodo que carga todos los elementos y usuarios asociados a reunion
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         public void llenarDatos()
         {
             Reunion reunionEditar = (Reunion)Session["ReunionEditar"];
@@ -336,13 +348,15 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             llenarDatos();
 
-            /*para que se quede en el tab de ElementoRevisars despues del posback*/
+            /*para que se quede en el tab de ElementoRevisar despues del posback*/
             liReunion.Attributes["class"] = "";
+            liUsuario.Attributes["class"] = "";
             liElementoRevisar.Attributes["class"] = "active";
 
 
             ViewElementoRevisar.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewUsuario.Style.Add("display", "none");
 
 
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModal();", true);
@@ -416,17 +430,28 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             /*para que se quede en el tab de Usuarios despues del posback*/
             liReunion.Attributes["class"] = "";
+            liElementoRevisar.Attributes["class"] = "";
             liUsuario.Attributes["class"] = "active";
 
 
             ViewUsuario.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewElementoRevisar.Style.Add("display", "none");
 
 
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalUsuario();", true);
         }
 
-
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto:Metodo que se activa modal de confirmacion para desasociar elementos a revisar
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnDesasociar_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarElementos();", true);
@@ -449,15 +474,26 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             /*para que se quede en el tab de ElementoRevisar despues del posback*/
             liReunion.Attributes["class"] = "";
+            liUsuario.Attributes["class"] = "";
             liElementoRevisar.Attributes["class"] = "active";
 
 
             ViewElementoRevisar.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewUsuario.Style.Add("display", "none");
 
         }
 
-
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto:Metodo que se activa modal de confirmacion para desasociar usuarios
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnDesasociarUsuario_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(GetType(), "activar", "activarModalDesasociarUsuarios();", true);
@@ -480,10 +516,12 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             /*para que se quede en el tab de Usuario despues del posback*/
             liReunion.Attributes["class"] = "";
+            liElementoRevisar.Attributes["class"] = "";
             liUsuario.Attributes["class"] = "active";
 
 
             ViewUsuario.Style.Add("display", "block");
+            ViewElementoRevisar.Style.Add("display", "none");
             ViewReunion.Style.Add("display", "none");
 
         }
@@ -588,7 +626,18 @@ namespace ReunionesRevisionDireccion.Catalogos
             Response.Redirect(url);
         }
 
-
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto: Desasocia un elemento a revisar de la reunion 
+        /// y elimina el registro en la base de datos
+        /// vuelve a levantar el modal
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnConfirmarDesasociarElemento_Click(object sender, EventArgs e)
         {
             int idElementoRevisar = (int)Session["idElementoDesasociar"];
@@ -642,16 +691,29 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             /*para que se quede en el tab de ElementoRevisars despues del posback*/
             liReunion.Attributes["class"] = "";
+            liUsuario.Attributes["class"] = "";
             liElementoRevisar.Attributes["class"] = "active";
 
 
             ViewElementoRevisar.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewUsuario.Style.Add("display", "none");
 
         }
 
 
-
+        /// <summary>
+        /// Priscilla Mena
+        /// 27/09/2018
+        /// Efecto: Desasocia usuario de la reunion 
+        /// y elimina el registro en la base de datos
+        /// vuelve a levantar el modal
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
         protected void btnConfirmarDesasociarUsuario_Click(object sender, EventArgs e)
         {
             int idUsuario = (int)Session["idUsuarioDesasociar"];
@@ -705,11 +767,13 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             /*para que se quede en el tab de Usuarios despues del posback*/
             liReunion.Attributes["class"] = "";
+            liElementoRevisar.Attributes["class"] = "";
             liUsuario.Attributes["class"] = "active";
 
 
             ViewUsuario.Style.Add("display", "block");
             ViewReunion.Style.Add("display", "none");
+            ViewElementoRevisar.Style.Add("display", "none");
 
         }
 
