@@ -81,8 +81,8 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <summary>
         /// Priscilla Mena
         /// 26/09/2018
-        /// Efecto: Metodo que redirecciona a la pagina donde se edita una Hallazgo,
-        /// se activa cuando se presiona el boton de nuevo
+        /// Efecto: Metodo que redirecciona a la pagina donde se edita un Hallazgo,
+        /// se activa cuando se presiona el boton de editar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -117,8 +117,8 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// <summary>
         /// Priscilla Mena
         /// 26/09/2018
-        /// Efecto: Metodo que redirecciona a la pagina donde se elimina una Hallazgo,
-        /// se activa cuando se presiona el boton de nuevo
+        /// Efecto: Metodo que redirecciona a la pagina donde se elimina un Hallazgo,
+        /// se activa cuando se presiona el boton de eliminar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -148,6 +148,40 @@ namespace ReunionesRevisionDireccion.Catalogos
             Response.Redirect(url);
         }
 
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 11/01/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se ve un Hallazgo,
+        /// se activa cuando se presiona el boton de nuevo
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            int idHallazgo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Hallazgo> listaHallazgoes = (List<Hallazgo>)Session["listaHallazgo"];
+
+            Hallazgo hallazgoVer = new Hallazgo();
+
+            foreach (Hallazgo Hallazgo in listaHallazgoes)
+            {
+                if (Hallazgo.idHallazgo == idHallazgo)
+                {
+                    hallazgoVer = Hallazgo;
+                    break;
+                }
+            }
+
+            Session["HallazgoVer"] = hallazgoVer;
+
+            String url = Page.ResolveUrl("~/Hallazgos/VerHallazgo.aspx");
+            Response.Redirect(url);
+        }
 
 
 

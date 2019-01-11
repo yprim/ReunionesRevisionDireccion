@@ -94,7 +94,7 @@
                 
                  <!-- Archivos Reunion -->
             <div class="col-md-12 col-sm-12 col-xs-12 ">
-                <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="col-md-2 col-sm-2 col-xs-2">
                     <asp:Label ID="lblArchivosAsociados" runat="server" Text="Archivos asociados " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-4">

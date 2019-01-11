@@ -80,7 +80,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 26/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se edita una Reunion,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de editar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -116,7 +116,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 26/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se elimina una Reunion,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de eliminar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -146,7 +146,39 @@ namespace ReunionesRevisionDireccion.Catalogos
             Response.Redirect(url);
         }
 
+        /// <summary>
+        /// Priscilla Mena
+        /// 11/01/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se puede ver una Reunion,
+        /// se activa cuando se presiona el boton de ver
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            int idReunion = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
+            List<Reunion> listaReuniones = (List<Reunion>)Session["listaReunion"];
+
+            Reunion reunionVer = new Reunion();
+
+            foreach (Reunion reunion in listaReuniones)
+            {
+                if (reunion.idReunion == idReunion)
+                {
+                    reunionVer = reunion;
+                    break;
+                }
+            }
+
+            Session["ReunionVer"] = reunionVer;
+
+            String url = Page.ResolveUrl("~/Reuniones/VerReunion.aspx");
+            Response.Redirect(url);
+        }
 
 
 

@@ -76,6 +76,7 @@
     <Content Include="Hallazgos\AdministrarHallazgo.aspx" />
     <Content Include="Hallazgos\EditarHallazgo.aspx" />
     <Content Include="Hallazgos\EliminarHallazgo.aspx" />
+    <Content Include="Hallazgos\VerHallazgo.aspx" />
     <Content Include="Reuniones\AdministrarReunion.aspx" />
     <Content Include="Hallazgos\AdministrarReunionHallazgo.aspx" />
     <Content Include="Catalogos\AdministrarTipo.aspx" />
@@ -124,6 +125,7 @@
     <Content Include="Imagenes\logo_LANAMME-140x140.png" />
     <Content Include="Imagenes\UCR informe.png" />
     <Content Include="Login.aspx" />
+    <Content Include="Reuniones\VerReunion.aspx" />
     <Content Include="Scripts\abrirfile.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
@@ -194,6 +196,13 @@
     </Compile>
     <Compile Include="Hallazgos\EliminarHallazgo.aspx.designer.cs">
       <DependentUpon>EliminarHallazgo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hallazgos\VerHallazgo.aspx.cs">
+      <DependentUpon>VerHallazgo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hallazgos\VerHallazgo.aspx.designer.cs">
+      <DependentUpon>VerHallazgo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reuniones\AdministrarReunion.aspx.cs">
       <DependentUpon>AdministrarReunion.aspx</DependentUpon>
@@ -350,6 +359,13 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reuniones\VerReunion.aspx.cs">
+      <DependentUpon>VerReunion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reuniones\VerReunion.aspx.designer.cs">
+      <DependentUpon>VerReunion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

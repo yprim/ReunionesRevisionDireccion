@@ -90,7 +90,7 @@ namespace ReunionesRevisionDireccion
 
                             Session["rol"] = rol;
                             Session["nombreCompleto"] = nombreCompleto;
-                            String url = Page.ResolveUrl("~/Default.aspx");
+                            String url = Page.ResolveUrl("~/Reuniones/AdministrarReunion.aspx");
                             Response.Redirect(url);
                         }
                         else

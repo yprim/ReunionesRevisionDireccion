@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdministrarReunionHallazgo.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.AdministrarReunionHallazgo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdministrarReunionHallazgo.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.AdministrarReunionHallazgo"  MaintainScrollPositionOnPostback="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -38,7 +38,7 @@
                     <ItemTemplate>
                         <tr>
                             <td>
-                                <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Ver Hallazgos" OnClick="btnReunionHallazgo_Click" CommandArgument='<%# Eval("idReunion") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
+                                <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Ver Hallazgos" OnClick="btnReunionHallazgo_Click" CommandArgument='<%# Eval("idReunion") %>'><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
                             </td>
                             <td>
                                 <%# Eval("consecutivo") %>
