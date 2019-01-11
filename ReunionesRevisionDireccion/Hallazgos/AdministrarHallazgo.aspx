@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                               <th></th>
-                                    <th>Usuario</th>
+                                    <th>Responsable</th>
                                     <th>Fecha Maxima de Implementacion</th>
                                     <th>Código Acción</th>
                                     <th>Estado</th>

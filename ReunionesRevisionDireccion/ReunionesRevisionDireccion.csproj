@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArchivoBaseDatos.txt" />
+    <Content Include="Ayuda.aspx" />
     <Content Include="Catalogos\AdministrarElementoRevisar.aspx" />
     <Content Include="Catalogos\AdministrarEstado.aspx" />
     <Content Include="Catalogos\EliminarTipo.aspx" />
@@ -145,6 +146,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ayuda.aspx.cs">
+      <DependentUpon>Ayuda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ayuda.aspx.designer.cs">
+      <DependentUpon>Ayuda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Catalogos\AdministrarElementoRevisar.aspx.cs">
       <DependentUpon>AdministrarElementoRevisar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

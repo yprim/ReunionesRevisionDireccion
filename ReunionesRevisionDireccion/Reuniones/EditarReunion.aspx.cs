@@ -874,6 +874,16 @@ namespace ReunionesRevisionDireccion.Catalogos
 
 
             cargarArchivosReunion();
+
+            /*para que se quede en el tab de reunion despues del posback*/
+            liReunion.Attributes["class"] = "active";
+            liElementoRevisar.Attributes["class"] = "";
+            liUsuario.Attributes["class"] = "";
+
+
+            ViewUsuario.Style.Add("display", "none");
+            ViewReunion.Style.Add("display", "block");
+            ViewElementoRevisar.Style.Add("display", "none");
         }
 
       
@@ -963,6 +973,16 @@ namespace ReunionesRevisionDireccion.Catalogos
             {
                 (this.Master as Site).Mensaje("Si desea agregar un(os) archivos a esta Reunion, primero debe \"Elegir archivos\" y luego darle clic al botón \"Agregar archivos\".", "¡Alerta!");
             }
+
+            /*para que se quede en el tab de reunion despues del posback*/
+            liReunion.Attributes["class"] = "active";
+            liElementoRevisar.Attributes["class"] = "";
+            liUsuario.Attributes["class"] = "";
+
+
+            ViewUsuario.Style.Add("display", "none");
+            ViewReunion.Style.Add("display", "block");
+            ViewElementoRevisar.Style.Add("display", "none");
         }
 
         #endregion
