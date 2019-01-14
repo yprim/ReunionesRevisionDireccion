@@ -80,7 +80,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 07/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se edita un Estado,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de editar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -114,7 +114,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 07/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se elimina un Estado,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de eliminar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -145,6 +145,40 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         }
 
+        /// <summary>
+        /// Priscilla Mena
+        /// 14/01/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se ve un Estado,
+        /// se activa cuando se presiona el boton de ver
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            int idEstado = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Estado> listaEstados = (List<Estado>)Session["listaEstados"];
+
+            Estado estadoVer = new Estado();
+
+            foreach (Estado Estado in listaEstados)
+            {
+                if (Estado.idEstado == idEstado)
+                {
+                    estadoVer = Estado;
+                    break;
+                }
+            }
+
+            Session["estadoVer"] = estadoVer;
+
+            String url = Page.ResolveUrl("~/Catalogos/VerEstado.aspx");
+            Response.Redirect(url);
+
+        }
 
 
 

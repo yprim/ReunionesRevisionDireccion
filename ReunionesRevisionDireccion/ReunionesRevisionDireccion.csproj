@@ -73,6 +73,9 @@
     <Content Include="Catalogos\AdministrarElementoRevisar.aspx" />
     <Content Include="Catalogos\AdministrarEstado.aspx" />
     <Content Include="Catalogos\EliminarTipo.aspx" />
+    <Content Include="Catalogos\VerElementoRevisar.aspx" />
+    <Content Include="Catalogos\VerEstado.aspx" />
+    <Content Include="Catalogos\VerTipo.aspx" />
     <Content Include="Hallazgos\AdministrarHallazgo.aspx" />
     <Content Include="Hallazgos\EditarHallazgo.aspx" />
     <Content Include="Hallazgos\EliminarHallazgo.aspx" />
@@ -175,6 +178,27 @@
     </Compile>
     <Compile Include="Catalogos\EliminarTipo.aspx.designer.cs">
       <DependentUpon>EliminarTipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\VerElementoRevisar.aspx.cs">
+      <DependentUpon>VerElementoRevisar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\VerElementoRevisar.aspx.designer.cs">
+      <DependentUpon>VerElementoRevisar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\VerEstado.aspx.cs">
+      <DependentUpon>VerEstado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\VerEstado.aspx.designer.cs">
+      <DependentUpon>VerEstado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogos\VerTipo.aspx.cs">
+      <DependentUpon>VerTipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Catalogos\VerTipo.aspx.designer.cs">
+      <DependentUpon>VerTipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Hallazgos\AdministrarHallazgo.aspx.cs">
       <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>

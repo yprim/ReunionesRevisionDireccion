@@ -22,10 +22,10 @@
             <div class="col-md-12 col-xs-12 col-sm-12">
 
                 <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblDescripcionElementoRevisar" runat="server" Text="Descripcion: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                    <asp:Label ID="lblDescripcionElementoRevisar" runat="server" Text="Descripción: " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                 </div>
                 <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:TextBox class="form-control" ID="txtDescripcionElementoRevisar" runat="server" ReadOnly="true"></asp:TextBox>
+                    <asp:Label  ID="txtDescripcionElementoRevisar" runat="server" ReadOnly="true"></asp:Label>
                 </div>
             </div>
             <%-- fin campos a llenar --%>

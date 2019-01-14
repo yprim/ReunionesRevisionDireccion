@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    <th>Nombre</th>
+                                    <th>Descripción</th>
                                 </tr>
                             </thead>
                     </HeaderTemplate>
@@ -35,6 +35,8 @@
                     <ItemTemplate>
                         <tr>
                             <td>
+                                <asp:LinkButton ID="btnVer" runat="server" ToolTip="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("idElemento") %>'><span class="glyphicon glyphicon-eye-open"></span></asp:LinkButton>
+
                                 <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idElemento") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                                 <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idElemento") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </td>
@@ -49,7 +51,7 @@
                         <thead>
                             <tr id="filterrow">
                                 <td></td>
-                                <th>Nombre</th>
+                                <th>Descripción</th>
                             </tr>
                         </thead>
                         </table>

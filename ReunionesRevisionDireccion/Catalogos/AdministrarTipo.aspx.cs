@@ -80,7 +80,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 07/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se edita un tipo,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de editar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -114,7 +114,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 07/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se elimina un tipo,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de eliminar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -145,9 +145,45 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         }
 
-        
-        
-        
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 07/09/2018
+        /// Efecto: Metodo que redirecciona a la pagina donde se ve un tipo,
+        /// se activa cuando se presiona el boton de ver
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            int idTipo = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
+
+            List<Tipo> listaTipos = (List<Tipo>)Session["listaTipos"];
+
+            Tipo tipoVer = new Tipo();
+
+            foreach (Tipo tipo in listaTipos)
+            {
+                if (tipo.idTipo == idTipo)
+                {
+                    tipoVer = tipo;
+                    break;
+                }
+            }
+
+            Session["tipoVer"] = tipoVer;
+
+            String url = Page.ResolveUrl("~/Catalogos/VerTipo.aspx");
+            Response.Redirect(url);
+
+        }
+
+
+
+
 
 
 

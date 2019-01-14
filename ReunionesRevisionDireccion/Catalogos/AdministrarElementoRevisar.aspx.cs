@@ -80,7 +80,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 07/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se edita un ElementoRevisar,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de editar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -114,7 +114,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         /// Priscilla Mena
         /// 20/09/2018
         /// Efecto: Metodo que redirecciona a la pagina donde se elimina un ElementoRevisar,
-        /// se activa cuando se presiona el boton de nuevo
+        /// se activa cuando se presiona el boton de elimiar
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: -
@@ -146,9 +146,43 @@ namespace ReunionesRevisionDireccion.Catalogos
         }
 
 
+        
 
 
+        /// <summary>
+        /// Priscilla Mena
+        /// 14/01/2019
+        /// Efecto: Metodo que redirecciona a la pagina donde se ve un ElementoRevisar,
+        /// se activa cuando se presiona el boton de ver
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            int idElementoRevisar = Convert.ToInt32((((LinkButton)(sender)).CommandArgument).ToString());
 
+            List<ElementoRevisar> listaElementoRevisars = (List<ElementoRevisar>)Session["listaElementoRevisar"];
+
+            ElementoRevisar elementoRevisarVer = new ElementoRevisar();
+
+            foreach (ElementoRevisar ElementoRevisar in listaElementoRevisars)
+            {
+                if (ElementoRevisar.idElemento == idElementoRevisar)
+                {
+                    elementoRevisarVer = ElementoRevisar;
+                    break;
+                }
+            }
+
+            Session["ElementoRevisarVer"] = elementoRevisarVer;
+
+            String url = Page.ResolveUrl("~/Catalogos/VerElementoRevisar.aspx");
+            Response.Redirect(url);
+
+        }
 
 
         #endregion
