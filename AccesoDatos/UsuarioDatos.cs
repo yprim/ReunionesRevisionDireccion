@@ -222,5 +222,42 @@ namespace AccesoDatos
             return listausuario;
 
         }
+
+        /*Leonardo Carrion
+    12/07/2016
+    Metodo que devuelve una lista de usuarios que se encuentran activos en la base de datos de Login*/
+        public List<Usuario> getUsuariosLogin()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+
+            SqlConnection sqlConnection = conexion.conexionLogin();
+
+            SqlCommand sqlCommand = new SqlCommand(@"select U.id_usuario, U.nombre_completo
+            from Usuario U, Rol R, Aplicacion A, Usuario_Rol_Aplicacion URA
+            where A.nombre_aplicacion = 'ReunionesRevisionDireccion' and
+            URA.id_aplicacion = A.id_aplicacion and U.id_usuario = URA.id_usuario
+            and R.id_rol = URA.id_rol
+            order by U.nombre_completo; ", sqlConnection);
+
+            SqlDataReader reader;
+            sqlConnection.Open();
+            reader = sqlCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Usuario usuario = new Usuario();
+
+                usuario.idUsuario = Convert.ToInt32(reader["id_usuario"].ToString());
+                usuario.nombre = reader["nombre_completo"].ToString();
+
+
+
+                listaUsuarios.Add(usuario);
+            }
+
+            sqlConnection.Close();
+
+            return listaUsuarios;
+        }
     }
 }

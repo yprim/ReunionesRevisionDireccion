@@ -26,7 +26,6 @@
                         <table id="tblUsuario" class="row-border table-striped">
                             <thead>
                                 <tr>
-                                    <th></th>
                                     <th>Nombre</th>
                                 </tr>
                             </thead>
@@ -34,10 +33,7 @@
 
                     <ItemTemplate>
                         <tr>
-                            <td>
-                                <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idUsuario") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
-                                <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idUsuario") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
-                            </td>
+                            
                             <td>
                                 <%# Eval("nombre") %>
                             </td>
@@ -48,7 +44,6 @@
                     <FooterTemplate>
                         <thead>
                             <tr id="filterrow">
-                                <td></td>
                                 <th>Nombre</th>
                             </tr>
                         </thead>
@@ -62,11 +57,7 @@
                 <hr />
             </div>
 
-            <%-- botones --%>
-            <div class="col-md-2 col-sm-2 col-xs-1 col-md-offset-9 col-xs-offset-0 col-sm-offset-8">
-                <asp:Button ID="btnNuevo" runat="server" Text="Nuevo Usuario" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
-            </div>
-            <%-- fin botones --%>
+            
         </div>
     </div>
 

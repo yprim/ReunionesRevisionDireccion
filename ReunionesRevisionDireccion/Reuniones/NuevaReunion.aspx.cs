@@ -162,7 +162,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             if (Session["listaUsuariosNoAsociados"] == null)
             {
-                listaUsuariosNoAsociados = usuarioServicios.getUsuariosNoEstanEnReunion(reunion);
+                  listaUsuariosNoAsociados = usuarioServicios.getUsuariosNoEstanEnReunion(reunion);
             }
             else
             {

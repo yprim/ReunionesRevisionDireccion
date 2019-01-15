@@ -111,5 +111,9 @@ namespace Servicios
         }
 
 
+        public List<Usuario> getUsuariosLogin()
+        {
+            return usuarioDatos.getUsuariosLogin();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NuevaReunion.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.NuevaReunion"  MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="NuevaReunion.aspx.cs" Inherits="ReunionesRevisionDireccion.Catalogos.NuevaReunion" MaintainScrollPositionOnPostback="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -9,7 +9,7 @@
     <ul class="nav nav-tabs">
         <li id="liReunion" runat="server" class="active"><a onclick="verViewReunion()">Reunión</a></li>
         <li id="liElementoRevisar" runat="server"><a onclick="verViewElementoRevisar()">Elementos a Revisar</a></li>
-         <li id="liUsuario" runat="server"><a onclick="verViewUsuarios()">Participantes</a></li>
+        <li id="liUsuario" runat="server"><a onclick="verViewUsuarios()">Participantes</a></li>
     </ul>
     <!-- fin tabs -->
 
@@ -66,7 +66,7 @@
                         <asp:Label ID="lblmes" runat="server" Text="Mes " Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                     </div>
                     <div class="col-md-4 col-xs-4 col-sm-4">
-                        <asp:DropDownList ID="ddlMeses" class="btn btn-default dropdown-toggle" runat="server" Width="150px" >
+                        <asp:DropDownList ID="ddlMeses" class="btn btn-default dropdown-toggle" runat="server" Width="150px">
                             <asp:ListItem Text="Enero" Value="1" />
                             <asp:ListItem Text="Febrero" Value="2" />
                             <asp:ListItem Text="Marzo" Value="3" />
@@ -76,37 +76,37 @@
                             <asp:ListItem Text="Julio" Value="7" />
                             <asp:ListItem Text="Agosto" Value="8" />
                             <asp:ListItem Text="Septiembre" Value="9" />
-                             <asp:ListItem Text="Octubre" Value="10" />
-                             <asp:ListItem Text="Noviembre" Value="11" />
-                             <asp:ListItem Text="Diciembre" Value="12" />
+                            <asp:ListItem Text="Octubre" Value="10" />
+                            <asp:ListItem Text="Noviembre" Value="11" />
+                            <asp:ListItem Text="Diciembre" Value="12" />
                         </asp:DropDownList>
                     </div>
                 </div>
 
-                 <div class="col-md-12 col-xs-12 col-sm-12">
-                <br />
-            </div>
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <br />
+                </div>
 
 
-                 <!-- Archivos Reunion -->
-   
-            <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
-                <div class="col-md-2 col-xs-2 col-sm-2">
-                    <asp:Label ID="lblArchivos" runat="server" Text="Archivos " Font-Size="Medium" ForeColor="Black" Font-Bold="true" CssClass="label"></asp:Label>
-                </div>
-                <div class="col-md-4 col-xs-4 col-sm-4">
-                    <asp:FileUpload ID="fuArchivos" runat="server" AllowMultiple="true" oninput="validarArchivos(this);" onchange="validarArchivos(this);" />
-                </div>
-                <div class="col-md-5 col-xs-5 col-sm-5" id="divArchivosVacio" runat="server" style="display: none;">
-                    <asp:Label ID="lblArchivosVacio" runat="server" Font-Size="Small" CssClass="label alert-danger" Text="Debe seleccionar al menos un archivo" ForeColor="Red" Visible="false"></asp:Label>
-                </div>
-            </div>
-           
-            <!-- Fin Archivos Reunion -->
+                <!-- Archivos Reunion -->
 
-                 <div class="col-md-12 col-xs-12 col-sm-12">
-                <br />
-            </div>
+                <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+                    <div class="col-md-2 col-xs-2 col-sm-2">
+                        <asp:Label ID="lblArchivos" runat="server" Text="Archivos " Font-Size="Medium" ForeColor="Black" Font-Bold="true" CssClass="label"></asp:Label>
+                    </div>
+                    <div class="col-md-4 col-xs-4 col-sm-4">
+                        <asp:FileUpload ID="fuArchivos" runat="server" AllowMultiple="true" oninput="validarArchivos(this);" onchange="validarArchivos(this);" />
+                    </div>
+                    <div class="col-md-5 col-xs-5 col-sm-5" id="divArchivosVacio" runat="server" style="display: none;">
+                        <asp:Label ID="lblArchivosVacio" runat="server" Font-Size="Small" CssClass="label alert-danger" Text="Debe seleccionar al menos un archivo" ForeColor="Red" Visible="false"></asp:Label>
+                    </div>
+                </div>
+
+                <!-- Fin Archivos Reunion -->
+
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <br />
+                </div>
 
 
 
@@ -128,7 +128,7 @@
                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-danger" OnClick="btnCancelar_Click" />
                 </div>
 
-                  <div class="col-md-12 col-xs-12 col-sm-12">
+                <div class="col-md-12 col-xs-12 col-sm-12">
                     <br />
                 </div>
 
@@ -140,8 +140,8 @@
 
     <!-- ------------------------ VISTA Elementos a revisar --------------------------- -->
     <div id="ViewElementoRevisar" runat="server" style="display: none">
-       
-           <div class="divCuadrado">
+
+        <div class="divCuadrado">
             <div class="row">
 
                 <!-- Modal -->
@@ -173,7 +173,7 @@
                                                         <tr>
                                                             <th></th>
                                                             <th>Descripción del Elemento</th>
-                                                           
+
                                                         </tr>
                                                     </thead>
                                             </HeaderTemplate>
@@ -186,7 +186,7 @@
                                                     <td>
                                                         <%# Eval("descripcionElemento") %>
                                                     </td>
-                                                    
+
                                                 </tr>
                                             </ItemTemplate>
 
@@ -195,7 +195,7 @@
                                                     <tr id="filterrow">
                                                         <td></td>
                                                         <th>Descripcion del Elemento</th>
-                                                        
+
                                                     </tr>
                                                 </thead>
                                                 </table>
@@ -307,7 +307,7 @@
     <!-- ------------------------ FIN VISTA Elementos a revisar --------------------------- -->
 
 
-     <!-- Modal Confirmar Desasociar Elementos a revisar -->
+    <!-- Modal Confirmar Desasociar Elementos a revisar -->
     <div id="modalDesasociarElementos" class="modal fade" role="alertdialog">
         <div class="modal-dialog modal-lg">
 
@@ -327,14 +327,14 @@
                             <br />
                         </div>
 
-                        <div class="col-md-12 col-xs-12 col-sm-12" style="text-align:center">
-                                <asp:Label ID="lblDesasocaiarElemento" runat="server" Text="¿Está seguro o segura que desea desasociar el elemento a revisar?" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                        <div class="col-md-12 col-xs-12 col-sm-12" style="text-align: center">
+                            <asp:Label ID="lblDesasocaiarElemento" runat="server" Text="¿Está seguro o segura que desea desasociar el elemento a revisar?" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                         </div>
 
 
                     </div>
                 </div>
-                <div class="modal-footer" style="text-align:center">
+                <div class="modal-footer" style="text-align: center">
                     <asp:Button ID="btnDesasociarElemento" runat="server" Text="Si" CssClass="btn btn-primary" OnClick="btnDesasociarElementoConfirmar_Click" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                 </div>
@@ -344,11 +344,11 @@
     </div>
     <!-- Fin Confirmar Eliminar Norma -->
 
-<!--****************************************************************************************** -->
-       <!-- ------------------------ VISTA Usuarios --------------------------- -->
+    <!--****************************************************************************************** -->
+    <!-- ------------------------ VISTA Usuarios --------------------------- -->
     <div id="ViewUsuario" runat="server" style="display: none">
-       
-           <div class="divCuadrado">
+
+        <div class="divCuadrado">
             <div class="row">
 
                 <!-- Modal -->
@@ -380,7 +380,7 @@
                                                         <tr>
                                                             <th></th>
                                                             <th>Nombre</th>
-                                                           
+
                                                         </tr>
                                                     </thead>
                                             </HeaderTemplate>
@@ -393,7 +393,7 @@
                                                     <td>
                                                         <%# Eval("nombre") %>
                                                     </td>
-                                                    
+
                                                 </tr>
                                             </ItemTemplate>
 
@@ -402,7 +402,7 @@
                                                     <tr id="filterrow">
                                                         <td></td>
                                                         <th>Nombre</th>
-                                                        
+
                                                     </tr>
                                                 </thead>
                                                 </table>
@@ -514,7 +514,7 @@
     <!-- ------------------------ FIN VISTA Usuarios --------------------------- -->
 
 
-     <!-- Modal Confirmar Desasociar Usuarios -->
+    <!-- Modal Confirmar Desasociar Usuarios -->
     <div id="modalDesasociarUsuarios" class="modal fade" role="alertdialog">
         <div class="modal-dialog modal-lg">
 
@@ -534,14 +534,14 @@
                             <br />
                         </div>
 
-                        <div class="col-md-12 col-xs-12 col-sm-12" style="text-align:center">
-                                <asp:Label ID="lblDesasociarUsuario" runat="server" Text="¿Está seguro o segura que desea desasociar el usuario de la reunión ?" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
+                        <div class="col-md-12 col-xs-12 col-sm-12" style="text-align: center">
+                            <asp:Label ID="lblDesasociarUsuario" runat="server" Text="¿Está seguro o segura que desea desasociar el usuario de la reunión ?" Font-Size="Medium" ForeColor="Black" CssClass="label"></asp:Label>
                         </div>
 
 
                     </div>
                 </div>
-                <div class="modal-footer" style="text-align:center">
+                <div class="modal-footer" style="text-align: center">
                     <asp:Button ID="btnDesasociarUsuario" runat="server" Text="Si" CssClass="btn btn-primary" OnClick="btnDesasociarUsuarioConfirmar_Click" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                 </div>
@@ -551,8 +551,8 @@
     </div>
     <!-- Fin Confirmar Eliminar Norma -->
 
-     <!--****************************************************************************************** -->
-    
+    <!--****************************************************************************************** -->
+
     <!-- script tabla jquery -->
     <script type="text/javascript">
 
@@ -560,7 +560,7 @@
             $('#modalDesasociarElementos').modal('show');
         };
 
-         function activarModalDesasociarUsuarios() {
+        function activarModalDesasociarUsuarios() {
             $('#modalDesasociarUsuarios').modal('show');
         };
 
@@ -691,7 +691,7 @@
         });
         /*fin tabla Elementos sin asociados*/
 
-       
+
 
         $('#tblElemento tbody').on('click', 'tr', function () {
             var prueba = table.row(this).data();
@@ -711,7 +711,7 @@
 
         ///////////////////////
 
-          /*tabla Usuarios asociados*/
+        /*tabla Usuarios asociados*/
         $('#tblElemento thead tr#filterrow th').each(function () {
             var campoBusqueda = $('#tblElemento thead th').eq($(this).index()).text();
             $(this).html('<input type="text" style="text-align: center" onclick="stopPropagation(event);" placeholder="Buscar ' + campoBusqueda + '" />');
@@ -837,7 +837,7 @@
         });
         /*fin tabla Usuarios sin asociados*/
 
-       
+
 
         $('#tblUsuario tbody').on('click', 'tr', function () {
             var prueba = table.row(this).data();
@@ -847,7 +847,7 @@
             $('#myModalUsuario').modal('show');
         };
 
-      
+
     </script>
     <!-- fin script tabla jquery -->
 
@@ -858,42 +858,42 @@
         function verViewElementoRevisar() {
             document.getElementById('<%=liElementoRevisar.ClientID%>').className = "active";
             document.getElementById('<%=liReunion.ClientID%>').className = "";
-             document.getElementById('<%=liUsuario.ClientID%>').className = "";
-            
-      
+            document.getElementById('<%=liUsuario.ClientID%>').className = "";
+
+
 
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'block';
             document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'none';
             document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'none';
-          
+
         };
 
         function verViewReunion() {
             document.getElementById('<%=liReunion.ClientID%>').className = "active";
             document.getElementById('<%=liElementoRevisar.ClientID%>').className = "";
-              document.getElementById('<%=liUsuario.ClientID%>').className = "";
-  
-        
-              document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
+            document.getElementById('<%=liUsuario.ClientID%>').className = "";
+
+
+            document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'block';
             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
             document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'none';
-          
+
         };
 
         function verViewUsuarios() {
-             document.getElementById('<%=liUsuario.ClientID%>').className = "active";
+            document.getElementById('<%=liUsuario.ClientID%>').className = "active";
             document.getElementById('<%=liReunion.ClientID%>').className = "";
             document.getElementById('<%=liElementoRevisar.ClientID%>').className = "";
-           
-      
+
+
 
             document.getElementById('<%=ViewUsuario.ClientID%>').style.display = 'block';
-             document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'none';
-             document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
-          
+            document.getElementById('<%=ViewReunion.ClientID%>').style.display = 'none';
+            document.getElementById('<%=ViewElementoRevisar.ClientID%>').style.display = 'none';
+
         };
 
-         function validarArchivos(fileUpload) {
+        function validarArchivos(fileUpload) {
             var id = fileUpload.id.substring(12);
 
             var divArchivoIncorrecta = document.getElementById('<%= divArchivosVacio.ClientID %>');
@@ -905,7 +905,7 @@
             }
         };
 
-      
+
 
     </script>
 
