@@ -13,6 +13,7 @@ namespace ReunionesRevisionDireccion.Catalogos
     {
         #region variables globales
         ReuniónServicios ReunionServicios = new ReuniónServicios();
+        UsuarioServicios usuarioServicios = new UsuarioServicios();
         #endregion
 
         #region pageload
@@ -29,6 +30,7 @@ namespace ReunionesRevisionDireccion.Catalogos
                 Session["ReunionEditar"] = null;
                 Session["ReunionEliminar"] = null;
                 cargarDatosTblReunions();
+                actualizarListaUsuarios();
 
             }
         }
@@ -53,6 +55,54 @@ namespace ReunionesRevisionDireccion.Catalogos
             rpReunion.DataBind();
 
             Session["listaReunion"] = listaReunion;
+
+        }
+
+        /// <summary>
+        /// Priscilla Mena
+        /// 15/01/2019
+        /// Efecto: Metodo que actualiza e inserta los usuarios en la tabla de Usuarios de la base de datos ReunionesPorLaDireccionDB
+        /// los datos los toma de la base de datos de login
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        public void actualizarListaUsuarios()
+        {
+            List<Usuario> listaTemp = new List<Usuario>(); //guarda la lista de los usuarios que se deben insertar en la base de datos
+            List<Usuario> listaUsuarios = usuarioServicios.getUsuarios(); //lista de usuarios en la base de datos de RevisionesPorLaDireccionDB
+            List<Usuario> listaUsuariosLogin = usuarioServicios.getUsuariosLogin(); //lista de usuarios en la base de datos de Login asociados a la aplicacion de RevisionesPorLaDireccionDB
+
+            //se recorre la lista de usuarios que vienen de la base de datos de Login
+            foreach (Usuario usuario in listaUsuariosLogin)
+            {
+                Boolean NoEncontrado = false;//variable para saber si el usuario ya se encuentra en la base de datos de RevisionesPorLaDireccionDB
+
+                //se recorre la lista con los usuarios de la base de datos de RevisionesPorLaDireccionDB
+                foreach (Usuario usuarioRRD in listaUsuarios)
+                {
+                    if (usuarioRRD.nombre == usuario.nombre)
+                    {
+                        NoEncontrado = true;
+
+                    }
+                }
+
+                if (!NoEncontrado)
+                {
+                    listaTemp.Add(usuario);
+                }
+            }
+
+            //se insertan los usuarios que no estan en la base de datos de RevisionesPorLaDireccionDB
+
+            foreach (Usuario usuario in listaTemp)
+            {
+                usuarioServicios.insertarUsuario(usuario);
+               
+            }
 
         }
         #endregion

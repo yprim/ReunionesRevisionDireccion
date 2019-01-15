@@ -9,7 +9,7 @@
             <%-- titulo pantalla --%>
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <center>
-            <asp:Label ID="lblAdministrarUsuario" runat="server" Text="Administrar Usuarios" Font-Size="Large" ForeColor="Black"></asp:Label>
+            <asp:Label ID="lblAdministrarUsuario" runat="server" Text="Usuarios de la aplicación" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
             </div>
             <%-- fin titulo pantalla --%>
