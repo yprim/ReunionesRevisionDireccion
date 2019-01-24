@@ -29,7 +29,7 @@ namespace ReunionesRevisionDireccion.Hallazgos
         {
             //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el ElementoRevisar
             //si no tiene permiso de ver la pagina se redirecciona a login
-            int[] rolesPermitidos = { 2 };
+            int[] rolesPermitidos = { 2,9 };
             Utilidades.escogerMenu(Page, rolesPermitidos);
 
             if (!IsPostBack)

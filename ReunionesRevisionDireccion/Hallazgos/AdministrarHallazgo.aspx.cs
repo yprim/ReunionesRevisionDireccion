@@ -13,6 +13,7 @@ namespace ReunionesRevisionDireccion.Catalogos
     {
         #region variables globales
         HallazgoServicios hallazgoServicios = new HallazgoServicios();
+        public static int rol = 0;
         #endregion
 
         #region pageload
@@ -20,11 +21,18 @@ namespace ReunionesRevisionDireccion.Catalogos
         {
             //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
             //si no tiene permiso de ver la pagina se redirecciona a login
-            int[] rolesPeromitidos = { 2 };
+            int[] rolesPeromitidos = { 2,9 };
             Utilidades.escogerMenu(Page, rolesPeromitidos);
 
             if (!Page.IsPostBack)
             {
+                //si el rol es de asistente (9) se desabilita el boton de nueva reunion
+                rol = (int)Session["rol"];
+
+                if (rol == 9)
+                {
+                    btnNuevo.Visible = false;
+                }
                 Reunion reunionHallazgos =(Reunion) Session["ReunionHallazgos"];
                 Session["listaHallazgo"] = null;
                 Session["HallazgoEditar"] = null;
@@ -185,7 +193,31 @@ namespace ReunionesRevisionDireccion.Catalogos
 
 
 
+        /// <summary>
+        /// Priscilla Mena  
+        /// 23/ene/2019
+        /// Efecto: habilita o desabilita los botones de editar y elminar segun el rol
+        /// Requiere: -
+        /// Modifica: visibilidad de botones
+        /// Devuelve: -
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void rpHallazgo_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                LinkButton btnEditar = e.Item.FindControl("btnEditar") as LinkButton;
+                LinkButton btnEliminar = e.Item.FindControl("btnEliminar") as LinkButton;
 
+                if (rol == 9)
+                {
+                    btnEditar.Visible = false;
+                    btnEliminar.Visible = false;
+                }
+
+            }
+        }
 
 
         #endregion

@@ -21,7 +21,7 @@
             <%-- tabla--%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="text-align: center; overflow-y: auto;">
 
-                <asp:Repeater ID="rpElementoRevisar" runat="server" >
+                <asp:Repeater ID="rpElementoRevisar" runat="server"  OnItemDataBound="rpElementoRevisar_ItemDataBound" >
                     <HeaderTemplate>
                         <table id="tblElementoRevisar" class="row-border table-striped">
                             <thead>

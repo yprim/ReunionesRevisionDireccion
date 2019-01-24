@@ -190,6 +190,23 @@ namespace ReunionesRevisionDireccion
                 if (rolesPermitidos.Contains(rol))
                 {
                     page.Master.FindControl("MenuAdministrador").Visible = true;
+                    page.Master.FindControl("MenuAsistente").Visible = false;
+                }
+                else
+                {
+                    page.Session.RemoveAll();
+                    page.Session.Abandon();
+                    page.Session.Clear();
+                    String url = page.ResolveUrl("~/login.aspx");
+                    page.Response.Redirect(url);
+                }
+            }
+            else if (rol == 9)
+            {
+                if (rolesPermitidos.Contains(rol))
+                {
+                    page.Master.FindControl("MenuAdministrador").Visible = false;
+                    page.Master.FindControl("MenuAsistente").Visible = true;
                 }
                 else
                 {

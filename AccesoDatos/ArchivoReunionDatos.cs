@@ -26,7 +26,6 @@ namespace AccesoDatos
         /// Modifica: -
         /// Devuelve: lista de archivos
         /// </summary>
-        /// <param name=""></param>
         /// <returns></returns>
         public List<ArchivoReunion> getArchivosReunion()
     {
@@ -120,7 +119,7 @@ namespace AccesoDatos
         /// Modifica: -
         /// Devuelve:  devuelve el id del archivo ingresado
         /// </summary>
-        /// <param name=""></param>
+        /// <param name="archivoReunion"></param>
         /// <returns></returns>
         public int insertarArchivoReunion(ArchivoReunion archivoReunion)
     {

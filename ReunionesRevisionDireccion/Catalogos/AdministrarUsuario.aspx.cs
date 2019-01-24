@@ -13,6 +13,7 @@ namespace ReunionesRevisionDireccion.Catalogos
     {
         #region variables globales
         UsuarioServicios usuarioServicios = new UsuarioServicios();
+        public static int rol = 0;
         #endregion
 
         #region pageload
@@ -20,7 +21,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         {
             //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
             //si no tiene permiso de ver la pagina se redirecciona a login
-            int[] rolesPeromitidos = { 2 };
+            int[] rolesPeromitidos = { 2 , 9};
             Utilidades.escogerMenu(Page, rolesPeromitidos);
 
             if (!Page.IsPostBack)
@@ -145,7 +146,14 @@ namespace ReunionesRevisionDireccion.Catalogos
 
         }
 
+        protected void rpUsuario_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
+        }
+
 
         #endregion
+
+
     }
 }

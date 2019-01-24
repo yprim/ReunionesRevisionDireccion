@@ -58,6 +58,15 @@ namespace ReunionesRevisionDireccion {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenuAdministrador;
         
         /// <summary>
+        /// Control MenuAsistente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MenuAsistente;
+        
+        /// <summary>
         /// Control username.
         /// </summary>
         /// <remarks>

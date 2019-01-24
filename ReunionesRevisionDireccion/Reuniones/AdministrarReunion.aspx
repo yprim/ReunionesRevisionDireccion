@@ -21,7 +21,7 @@
             <%-- tabla--%>
             <div class="col-md-12 col-xs-12 col-sm-12" style="text-align: center; overflow-y: auto;">
 
-                <asp:Repeater ID="rpReunion" runat="server" >
+                <asp:Repeater ID="rpReunion" runat="server" OnItemDataBound="rpReunion_ItemDataBound" >
                     <HeaderTemplate>
                         <table id="tblReunion" class="row-border table-striped">
                             <thead>

@@ -20,7 +20,7 @@ namespace ReunionesRevisionDireccion.Catalogos
         {
             //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
             //si no tiene permiso de ver la pagina se redirecciona a login
-            int[] rolesPeromitidos = { 2 };
+            int[] rolesPeromitidos = { 2,9 };
             Utilidades.escogerMenu(Page, rolesPeromitidos);
 
             if (!Page.IsPostBack)
