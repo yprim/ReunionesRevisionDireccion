@@ -18,6 +18,11 @@ namespace ReunionesRevisionDireccion.Catalogos
         #region page load
         protected void Page_Load(object sender, EventArgs e)
         {
+            //controla los menus q se muestran y las pantallas que se muestras segun el rol que tiene el usuario
+            //si no tiene permiso de ver la pagina se redirecciona a login
+            int[] rolesPeromitidos = { 2 };
+            Utilidades.escogerMenu(Page, rolesPeromitidos);
+
             if (!IsPostBack)
             {
                 ElementoRevisar elementoRevisar = (ElementoRevisar)Session["ElementoRevisarEliminar"];

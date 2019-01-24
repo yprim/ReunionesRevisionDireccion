@@ -32,6 +32,7 @@ namespace ReunionesRevisionDireccion.Catalogos
                 if (rol == 9)
                 {
                     btnNuevo.Visible = false;
+
                 }
 
                 Session["listaTipos"] = null;

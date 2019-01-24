@@ -57,8 +57,12 @@ namespace ReunionesRevisionDireccion.Hallazgos
                 // datos del hallazgo
                 ElementoRevisar elementoHallazgo = reunionElementoRevisarHallazgoServicios.getElementoHallazgo(reunionHallazgos,hallazgoEditar);
                 txtElementoSeleccionado.Text = elementoHallazgo.descripcionElemento;
-                txtUsuarioSeleccionado.Text = hallazgoEditar.usuario.nombre;
-                txtObservaciones.Text = hallazgoEditar.observaciones;
+                txtUsuarioSeleccionado.Text = hallazgoEditar.usuario.nombre.ToString();
+                txtObservaciones.Text = hallazgoEditar.observaciones.ToString();
+                txtFecha.Text = hallazgoEditar.fechaMaximaImplementacion.ToString();
+                txtCodigoAccion.Text = hallazgoEditar.codigoAccion;
+                cargarDatosTblUsuarios();
+                llenarDdlEstados();
 
                 int contIndexEstados = 0;
                 foreach (ListItem item in ddlEstados.Items)
@@ -70,11 +74,6 @@ namespace ReunionesRevisionDireccion.Hallazgos
                     }
                     contIndexEstados++;
                 }
-
-                txtFecha.Text = hallazgoEditar.fechaMaximaImplementacion.ToString();
-                txtCodigoAccion.Text = hallazgoEditar.codigoAccion;
-                cargarDatosTblUsuarios();
-                llenarDdlEstados();
             }
 
         }
@@ -118,8 +117,8 @@ namespace ReunionesRevisionDireccion.Hallazgos
         /// <returns></returns>
         public void llenarDdlEstados()
         {
-            List<Estado> listaTipoes = estadoServicios.getEstados();
-            ddlEstados.DataSource = listaTipoes;
+            List<Estado> listaTipos = estadoServicios.getEstados();
+            ddlEstados.DataSource = listaTipos;
             ddlEstados.DataTextField = "descripcionEstado";
             ddlEstados.DataValueField = "idEstado";
             ddlEstados.DataBind();
