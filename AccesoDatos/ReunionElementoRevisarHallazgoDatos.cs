@@ -137,9 +137,9 @@ namespace AccesoDatos
             SqlConnection sqlConnection = conexion.conexionRRD();
 
             SqlCommand sqlCommand = new SqlCommand(@"select e.idElemento, e.descripcionElemento 
-FROM ElementoRevisar e, Reunion_ElementoRevisar_Hallazgo reh
-where reh.idReunion = @idReunion and reh.idHallazgo = @idHallazgo and 
-e.idElemento = reh.idElemento; ", sqlConnection);
+            FROM ElementoRevisar e, Reunion_ElementoRevisar_Hallazgo reh
+            where reh.idReunion = @idReunion and reh.idHallazgo = @idHallazgo and 
+            e.idElemento = reh.idElemento; ", sqlConnection);
             sqlCommand.Parameters.AddWithValue("@idReunion", reunion.idReunion);
             sqlCommand.Parameters.AddWithValue("@idHallazgo", hallazgo.idHallazgo);
             SqlDataReader reader;

@@ -76,6 +76,8 @@
     <Content Include="Catalogos\VerElementoRevisar.aspx" />
     <Content Include="Catalogos\VerEstado.aspx" />
     <Content Include="Catalogos\VerTipo.aspx" />
+    <Content Include="Error\Error.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="Hallazgos\AdministrarHallazgo.aspx" />
     <Content Include="Hallazgos\EditarHallazgo.aspx" />
     <Content Include="Hallazgos\EliminarHallazgo.aspx" />
@@ -199,6 +201,16 @@
     </Compile>
     <Compile Include="Catalogos\VerTipo.aspx.designer.cs">
       <DependentUpon>VerTipo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hallazgos\AdministrarHallazgo.aspx.cs">
       <DependentUpon>AdministrarHallazgo.aspx</DependentUpon>

@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="divRedondo">
+   
         <div class="row">
 
             <%-- titulo pantalla --%>

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-     <div class="divRedondo">
+   
         <div class="row">
             <%-- titulo pantalla --%>
             <div style="text-align: center">
@@ -19,5 +19,5 @@
             </div>
 
         </div>
-    </div>
+
 </asp:Content>

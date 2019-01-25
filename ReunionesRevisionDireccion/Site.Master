@@ -32,7 +32,7 @@
     <script src='<%=Page.ResolveUrl("~/Scripts/Dialogo.js") %>'></script>
     
 
-    <title>Control de Correspondencia y Consecutivos</title>
+    <title>Reuniones de revisión de dirección</title>
     <link rel="icon" href='<%=Page.ResolveUrl("~/Imagenes/favicon.ico") %>' />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
