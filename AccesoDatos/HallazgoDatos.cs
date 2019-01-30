@@ -187,10 +187,10 @@ namespace AccesoDatos
 
             SqlCommand sqlCommand = new SqlCommand(@"SELECT h.idHallazgo,u.idUsuario,
               u.nombre,h.fechaMaximaImplementacion,
-              h.codigoAccion, e.idEstado, e.descripcion, h.observaciones
-              FROM Hallazgo h, Estado e, Usuario u, Reunion_ElementoRevisar_Hallazgo reh
+              h.codigoAccion, e.idEstado, e.descripcion, h.observaciones, ER.descripcionElemento
+              FROM Hallazgo h, Estado e, Usuario u, Reunion_ElementoRevisar_Hallazgo reh, ElementoRevisar ER
               WHERE h.idEstado = e.idEstado and h.idUsuario = u.idUsuario and
-              h.idHallazgo = reh.idHallazgo and reh.idReunion = @idReunion", sqlConnection);
+              h.idHallazgo = reh.idHallazgo and reh.idReunion = @idReunion and ER.idElemento = reh.idelemento", sqlConnection);
 
             SqlDataReader reader;
 
@@ -217,6 +217,11 @@ namespace AccesoDatos
 
                 hallazgo.estado = estado;
                 hallazgo.usuario = usuario;
+
+                ElementoRevisar elementoRevisar = new ElementoRevisar();
+                elementoRevisar.descripcionElemento = reader["descripcionElemento"].ToString();
+
+                hallazgo.elementoRevisar = elementoRevisar;
                 listaHallazgos.Add(hallazgo);
             }
             sqlConnection.Close();

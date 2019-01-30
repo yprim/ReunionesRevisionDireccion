@@ -191,6 +191,23 @@ namespace ReunionesRevisionDireccion.Catalogos
             Response.Redirect(url);
         }
 
+        /// <summary>
+        /// Priscilla Mena
+        /// 18/10/2018
+        /// Efecto:Metodo que se activa cuando se le da click al boton de regresar
+        /// redireccion a la pantalla de Administracion de Reuniones y hallazgos
+        /// Requiere: -
+        /// Modifica: -
+        /// Devuelve: -
+        /// </summary>
+        /// <param></param>
+        /// <returns></returns>
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            String url = Page.ResolveUrl("~/Hallazgos/AdministrarReunionHallazgo.aspx");
+            Response.Redirect(url);
+        }
+
 
 
         /// <summary>

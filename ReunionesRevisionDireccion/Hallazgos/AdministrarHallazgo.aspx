@@ -9,7 +9,7 @@
             <%-- titulo pantalla --%>
             <div class="col-md-12 col-xs-12 col-sm-12">
                 <center>
-            <asp:Label ID="lblAdministrarHallazgo" runat="server" Text="Hallazgos de Reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
+            <asp:Label ID="lblAdministrarHallazgo" runat="server" Text="Acuerdos de reunión" Font-Size="Large" ForeColor="Black"></asp:Label>
         </center>
             </div>
             <%-- fin titulo pantalla --%>
@@ -27,11 +27,12 @@
                             <thead>
                                 <tr>
                               <th></th>
+                                    <th>Elemento a revisar</th>
                                     <th>Responsable</th>
                                     <th>Fecha Maxima de Implementacion</th>
                                     <th>Código Acción</th>
                                     <th>Estado</th>
-                                    <th>Observaciones</th
+                                    <th>Hallazgo</th
                                 </tr>
                             </thead>
                     </HeaderTemplate>
@@ -42,6 +43,9 @@
                                <asp:LinkButton ID="btnVer" runat="server" ToolTip="Ver" OnClick="btnVer_Click" CommandArgument='<%# Eval("idHallazgo") %>'><span class="glyphicon glyphicon-eye-open"></span></asp:LinkButton>
                                 <asp:LinkButton ID="btnEditar" runat="server" ToolTip="Editar" OnClick="btnEditar_Click" CommandArgument='<%# Eval("idHallazgo") %>'><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                                 <asp:LinkButton ID="btnEliminar" runat="server" ToolTip="Eliminar" OnClick="btnEliminar_Click" CommandArgument='<%# Eval("idHallazgo") %>'><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                            </td>
+                            <td>
+                                <%# Eval("elementoRevisar.descripcionElemento") %>
                             </td>
                             <td>
                                 <%# Eval("usuario.nombre") %>
@@ -66,11 +70,12 @@
                         <thead>
                             <tr id="filterrow">
                                     <th></th>
-                                    <th>Usuario</th>
+                                <th>Elemento a revisar</th>
+                                    <th>Responsable</th>
                                     <th>Fecha Maxima de Implementacion</th>
                                     <th>Código Acción</th>
                                     <th>Estado</th>
-                                    <th>Observaciones</th
+                                    <th>Hallazgo</th
                             </tr>
                         </thead>
                         </table>
@@ -83,9 +88,10 @@
                 <hr />
             </div>
 
-            <%-- botones --%>
-            <div class="col-md-2 col-sm-2 col-xs-1 col-md-offset-9 col-xs-offset-0 col-sm-offset-8">
-                <asp:Button ID="btnNuevo" runat="server" Text="Agregar Hallazgo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
+             <%-- botones --%>
+            <div class="col-md-3 col-xs-3 col-sm-3 col-md-offset-9 col-xs-offset-9 col-sm-offset-9">
+                <asp:Button ID="btnGuardar" runat="server" Text="Agregar Hallazgo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Regresar" CssClass="btn btn-primary" OnClick="btnRegresar_Click" />
             </div>
             <%-- fin botones --%>
         </div>

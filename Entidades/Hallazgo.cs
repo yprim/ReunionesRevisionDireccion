@@ -20,6 +20,12 @@ namespace Entidades
         public Estado estado { get; set; }
         public Usuario usuario { get; set; }
 
+        /// <summary>
+        /// Leonardo Carrion    
+        /// 30/ene/2019
+        /// se utiliza para mostrar los elementos en la pantalla de administrar hallazgos
+        /// </summary>
+        public ElementoRevisar elementoRevisar { get; set; }
 
 
     }
