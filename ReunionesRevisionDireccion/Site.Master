@@ -32,7 +32,7 @@
     <script src='<%=Page.ResolveUrl("~/Scripts/Dialogo.js") %>'></script>
     
 
-    <title>Reuniones de revisión de dirección</title>
+    <title>Reuniones de revisión de dirección para laboratorio de ensayos</title>
     <link rel="icon" href='<%=Page.ResolveUrl("~/Imagenes/favicon.ico") %>' />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -57,7 +57,7 @@
 
                                 <div class="bottom-aligner">
                                     <div class="bottom-content">
-                                        <h4 style="font-family: 'Arial Rounded MT Bold'; color: #FFFFFF;">Reuniones de revisión de dirección </h4>
+                                        <h4 style="font-family: 'Arial Rounded MT Bold'; color: #FFFFFF;">Reuniones de revisión de dirección para laboratorio de ensayos </h4>
                                     </div>
                                 </div>
                                 <a href="http://www.lanamme.ucr.ac.cr/">

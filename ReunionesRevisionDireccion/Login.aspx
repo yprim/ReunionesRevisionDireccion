@@ -6,7 +6,7 @@
       <div class="row">
         <div class="container col-md-12  col-xs-12 col-sm-12">
             <div class="page-header text-center ">
-                <h2>Reuniones de revisión de dirección</h2>
+                <h2>Reuniones de revisión de dirección para laboratorio de ensayos</h2>
             </div>
 
             <div class="panel panel-default">
