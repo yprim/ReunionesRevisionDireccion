@@ -31,7 +31,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
                 if (rol == 9)
                 {
-                    btnNuevo.Visible = false;
+                   btnNuevo.Visible = false;
                 }
                 Reunion reunionHallazgos =(Reunion) Session["ReunionHallazgos"];
                 Session["listaHallazgo"] = null;

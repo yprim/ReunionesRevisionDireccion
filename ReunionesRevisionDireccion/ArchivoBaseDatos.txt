@@ -4,7 +4,7 @@
   <servidorLogin>163.178.106.21</servidorLogin>
   <usuarioLogin>sa</usuarioLogin>
   <contrasenaLogin>sa123!!</contrasenaLogin>
-  <baseRRD>RevisionesPorLaDireccionDB</baseRRD>
+  <baseRRD>RevisionesPorLaDireccionLE</baseRRD>
   <servidorRRD>163.178.106.21</servidorRRD>
   <usuarioRRD>sa</usuarioRRD>
   <contrasenaRRD>sa123!!</contrasenaRRD>

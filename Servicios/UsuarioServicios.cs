@@ -113,7 +113,7 @@ namespace Servicios
         /// <summary>
         /// Priscilla Mena
         /// 10/10/2018
-        /// Efecto: Metodo que devuelve una lista de usuarios que se encuentran activos en la base de datos de Login de RevisionesPorLaDireccionDB
+        /// Efecto: Metodo que devuelve una lista de usuarios que se encuentran activos en la base de datos de Login de RevisionesPorLaDireccionLE
         /// Requiere: -
         /// Modifica: -
         /// Devuelve: lista de usuarios
