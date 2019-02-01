@@ -549,7 +549,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
             /*--------------------Inserción de los archivos en el servidor y en la BD--------------------*/
 
-            fuArchivos = (FileUpload)Session["archivos"];
+          //  fuArchivos = (FileUpload)Session["archivos"];
             if (fuArchivos.HasFiles)
             {
                 List<ArchivoReunion> listaArchivos = guardarArchivos(reunion, fuArchivos);
