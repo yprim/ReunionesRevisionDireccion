@@ -52,10 +52,17 @@ namespace ReunionesRevisionDireccion.Catalogos
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             ElementoRevisar ElementoRevisar = (ElementoRevisar)Session["ElementoRevisarEliminar"];
-            elementoRevisarServicios.eliminarElementoRevisar(ElementoRevisar);
+            try
+            {
+                elementoRevisarServicios.eliminarElementoRevisar(ElementoRevisar);
+                String url = Page.ResolveUrl("~/Catalogos/AdministrarElementoRevisar.aspx");
+                Response.Redirect(url);
+            }
+            catch (Exception ex)
+            {
 
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarElementoRevisar.aspx");
-            Response.Redirect(url);
+                (this.Master as Site).Mensaje("El elemento a revisar no puede ser eliminado ya que está siendo utilizado por otra reunión", "¡Alerta!");
+            }
         }
 
 

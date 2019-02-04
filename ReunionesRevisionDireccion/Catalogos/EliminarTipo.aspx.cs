@@ -53,10 +53,18 @@ namespace ReunionesRevisionDireccion.Catalogos
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Tipo tipo = (Tipo)Session["tipoEliminar"];
-            tipoServicios.eliminarTipo(tipo);
 
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarTipo.aspx");
-            Response.Redirect(url);
+            try
+            {
+                tipoServicios.eliminarTipo(tipo);
+                String url = Page.ResolveUrl("~/Catalogos/AdministrarTipo.aspx");
+                Response.Redirect(url);
+            }
+            catch (Exception ex)
+            {
+
+                (this.Master as Site).Mensaje("El tipo no puede ser eliminado ya que está siendo utilizado por otra reunión", "¡Alerta!");
+            }
         }
 
 

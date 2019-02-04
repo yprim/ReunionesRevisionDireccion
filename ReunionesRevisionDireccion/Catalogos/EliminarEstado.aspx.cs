@@ -53,10 +53,17 @@ namespace ReunionesRevisionDireccion.Catalogos
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
             Estado Estado = (Estado)Session["EstadoEliminar"];
-            estadoServicios.eliminarEstado(Estado);
+            try
+            {
+                estadoServicios.eliminarEstado(Estado);
+                String url = Page.ResolveUrl("~/Catalogos/AdministrarEstado.aspx");
+                Response.Redirect(url);
+            }
+            catch (Exception ex)
+            {
 
-            String url = Page.ResolveUrl("~/Catalogos/AdministrarEstado.aspx");
-            Response.Redirect(url);
+                (this.Master as Site).Mensaje("El estado no puede ser eliminado ya que está siendo utilizado por otra reunión", "¡Alerta!");
+            }
         }
 
 
