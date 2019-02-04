@@ -47,7 +47,7 @@ namespace ReunionesRevisionDireccion.Catalogos
 
                 llenarDdlTipos();
                 llenarDatos();
-
+                txtAnno.Text = Convert.ToString(DateTime.Now.Year);
 
             }
             else
@@ -111,7 +111,7 @@ namespace ReunionesRevisionDireccion.Catalogos
             }
             reunion.idReunion = reunion.idReunion;
 
-            txtAnno.Text = Convert.ToString(DateTime.Now.Year);
+          
 
             /*
              * se llena la lista con los elementos a revisar que NO estan asociados a la reunion
